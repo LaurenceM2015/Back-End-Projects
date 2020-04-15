@@ -1,0 +1,106 @@
+/*===========================================*/
+/*              RESUME MAIN PAGE              */
+/*===========================================*/
+
+.body-resume{
+  background-image: url(img/bg.png);
+  @include body-font;
+  padding-top: 54px;
+  color: $gray-600;
+
+  @media (min-width: 992px) {
+      padding-top: 0;
+      padding-left: $sidebar-base-width;
+    
+  }
+}
+
+#resume-header{
+  background-color: $color-white;
+
+  .heading-primary{
+    &--main{
+      margin-bottom: 1.5rem !important;
+    }
+  }
+
+  
+}
+
+.resume-main{
+  //margin: 1.5rem;
+ // background-color: $color-white;
+ 
+ 
+
+ p{
+   font-size: 1.25rem;
+ }
+
+ small{
+   font-size: 120%;
+ }
+
+ section{
+   padding: 5rem 0;
+ }
+
+ .resume-hr{
+   border-top: .1rem solid $color-secondary;
+   padding-bottom: 2rem;
+ }
+ 
+ .card{
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    margin: 1.5rem auto !important;
+    border-radius: 0;
+    margin-bottom: 3.5rem !important;
+  
+  }
+
+  footer{
+    padding-top: 2.5rem;
+    padding-bottom: 2.4rem;
+  }
+}
+
+
+
+section.resume-section {
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+  max-width: 75rem;
+  .resume-item {
+
+    //.resume-content {}
+    .resume-date {
+      min-width: none;
+    }
+  }
+}
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+    .resume-item {
+      .resume-date {
+        min-width: 18rem;
+      }
+    }
+  }
+}
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+
+.dev-icons {
+  font-size: 3rem;
+  .list-inline-item i {
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

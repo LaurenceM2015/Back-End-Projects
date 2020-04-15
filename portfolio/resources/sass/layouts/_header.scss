@@ -1,0 +1,67 @@
+
+/*=========================================*/
+/*              MAIN HEADER                */
+/*========================================*/
+
+.header{
+  .carousel-item {
+    height: 75vh;
+    //min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+}
+
+ 
+  .masthead {
+    height: 85vh;
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url('https://source.unsplash.com/1920x1080'); // pick up random images on unplash site
+     // url(img/persPort3-min-big.jpg);
+
+        background-size: cover;
+        background-position: center top;
+        position: relative;
+        padding-top: calc(6rem + 74px);
+        padding-bottom: 6rem;
+        
+        // top left, top right, 
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+
+
+    .masthead-heading {
+    line-height: 2.75rem;
+    }
+   
+    .masthead-avatar {
+      width: 15rem;
+    }
+  }
+
+  @media(min-width:992px) {
+    .masthead {
+      height: 90vh;
+      padding-top: calc(6rem + 104px);
+      //padding-bottom: 6rem;
+
+      // top left, top right, 
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+      .masthead-heading {
+        line-height: 2.75rem;
+      }
+     
+  
+    }
+  }
+
+
+  

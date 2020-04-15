@@ -1,0 +1,72 @@
+@import "abstracts/function";
+@import "abstracts/mixin";
+@import "abstracts/variables";
+
+// BASES
+@import "bases/animations";
+@import "bases/base";
+@import "bases/typography";
+@import "bases/utilities";
+
+
+// COMPONENTS
+
+@import "components/buttons";
+@import "components/cards";
+@import "components/form";
+@import "components/bg-video";
+@import "components/social-links";
+
+/* 
+
+
+
+
+
+
+
+@import "components/composition";
+@import "components/cta-button";
+@import "components/feature-box";
+
+@import "components/popup";
+@import "components/portfolio";
+@import "components/process";
+@import "components/showcase";
+
+@import "components/story";
+@import "components/timeLine";
+*/
+
+
+// LAYOUTS
+
+@import "layouts/footer";
+@import "layouts/header";
+@import "layouts/navigation";
+
+// MAIN PAGES 
+
+@import "pages/home";
+@import "pages/portfolioPage";
+@import "pages/resume";
+
+
+/*
+
+
+
+@import "layouts/grid";
+
+@import "layouts/sidebar";
+
+@import "pages/_page-resources";
+
+*/
+
+  
+  
+ 
+  
+  
+

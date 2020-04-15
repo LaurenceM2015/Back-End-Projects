@@ -1,0 +1,49 @@
+
+
+.portfolio-section{
+    .portfolio-grid{
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+
+        .portfolio-item{
+            margin: 0;
+
+            .caption{
+                background-color: transparent;
+            }
+        }
+    }
+
+    .nav{
+        position: relative;
+        width: 100%;
+       
+        
+        justify-content: space-around;
+        li{
+           color: $color-secondary;
+           border: 1px solid $color-secondary; 
+           padding: 1rem 2rem;
+           margin-bottom: 1rem;
+           text-transform: uppercase;
+           text-align: center;
+           cursor: pointer;
+           flex-basis: 0.16%;
+
+           &:hover{
+               
+           }
+        }
+
+        .active{
+            background-color: $color-primary;
+               color: $color-white;
+               border: 1px solid $color-primary; 
+        }
+    }
+
+    
+
+   
+}

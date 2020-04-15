@@ -1,0 +1,65 @@
+
+/*========================================*/
+/*              FEATURE SECTION            */
+/*========================================*/
+
+.feature-section{
+    padding-bottom: 15rem;
+
+    .col-md-6{
+        margin-bottom: 2rem;
+
+        .feature-box{height: 100%;}
+    }
+
+}
+
+/*========================================*/
+/*              PORTFOLIO SECTION          */
+/*========================================*/
+
+.portfolio-section{
+   padding-bottom: 15rem;
+
+   
+
+   transform: skewY(-7deg);
+
+   & > * {
+      transform: skewY(7deg); 
+   }
+}
+
+.about-section{
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+    url(img/bkg-img.jpg);
+    background-size: cover;
+
+
+    
+    transform: skewY(-7deg);
+
+    & > * {
+       transform: skewY(7deg); 
+    }
+
+}
+
+/*=============================*/
+/*       CONTACT SECTION       */
+/*=============================*/
+
+.contact-section{
+    position: relative;
+    margin-top: 0;
+}
+
+
+
+
+
+
+

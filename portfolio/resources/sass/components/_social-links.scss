@@ -1,0 +1,141 @@
+.social-box{
+
+    &__item{
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+    
+    &__icon{
+        fill: var(--color-secondary, --color-secondary-dark);
+        cursor: pointer;
+        height: 3rem;
+        width: 3rem;
+
+        
+        &--googleplus, &--twitter, &--linkedin, &--github, &--facebook{
+            -webkit-transition: color .2s;
+            transition: color .2s;
+
+        }
+
+
+        &--googleplus {&:hover{
+            fill: var(--color-google-plus);}}
+
+        &--twitter {
+            &:hover{fill: var(--color-twitter);}}
+
+        &--linkedin{
+            &:hover{fill: var(--color-linkedin);}}
+
+        &--github{
+            &:hover{fill: var(--color-github);}}
+
+        &--facebook{
+            &:hover{fill: var(--color-facebook);}}
+    }
+
+}
+
+
+// RESUME SOCIAL LINK
+
+.social-icons {
+    a {
+        display: inline-block;
+        height: 3.5rem;
+        width: 3.5rem;
+        background-color: $color-secondary;
+        color: #fff !important;
+        border-radius: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        line-height: 3.5rem;
+        margin-right: 1rem;
+
+        &:last-child {
+            margin-right: 0;
+        }
+      
+      &:hover {
+        background-color: $color-primary;
+      }
+
+
+    }
+  }
+
+  // DEV ICONS 
+  .dev-icons {
+    font-size: 3rem;
+    .list-inline-item i {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .fab{
+    
+        margin-bottom: .5rem;
+        display: inline-block;
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    &--googleplus, &--twitter, &--linkedin, &--github, &--facebook{
+        -webkit-transition: color .2s;
+        transition: color .2s;
+
+    }
+
+  }
+
+  
+
+  .svg-box{
+
+    &__item{
+        display: inline-block;
+
+        &:not(:last-child) {
+            margin-right: 1.5rem;
+        }
+    }
+    
+    &__icon{
+        fill: var(--color-secondary, --color-secondary-dark);
+        cursor: pointer;
+        height: 3rem;
+        width: 4rem;
+
+        
+        &--googleplus, &--twitter, &--linkedin, &--github, &--facebook{
+            -webkit-transition: color .2s;
+            transition: color .2s;
+
+        }
+
+
+        &--googleplus {&:hover{
+            fill: var(--color-google-plus);}}
+
+        &--twitter {
+            &:hover{fill: var(--color-twitter);}}
+
+        &--linkedin{
+            &:hover{fill: var(--color-linkedin);}}
+
+        &--github{
+            &:hover{fill: var(--color-github);}}
+
+        &--facebook{
+            &:hover{fill: var(--color-facebook);}}
+    }
+
+    
+    
+}
