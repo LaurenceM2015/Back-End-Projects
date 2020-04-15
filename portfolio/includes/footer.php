@@ -78,86 +78,8 @@
   </body>
 </html>
 
-    
-<!-- Portfolio Modals -->
-<?php $index=1;
-      foreach ($portfolioItems as $portfolioItem) { ?>
-  <!-- Portfolio Modal 1 -->
-  <div class="portfolio-modal modal fade py-5" id="portfolioModal<?=$index?>" tabindex="-1" role="dialog" aria-labelledby="portfolioModal<?=$index++?>Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl" role="document">
-      <div class="modal-content">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">
-            <i class="fas fa-times"></i>
-          </span>
-        </button>
-        <div class="modal-body">
-          <div class="container">
-            <div class="row justify-content-center px-5">
-              <div class="modal-card-header">
-                <!-- Portfolio Modal - Title -->
-                <h2 class="portfolio-modal-title heading-secondary py-5"><?php echo $portfolioItem["title"]; ?></h2>
-              </div>
-                <div class="modal-card-img col-lg-12 text-center">
-                  <!-- Portfolio Modal - Image -->
-                  <img class="img-fluid rounded mb-5" src="resources/img/<?php echo $portfolioItem["img"]; ?>.jpg" alt="Laurence Malonga Personal Portfolio">
-                </div>
 
-                <div class="modal-card-desc">
-                     <!-- Portfolio Modal - Text -->
-                  <p class="mb-5 long-copy"><?php echo $portfolioItem["popuDesc"]; ?></p>
-                </div>
-                <div class="col-md-6">
-                  <h4><?php echo $portfolioItem["popuSubhead1"]; ?></h4>
-                  <ul class="list-unstyled">
-                  <?php 
-                      $popupList1 =$portfolioItem["popupList1"];
-                  for($i=0;$i<=count($portfolioItem["popupList1"]);$i++) { ?>
-                  <li><?=$popupList1[$i]?>
-                  </li>
-                  <?php } ?>
-
-                  </ul>
-                </div>
-
-                <div class="col-md-6 text-left">
-                  <div class="tech-used">
-                    <h4 class=""><?php echo $portfolioItem["popuSubhead2"]; ?></h4>
-                    <ul class="list-unstyled">
-                    <?php 
-                      $popupList2 =$portfolioItem["popupList2"];
-                  for($i=0;$i<=count($portfolioItem["popupList2"]);$i++) { ?>
-                  <li><?=$popupList2[$i]?>
-                  </li>
-                  <?php } ?>
-                    </ul>
-                  </div>
-
-                  <div class="tech-used">
-                    
-                    <ul class="list-unstyled">
-                    <?php 
-                      $popupList3 =$portfolioItem["popupList3"];
-                  for($i=0;$i<=count($portfolioItem["popupList3"]);$i++) { ?>
-                  <li><?=$popupList3[$i]?>
-                  </li>
-                  <?php } ?>
-                    </ul>
-                  </div>
-                    
-                </div>
-                
-                <div class="modal-footer border-0">
-                  <a href="resume.html" class="Btn Btn--green">Visit The Page &rarr;</a>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-      <?php } ?>
-
+ 
 
   
    

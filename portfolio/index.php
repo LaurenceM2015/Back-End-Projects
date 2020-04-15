@@ -1,5 +1,7 @@
 <?php 
   include ("includes/header.php");
+  include ("includes/arrays.php");
+  include ('includes/functions.php');
 ?>
 
   <body id="page-top">
@@ -25,8 +27,8 @@
         <div class="container d-flex align-items-center flex-column">
     
           <h1 class="masthead-heading text-uppercase mb-5">
-                <span class="heading-primary--main"><?php echo $log_name; ?></span>
-                <span class="heading-primary--sub"><?php echo $job_title ?></span>
+              <span class="heading-primary--main"><?php echo $log_name; ?></span>
+              <span class="heading-primary--sub"><?php echo $job_title ?></span>
           </h1>
     
           <!-- Header BTN -->

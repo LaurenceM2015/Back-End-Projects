@@ -3,8 +3,7 @@
     define("TITLE", "Home | Laurence Malonga &mdash; Portfolio");
     $log_name = "Laurence Malonga";
     $job_title = "Web Developer";
-    include('includes/arrays.php');
-    include('includes/functions.php');
+    
 
 ?>
 
