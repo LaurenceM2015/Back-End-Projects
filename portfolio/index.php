@@ -50,74 +50,33 @@
           </div><!-- ./ row -->
           <!-- About Section Content -->
            
-            <div class="row">
+          <div class="row">
               
-              <div class="col-md-6">
-                <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll">
-                  <div class="feature-box--header">
-                    <i class="feature-box__icon fas fa-mobile-alt"></i>
-                    <h3 class="heading-tertiary">Responsive Desgin</h3>
-                  </div>
-                  <ul class="list-unstyled feature-box__text">
-                    <li>Advance responsive images in HTML and CSS for faster pageloads: resolution switching, density switching, art direction;</li>
-                    <li>Modern responsive layout design: fluid grids, layout types, flexible images, using media queries to test for different screen widths, 
-                      pixel densities and touch capabilities;</li>
-                      <li>Videos in HTML and CSS: building a background video effect</li>
-                  </ul>
-                </div><!-- feature box 1 -->
-              </div>
-             
-              <div class="col-md-6">
-                <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll">
-                  <div class="feature-box--header">
-                    <i class="feature-box__icon far fa-file-code"></i>
-                    <h3 class="heading-tertiary">CSS Developer</h3>
-                  </div>
-                  
-                  <ul class="list-unstyled feature-box__text">
-                    <li> CSS architecture: The 7-1 rule, component-based design, the BEM (Block Element Modifier) methodology, writing reusable, maintainable and scalable code </li>
-                    <li>NPM development process with Sass and automatic browser reload, a build process to concatenate, prefix and compress CSS files</li>
-                    <li>SVG images instead of icons in HTML , generating and change of SVG sprites and colors in CSS</li>
-                  </ul>
-                </div>
-              </div><!-- feature box 2 -->
-              
-              <div class="col-md-6">
-                <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll">
-                  <div class="feature-box--header">
-                    <i class="feature-box__icon fab fa-wordpress-simple"></i>
-                    <h3 class="heading-tertiary">Wordpress Theme Dev</h3>
-                  </div>
-                  
-                  <ul class="list-unstyled feature-box__text">
-                    <li>Easy To Use CMS: can easly easily updatable website by converting any static HTML, Bootstrap or any website to Wordpress Theme</li>
-                    <li>I fully understand how to use Custom Post Types &amp; Advanced Custum Field in WordPress</li>
-                    <li>Can easily intergrate WordPress plugin &amp; more.</li>
-                    <li>Modern professional quality design &amp; Layout</li>
-                    <li>Hand-craft stynning website with valid, semantic &amp; beautiful HTML5 &amp; CSS3</li>
-                  </ul>
-                </div>
-              </div><!-- feature box 3 -->
-               
-              <div class="col-md-6">
-                <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll">
-                  <div class="feature-box--header">
-                    <i class="feature-box__icon fas fa-laptop-code"></i>
-                    <h3 class="heading-tertiary">Web Administrator</h3>
-                  </div>
-                  
-                  <ul class="list-unstyled feature-box__text">
-                    <li>Uploading product to our website to ensure our products have accurate product descriptions, relevant imagery 
-                      and video content to help our customers select the right product for them </li>
-                    <li>Build &amp; maintain websites using a program such as WordPress, Shopify, &amp; Perch</li>
-                    <li>Working knowledge Photoshop</li>
-                    <li>Good working knowledge of Microsoft Office</li>
-                    <li>Good understanding of Google products such as Webmaster Tools & Analytics</li>
-                    <li><!-- A 'love what you do' attitude--> Processing & Checking invoices</li>
-                    <li><!-- Friendly, passionate and approachable demeanor --> Monitoring stock levels</li>
-                  </ul>
-                </div><!-- feature box 4 -->
-              </div>
+            <?php 
+              foreach ($services as $service) { ?>
+
+                <div class="col-md-6">
+                  <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll">
+                    <div class="feature-box--header">
+                      <?php echo $service["icon"]; ?>
+                      <h3 class="heading-tertiary"><?php echo $service["title"]; ?></h3>
+                    </div>
+                    <ul class="list-unstyled feature-box__text">
+                    <?php 
+                    $description = $service["newdesc"];
+                for($i=0;$i<=count($service["newdesc"]);$i++) { ?>
+                <li><?=$description[$i]?>
+                </li>
+                <?php } ?>
+                </ul>
+                  </div><!-- feature box 1 -->
+
+                </div><!-- ./col-md-6 -->
+
+              <?php } ?>
+            
+          </div>
+
 
           </div><!-- ./ container -->
       </section>
@@ -134,59 +93,23 @@
         </div>
 
         <div class="row no-gutters">
-                 <!-- Portfolio Item 1 -->
-          <div class="col-lg-6">
-            <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal1">
-              <span class="caption d-flex align-items-center justify-content-center w-100">
-                <span class="caption-content text-center">
-                  <i class="fas fa-plus fa-3x"></i>
-                  <h3>Personel Portfolio</h3>
-                </span>
-              </span>
-              <img class="img-fluid" src="resources/img/LaurenceMalongaPortfolioHeader.jpg" alt="">
-            </a>
-          </div>
-            <!-- Portfolio Item 2 -->
-          <div class="col-lg-6">
-            <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal2">
-              <span class="caption d-flex align-items-center justify-content-center w-100">
-                <span class="caption-content text-center">
-                  <i class="fas fa-plus fa-3x"></i>
-                  <h3>Patata Clone</h3>
-                  <p class="mb-0">Animation &amp; sound kit</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="resources/img/patata.png" alt="Patata Clone JavaScript Project">
-            </a>
-          </div>
-            <!-- Portfolio Item 3 -->
-          <div class="col-lg-6">
-            <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal3">
-              <span class="caption d-flex align-items-center justify-content-center w-100">
-                <span class="caption-content text-center">
+                  <!-- Portfolio Item 1 -->
+            <?php $index=1;
+            foreach ($portfolioItems as $portfolioItem) { ?>
+            <div class="col-lg-6">
+              <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal<?=$index++?>">
+                <span class="caption d-flex align-items-center justify-content-center w-100">
+                  <span class="caption-content text-center">
                     <i class="fas fa-plus fa-3x"></i>
-                  <h3>Lili World</h3>
-                  <p class="mb-0">Beauty Cosmetic Salon</p>
+                    <h3><?php echo $portfolioItem["title"]; ?></h3>
+                    <p class="mb-0"><?php echo $portfolioItem["subTitle"]; ?></p>
+                  </span>
                 </span>
-              </span>
-              <img class="img-fluid" src="resources/img/lileworldLogo.jpg" alt="Lili World Beauty Cosmetics Salon, Birmingham">
-            </a>
-          </div>
-             <!-- Portfolio Item 4 -->
-          <div class="col-lg-6">
-            <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal4">
-              <span class="caption d-flex align-items-center justify-content-center h-100 w-100">
-                <span class="caption-content text-center">
-                  <i class="fas fa-plus fa-3x"></i>
-                  <h3>KSM (Karate Shotokan Mardie)</h3>
-                  <p class="mb-0">Martial Art, France</p>
-                </span>
-              </span>
-              <img class="img-fluid" src="resources/img/KarateShotokanMardie.jpg" alt="KSM (Karate Shotokan Mardie), France">
-            </a>
-          </div>
-        </div>
-              <!-- ./ end row -->
+                <img class="img-fluid" src="resources/img/<?php echo $portfolioItem["img"]; ?>.jpg" alt="">
+              </a>
+            </div>
+            <?php } ?>
+          </div><!-- ./ end row -->
 
           <div class="row my-5 py-5">
             <div class="col-lg-12 text-center mt-4">
@@ -210,77 +133,32 @@
               </div><!-- ./ row -->
             <!-- About Section Content -->
              
-                <div class="row text-muted">
+            <div class="row text-muted">
 
-                  <!-- feature box 1 -->
-                  <div class="col-md-3 col-lg-6 mb-5">
-                    <div class="feature-box feature-box--hover h-100">
-                        <i class="feature-box__icon fa fa-clipboard mr-2 pb-2"></i>
-                        <h3 class="heading-tertiary u-margin-bottom-small">Planning</h3>
-                        
-                        <ul class="feature-box__text list-unstyled">
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Gathering Information</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Planning: Sitemap &amp; wireframe creation</li>
-                          <li class=""><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Select technology stack: Programming Language, Frameworks, CMS</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Create page &amp; review, page layouts or change when required</li>
-                        </ul>
-                       
-                    </div>
-                  </div>
+              <?php 
+                foreach ($processItems as $processItem) { ?>  
 
-                   <!-- feature box 2 -->
-                  <div class="col-md-3 col-lg-6 mb-5">
-                    <div class="feature-box feature-box--hover h-100">
-                      <i class="feature-box__icon fa fa-code mr-2 pb-2"></i>
-                      <h3 class="heading-tertiary u-margin-bottom-small">Creating</h3>
+                <!-- feature box 1 -->
+                <div class="col-md-3 col-lg-6 mb-5">
+                  <div class="feature-box feature-box--hover h-100">
+                  <?php echo $processItem["icon"]; ?>
+                      <h3 class="heading-tertiary u-margin-bottom-small"><?php echo $processItem["title"]; ?></h3>
+                      
                       <ul class="feature-box__text list-unstyled">
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Build and deploy website</li>
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Add special feature &amp; interactivity</li>
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> SEO for the website</li>
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Use of BEM for marking up the layout.</li>
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> SASS 7-1 Patern, base folder</li>
-                        <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Compress Code and images</li>
-                      </ul>
-                        
-                    </div>
+                      
+                  <?php $description = $processItem["processList"];
+                    for($i=1;$i<=count($processItem["processList"]);$i++) { ?>
+                  <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i><?=$description[$i]?></li>
+                    
+                  <?php } ?>
+                  </ul>
+                    
                   </div>
+    
+            </div>
 
-                     <!-- feature box 3 -->
-                    <div class="col-md-3 col-lg-6 mb-5">
-                      <div class="feature-box feature-box--hover h-100">
-                        <i class="feature-box__icon fas fa-rocket mr-2 pb-2"></i>
-                        <h3 class="heading-tertiary u-margin-bottom-small">Launching</h3>
-                        <ul class="feature-box__text list-unstyled">
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Cross-browser testing website</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Upload the website to server</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Less code &amp; HTTP requests</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Final (Regression) testing and launch</li>
-                          <li></li>
-                          <li></li>
-                        </ul>
-                          
-                      </div>
-                    </div>
-
-                     <!-- feature box 3 -->
-                     <div class="col-md-3 col-lg-6 mb-5">
-                      <div class="feature-box feature-box--hover h-100">
-                        <i class="feature-box__icon fas fa-rocket mr-2 pb-2"></i>
-                        <h3 class="heading-tertiary u-margin-bottom-small">Maintenance</h3>
-                        <ul class="feature-box__text list-unstyled">
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Add user report system</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Fix bugs asap</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Keep website up-to-date</li>
-                          <li><i class="feature-box__icon feature-box__icon--small fas fa-check"></i> Final (Regression) testing and launch</li>
-                          <li></li>
-                          <li></li>
-                        </ul>
-                          
-                      </div>
-                    </div>
-
-                  
-                </div>
+          <?php } ?>
+        </div>
 
             </div>
             <!-- ./ container -->
@@ -314,36 +192,43 @@
                 <h3 class="heading-tertiary text-left">Skills sets</h3>
                 <div class="text-center">
                 <ul class="list-inline dev-icons">
-                <li class="list-inline-item">
-                  <i class="fab fa-html5"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-css3-alt"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-js-square"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-angular"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-react"></i>
+                  <li class="list-inline-item">
+                    <i class="fab fa-html5"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-css3-alt"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-js-square"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-angular"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-react"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-wordpress-simple"></i>
+                  </li>
+
+                  <li class="list-inline-item">
+                    <i class="fab fa-php"></i>
+                  </li>
                   
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-node-js"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-sass"></i>
-                </li>
-                <li class="list-inline-item">
-                  <i class="fab fa-less"></i>
-                </li>
-               
-                <li class="list-inline-item">
-                  <i class="fab fa-npm"></i>
-                </li>
-              </ul> 
+                  <li class="list-inline-item">
+                    <i class="fab fa-node-js"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-sass"></i>
+                  </li>
+                  <li class="list-inline-item">
+                    <i class="fab fa-less"></i>
+                  </li>
+                
+                  <li class="list-inline-item">
+                    <i class="fab fa-npm"></i>
+                  </li>
+              </ul>
                 </div> <!-- skill sets -->
               </div><!-- ./row -->
             </div><!-- about card -->
