@@ -30,7 +30,7 @@
           </h1>
     
           <!-- Header BTN -->
-          <a href="#feature" class="Btn Btn--white Btn--animated js-scroll-trigger">Visit The Page &rarr;</a>
+          <a href="#feature" class="Btn Btn--white Btn--animated js-scroll-trigger">Find out more &nbsp;<i class="fas fa-arrow-down"></i></a>
         </div>
     </header>
          
