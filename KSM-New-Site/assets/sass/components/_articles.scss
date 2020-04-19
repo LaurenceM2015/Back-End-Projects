@@ -1,0 +1,56 @@
+.article{
+    
+    &__text{
+        font-size: 1.2rem;
+        @include respond(tab-land){
+            column-count: 2;
+            column-gap: 2rem;
+            column-rule: .1rem solid $color-white;
+            hyphens: auto;
+        }
+       
+    }
+
+    img{height: auto;}
+}
+
+.bloginfo{
+    &__img-box{
+        text-align: center !important;
+        
+    }
+}
+
+article{
+    img{
+        height: auto !important;
+        width: 100% !important;
+    }
+
+}
+
+.widget-area{
+    .widget{
+        border-bottom: 0.25rem solid $color-primary !important;
+        margin: 0 0 40px !important;
+        text-align: left;
+        padding: 20px;
+        border: 0;
+        &:hover{ transform: none !important;}
+        h4{
+            margin: 0 0 10px;
+            padding: 0 0 10px;
+            border-bottom: solid 1px #ddd;
+        }
+
+        ul li {
+            margin: 0 0 5px;
+            &:hover{
+                position: relative;
+                left: 1px;
+            }
+        }
+    }
+}
+
+

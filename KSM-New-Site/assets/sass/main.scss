@@ -1,0 +1,29 @@
+
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "bases/animations";
+@import "bases/bases";
+@import "bases/typography";
+@import "bases/utilities";
+
+// COMPONENTS 
+
+@import "components/articles";
+@import "components/buttons";
+@import "components/compositions";
+@import "components/features-box";
+@import "components/gallery";
+
+
+
+
+// SITE LAYOUTS
+@import "layouts/footer";
+@import "layouts/headers";
+@import "layouts/navigations";
+
+@import"pages/charities.scss";
+@import"pages/home.scss";
+@import"pages/blog.scss";
+
