@@ -1,11 +1,27 @@
-.header-blog{
-    height: 85vh;
-    background: linear-gradient(
-        to right bottom,
-        rgba($color-primary-light, 0.8),
-        rgba($color-primary-dark-1, 0.8));
-    
-    background-size: cover;
-    background-position: top;
+.blog-page {
+    .header-blog{
+        height: 85vh;
+        background: linear-gradient(
+            to right bottom,
+            rgba($color-primary-light, 0.8),
+            rgba($color-primary-dark-1, 0.8));
+        
+        background-size: cover;
+        background-position: top;
+
+    }
+
+    .card-columns  {
+        
+        @media (min-width: 75em) {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            
+        }
+
+        .feature-box {border-bottom: 0.25rem solid $color-primary !important;}
+    }
 
 }
+    
