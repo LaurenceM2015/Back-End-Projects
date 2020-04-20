@@ -22,14 +22,17 @@
         
         justify-content: space-around;
         li{
+            /* Temporary Remove the border. And removed size and trext transform. */
            color: $color-secondary;
-           border: 1px solid $color-secondary; 
-           padding: 1rem 2rem;
+           /* border: 1px solid $color-secondary; */ 
+           padding: 1rem .5rem;
            margin-bottom: 1rem;
-           text-transform: uppercase;
+           /*text-transform: uppercase; 
+            flex-basis: 0.16%;
+           */
            text-align: center;
            cursor: pointer;
-           flex-basis: 0.16%;
+           
 
            &:hover{
                
