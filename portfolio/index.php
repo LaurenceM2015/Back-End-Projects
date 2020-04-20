@@ -4,8 +4,6 @@
   include ('includes/functions.php');
 ?>
 
-  <body id="page-top">
-  
     <?php include "includes/main-nav.php"; ?>
          
      <!-- Masthead -->
@@ -16,15 +14,12 @@
               <span class="heading-primary--main"><?php echo $log_name; ?></span>
               <span class="heading-primary--sub"><?php echo $job_title ?></span>
           </h1>
-    
           <!-- Header BTN -->
           <a href="#feature" class="Btn Btn--white Btn--animated js-scroll-trigger">Find out more &nbsp;<i class="fas fa-arrow-down"></i></a>
         </div>
     </header>
          
     <main id="homePage-main-container">
-
-      
       <!-- Feature Section -->
       <section class="page-section feature-section mb-0" id="feature">
         <div class="container">
