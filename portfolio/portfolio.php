@@ -67,13 +67,18 @@
                       <nav class="navbar">
                         <!-- d-flex justify-content-around -->
                           <ul class="nav caption">
-                              <li class="button active" data-filter="all">All</li>
-                              <li class="button" data-filter="bootstrap">Bootstrap</li>
-                              <li class="button" data-filter="php">PHP</li>
-                              <li class="button" data-filter="sass">SASS</li>
-                              <li class="button" data-filter="rails">Rails</li>
-                              <li class="button" data-filter="wordpress">Wordpress</li>
-                            </ul>
+                          <!--<li class="button active" data-filter="all">All</li> -->
+
+                          <?php 
+                              $sql    = "SELECT * FROM categories";
+                              $result = mysqli_query($conn, $sql);
+                              while($row=mysqli_fetch_array($result)){
+                              $category_id = $row['category_id'];
+                              $category_name = $row['category_name'];
+                          ?>
+                              <li class="button" data-filter="<?php echo $category_id; ?>"><?php echo $category_name; ?></li>
+                              <?php } ?>
+                          </ul>
                       </nav>
                     </div>
                 </div>
@@ -103,7 +108,7 @@
                   ?>
 
                   <!-- Portfolio Item 1 -->
-                  <div class="filter bootstrap sass col-lg-6">
+                  <div class="filter <?php echo $post_category; ?> sass col-lg-6">
                     <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal<?=$i++?>">
                       <span class="caption d-flex align-items-center justify-content-center h-100 w-100">
                         <span class="caption-content text-center">
