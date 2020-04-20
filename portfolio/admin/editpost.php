@@ -8,7 +8,6 @@ if(isset($_SESSION['author_role'])){
         if(isset($_GET['id'])){
 ?>
 
-	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
       
@@ -175,9 +174,9 @@ if(isset($_SESSION['author_role'])){
       </div>
     </div>
 	
-	
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+        <script>tinymce.init({selector:'textarea'});</script>
 
-	
 	</body>
 </html>
     <?php }}

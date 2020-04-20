@@ -88,7 +88,7 @@
                            if(mysqli_query($conn, $sql)) {
                                echo "Record Updated";
                                $_SESSION['author_name'] = $author_name;
-							   $_SESSION['author_email'] = $author_email;
+							                $_SESSION['author_email'] = $author_email;
                                $_SESSION['author_bio'] = $author_bio;
 
                                header("Location: index.php?message=Record+Updated");
@@ -125,6 +125,10 @@
   </div>
 </div><!-- dashboard -->
 
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>tinymce.init({selector:'textarea'});</script>
+	</body>
+</html>
 
 
 </body>
