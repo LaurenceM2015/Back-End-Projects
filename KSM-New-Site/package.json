@@ -1,0 +1,35 @@
+{
+  "name": "martial_art_theme",
+  "version": "1.0.0",
+  "description": "And Bootstrap wordpress theme for business.",
+  "main": "index.js",
+ 
+  "scripts": {
+    "watch:sass": "node-sass assets/sass/main.scss style.css -w",
+    "compile:sass": "node-sass assets/sass/main.scss assets/css/style.comp.css",
+    "devserve": "live-server",
+    "start": "npm-run-all --parallel devserve watch:sass",
+    
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 version' assets/css/style.comp.css -o assets/css/style.prefix.css",
+    "compress:css": "node-sass assets/css/style.prefix.css style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LaurenceM2015/KSM-New-Site"
+  },
+  "author": "Laurence Mabilleau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LaurenceM2015/KSM-New-Site/issues"
+  },
+  "homepage": "https://github.com/LaurenceM2015/business_theme#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^9.5.1",
+    "concat": "^1.0.3",
+    "node-sass": "^4.12.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2"
+  }
+}
