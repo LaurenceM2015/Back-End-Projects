@@ -1,9 +1,8 @@
 <?php 
+	define("TITLE", "Admin | Login Page");
     session_start();
     include "../includes/header.php";
     include "../includes/connection.php";
-
- 
 ?>
 
 

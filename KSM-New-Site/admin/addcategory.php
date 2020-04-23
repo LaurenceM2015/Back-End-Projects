@@ -1,5 +1,6 @@
 <?php 
     ini_set("display_errors", 1);
+    define("TITLE", "Admin | New Category Page");
     include "../includes/connection.php";
     //include "../includes/functions.php";
     session_start();

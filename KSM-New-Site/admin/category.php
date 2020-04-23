@@ -1,4 +1,6 @@
 <?php
+ini_set("display_errors", 1);
+define("TITLE", "Admin | All Category Page");
 include_once "../includes/functions.php";
 include_once "../includes/connection.php";
 session_start();
