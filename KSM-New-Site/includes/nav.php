@@ -4,7 +4,8 @@
  ?>
 
  <!-- MAIN NAVIGATION -->
-      
+  
+  <!-- Remove Dynamic navgiation and add it to a new file call includes/main-nav.php -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container-fluid">
       <img href="#page-top" srcset="assets/img/ksmLogo95x59.png 1x, assets/img/ksmLogo196x148.png x2" alt="Karate Shotokan Mardie logo" class="navbar__logo-img navbar-brand js-scroll-trigger">
@@ -28,9 +29,6 @@
           </li>
           <?php } ?>
           
-          
-         
-
         </ul>
 
       </div>

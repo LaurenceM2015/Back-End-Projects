@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors", 1);
 include_once "../includes/header.php";
 include_once "../includes/functions.php";
 include "../includes/connection.php";
@@ -47,7 +48,7 @@ if(isset($_SESSION['author_role'])){
                     
                     
                 Post Category
-                <select name="post_category" class="form-control" id="exampleFormControlSelect1">
+                
 					<?php
 						$sql = "SELECT * FROM `category`";
 						$result = mysqli_query($conn, $sql);
@@ -55,11 +56,12 @@ if(isset($_SESSION['author_role'])){
 							$category_id = $row['category_id'];
 							$category_name = $row['category_name'];
 							?>
-							<option value="<?php echo $category_id; ?>"><?php echo $category_name; ?></option>
+							<input class="form-check-input" name="post_category[]" type="checkbox" value="<?php echo $category_id; ?>" id="defaultCheck1"> <?php echo $category_name; ?><br>
+							
 							<?php
 						}
 					?>
-                </select>
+                
                     
 					
 				Post Content
@@ -79,7 +81,7 @@ if(isset($_SESSION['author_role'])){
 				<?php
 					if(isset($_POST['submit'])){
 						$post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
-						$post_category = mysqli_real_escape_string($conn, $_POST['post_category']);
+						$post_category = implode(",",$_POST['post_category']);
 						$post_content = mysqli_real_escape_string($conn, $_POST['post_content']);
 						$post_keywords = mysqli_real_escape_string($conn, $_POST['post_keywords']);
 						$post_author = $_SESSION['author_id'];
@@ -113,7 +115,9 @@ if(isset($_SESSION['author_role'])){
 									move_uploaded_file($fileTmp, $destination);
 									$sql = "INSERT INTO post (`post_title`,`post_content`,`post_category`, `post_author`, `post_date`, `post_keywords`, `post_image`) VALUES ('$post_title', '$post_content', '$post_category', '$post_author', '$post_date', '$post_keywords', '$dbdestination');";
 									if(mysqli_query($conn, $sql)){
-										header("Location: posts.php?message=Post+Published");
+										//header("Location: posts.php?message=Post+Published");
+										echo "<meta http-equiv='refresh' content='0;url=http://localhost:8888/admin/posts.php?message=Post+Published'>";
+
 									}else{
 										header("Location: newpost.php?message=Error");
 									}
@@ -141,7 +145,8 @@ if(isset($_SESSION['author_role'])){
     </div>
 	
 	
-
+		<!-- footer goes here -->
+	
 	
 	</body>
 </html>

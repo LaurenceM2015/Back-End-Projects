@@ -1,9 +1,11 @@
 <?php 
- include_once "../includes/header.php";
+ include_once "../includes/functions.php";
  include_once "../includes/connection.php";
  session_start();
  if(isset($_SESSION['author_role'])){
  ?>
+  
+  <?php include_once "../includes/header.php"; ?>
 
   <nav class="navbar navbar-dark sticky-top bg-dark shadow">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
@@ -47,6 +49,7 @@
             <th scope="col">Post Id</th>
             <th scope="col">Post Image</th>
             <th scope="col">Post Title</th>
+            <th scope="col">Post category</th>
             <th scope="col">Post author</th>
             <?php if($_SESSION['author_role']=="admin"){ ?>
             <th scope="col">Action</th>
@@ -62,6 +65,7 @@
             $post_title = $row['post_title']; 
             $post_image = $row['post_image']; 
             $post_author = $row['post_author']; 
+            $post_category = $row['post_category']; 
             $post_content = $row['post_content'];
             $post_id = $row['post_id'];
 
@@ -77,6 +81,7 @@
             <th scope="row"><?php echo $post_id; ?></th>
             <td><img class="img-thumbnail" src="../<?php echo $post_image; ?>" width="50px" height="50px"></td>
             <td><?php echo $post_title; ?></td>
+            <td><?php echo $post_category; ?></td>
             <td><?php echo $post_author_name; ?></td>
 
             <?php if($_SESSION['author_role']=="admin"){ ?>

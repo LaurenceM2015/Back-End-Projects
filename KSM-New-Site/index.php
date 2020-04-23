@@ -29,7 +29,7 @@
 
   
  
-<main class="section-features pb-0 container-fluid blog-page">
+<main class="section-features page-section pb-0 container blog-page">
   <section class="row">
     <content class="main-container page-content col-md-9" id="page-content">
      
@@ -43,6 +43,7 @@
               $post_image = $row['post_image']; 
               $post_author = $row['post_author']; 
               $post_content = $row['post_content'];
+              $post_category = $row['post_category'];
               $post_id = $row['post_id'];
 
 
@@ -55,13 +56,13 @@
           
           ?>
         
-          <div class="card feature-box">
-            <div class="card-img-top feature-box__img-box">
+          <div class="card">
+            <div class="card-img-top">
               <img src="<?php echo $post_image ?>" class="card-img-top" alt="...">
             </div>
             <div class="card-body">
-              <h5 class="card-title feature-box__text"><?php echo $post_title ?></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><?php echo $post_author_name ?></h6>
+              <h5 class="card-title"><?php echo $post_title ?></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><?php getCategoryName($post_category); ?></h6>
               <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
               <a href="post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More &rarr;</a>
               
@@ -79,8 +80,11 @@
         
         <div class="feature-box card widget mb-4 py-3">
           <h4 class="card-title feature-box__text py-1">Search Our blog page</h4>
-          <form role="form" class="search-form">
-              <input type="text" class="form-control" placeholder="Search for...">
+          <form action="search.php" class="input-group">
+            <input name="s" type="search" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+              <button class="btn btn-secondary p-2" type="button">Go!</button>
+            </span>
           </form>
         </div><!-- widget -->
         
