@@ -1,62 +1,117 @@
+<!-- header goes heare -->
 <?php 
-  // Global Header
-  ini_set("display_errors", 1);
-  define("TITLE", "KSM | Blog Page");
-  include_once "includes/header.php";
-  include_once "includes/connection.php";
-  include_once "includes/functions.php";
+ define("TITLE", "KSM | Page d'accueil");
+  include "includes/header.php";
+  include "includes/connection.php";
+  include "includes/functions.php";
 ?>
+<body>
 
-  <!-- NAVIGATION BAR START HERE -->
-  <?php include_once "includes/nav.php"; ?>
-  <!-- NAVIGATION BAR END HERE -->
 
-  <header class="header-blog parallax-window" data-z-index="0" data-parallax="scroll" data-image-src="assets/css/img/hero-blog-big-min.jpg">
+     <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container-fluid">
+      <img href="#page-top" srcset="assets/img/ksmLogo95x59.png 1x, assets/img/ksmLogo196x148.png x2" alt="Karate Shotokan Mardie logo" class="navbar__logo-img navbar-brand js-scroll-trigger">
 
-    
-      <div class="row text-center">
-        <div class="col-lg-10">
-          <h1 class="text-uppercase text-white heading-primary">
-            <span class="heading-primary--main"><?php getSettingValue("home_jumbo_title"); ?></span>
-          </h1>
-          <hr class="divider my-4">
-        </div>
-        <div class="col-lg-8">
-          <p class="text-white-75 font-weight-light mb-5"><?php getSettingValue("home_jumbo_desc"); ?></p>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar__nav navbar-nav ml-auto">
+
+          <li class="navbar__item nav-item">
+            <a class="navbar__link nav-link js-scroll-trigger" href="#blogNews">Les Info<small>De KSM</small></a>
+          </li>
           
-        </div>
+          <li class="navbar__item nav-item">
+            <a class="navbar__link nav-link js-scroll-trigger" href="#stage">Les Stage <small>De KSM</small></a>
+          </li>
+
+          <li class="navbar__item nav-item">
+              <a class="navbar__link nav-link js-scroll-trigger" href="#competition">Competition <small>Et Rencontre</small></a>
+          </li>
+
+          <li class="navbar__item nav-item">
+              <a class="navbar__link nav-link js-scroll-trigger" href="#assocari">Asso Caritatives <small>Telethon</small></a>
+          </li>
+
+          <li class="navbar__item nav-item">
+              <a class="navbar__link nav-link js-scroll-trigger" href="#charite">Charite<small>Nous Parrainent</small></a>
+          </li>
+
+          <li class="navbar__item nav-item">
+            <a class="navbar__link nav-link js-scroll-trigger" href="#apropodenous">A Propo <small>De Nous</small></a>
+          </li>
+         
+          <li class="navbar__item nav-item">
+            <a class="navbar__link nav-link js-scroll-trigger" href="#contact">Contact <small>Pour Savoir Plus</small></a>
+          </li>
+        </ul>
+
       </div>
-    
-  </header>
+    </div>
+  </nav>
 
-  
- 
-<main class="section-features page-section pb-0 container blog-page">
-
-  <section class="row">
-    <content class="main-container page-content col-md-9" id="page-content">
-    <?php
-				//pagination
-				$sqlpg = "SELECT * FROM `post`";
-				$resultpg = mysqli_query($conn, $sqlpg);
-				$totalposts = mysqli_num_rows($resultpg);
-        $totalpages = ceil($totalposts/9);
-        echo $totalposts;
-			?>
-    <?php 
-				//pagination get
-				if(isset($_GET['p'])){
-					$pageid = $_GET['p'];
-					$start = ($pageid*9)-9;
-					$sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT $start,9";
-				}else{
-					$sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT 0,9";
-				}
-			?>
+    <!-- main Header -->
+    <header class="header text-white fallback-image">
+          <div class="container header__container h-100">
+              <div class="row h-100 align-items-center justify-content-center">
+                <div class="col-md-12">
+                  
+                  <div class="header__text animated text-center">
+                      <h1 class="heading-primary text-lg-left">
+                        <span class="heading-primary--main">Karate Shotokan Mardie</span>
+                      </h1>
+                      <div class="">
+                        <p class="lead my-5 wow fadeInRight">Les valeurs du club se trouvent dans l’effort, le bien être et la convivialité. 
+                          <br>N’hésitez pas à nous rejoindre</p>
+                        <a class="btn btn--orange" href="#slogan">En Savoir Plus</a>
+                      </div>
+                      
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
      
-        <div class="card-columns">
+
+     
+      
+    </header>
+
+     <!-- Slogan with primary color -->
+    <section class="section-primary slogan slogan--img" id="slogan">
+     <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-5">
+            <h2 class="text-white heading-secondary">Le Karaté </h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-9 u-text-center my-5">
+             
+            <p class="lead">
+              Le karaté do (la voie du karaté) peut se pratiquer de manière sportive (compétitions) ou de manière martiale. Quelle que soit la voie choisie, le karaté est avant tout un art martial puisque la compétition n'est pas une fin en soi mais tout au plus une étape que l'on aura choisie ou non de pratiquer. 
+              On peut faire du karaté à tout âge dans le respect de son corps et de ses capacités.
+            </p>
+          </div>
+        </div>
+     </div>
+    </section><!-- Le Karate -->
+
+       <!-- Blog Section -->
+    <section class="section-features page-section" id="blogNews">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 pb-5">
+            <h2 class="mb-5 heading-secondary heading-secondary--1">Les Dernière Informations</h2>
+          </div>
+        </div>
+  
+        <div class="row">
           <?php 
-            $sql = "SELECT * FROM `post` ORDER BY post_id DESC";
+            $sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT 0,3";
             $result = mysqli_query($conn, $sql);
 
             while($row=mysqli_fetch_assoc($result)){
@@ -72,48 +127,598 @@
               $resultauth = mysqli_query($conn, $sqlauth);
               while($authrow=mysqli_fetch_assoc($resultauth)){
               $post_author_name = $authrow['author_name'];
-            
-          
-          
           ?>
         
-          <div class="card feature-box">
-            <div class="card-img-top">
-              <img src="<?php echo $post_image ?>" class="card-img-top" alt="...">
-            </div>
-            <div class="card-body">
-              <h5 class="card-title"><?php echo $post_title ?></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><?php getCategoryName($post_category); ?></h6>
-              <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
-              <a href="post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More &rarr;</a>
-              
-            </div> <!-- ./card-body -->
-          </div><!-- ./card -->
-          <?php } } ?>
-        </div><!-- ./card column -->
-     
-    </content>
+          <div class="col-md-4 my-4">
+            <div class="feature-box card h-100">
+              <div class="card-img-top feature-box__img-box">
+                <img class="feature-box__img"  src="<?php echo $post_image ?>" alt="Un stage était organisé pour aider le jeune garçon">
+              </div>
+              <div class="card-body">
+                  <h4 class="card-title feature-box__text"><?php echo $post_title ?></h4>
+                  <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
+                      <a href="<?php echo $post_id; ?>" class="btn-text">Lise l'article &rarr;</a>
+                </div>
+            </div> <!-- feature box 1 -->
+          </div><!-- ./col-md-4 -->
 
-    <!-- SIDEBAR
-              ================================================== -->
-      <aside class="col-md-3">
-        <?php include "includes/sidebar.php"; ?>
-      </aside>
-      <?php 
-				echo "<center>";
-				for($i=1;$i<=$totalpages;$i++){
-					?>
-					<a href="?p=<?php echo $i; ?>"><button class="btn btn-info"><?php echo $i; ?></button></a>&nbsp;
-					<?php
-				}
-				echo "</center>";
-			?>
+          <?php } } ?>
+    
+        </div><!-- row -->
+
+        <div class="row justify-content-center pt-5">
+          <div class="col-md-12 text-center"> 
+            <a class="btn btn--orange js-scroll-trigger" href="blog.php">En Savoir Plus</a>
+          </div>
+        </div>
+  
+      </div> <!-- container -->   
+            
+    </section>
+
+
+    <!-- Section Les Stage bg image -->
+    <section class="section-stage page-section h-100 parallax-BkgImg-jg" id="stage">
+      <div class="stage parallax">
+        <div class="container stage__container">
+          <div class="row">
+            <div class="col-md-12 mb-5">
+              <h2 class="heading-secondary heading-secondary--2">Les Stage de KSM</h2>
+            </div>
+          </div>
+          <div class="row justify-content-center align-items-center">
+            <div class="col-lg-9 u-text-center ">
+              <div class="stage__box lead wow fadeIn">
+                  
+                <p class="">
+                  Au long de l'année, le club vous proposera plusieurs stages, soit avec Fabien, soit avec des experts. 
+                  Chaque année les adhérents ont accès à plusieurs stages (préparation aux grades en ligue, avec des experts mais aussi avec Fabien. 
+                </p>
+                <p class="">
+                  Le club organise un stage aux Sables d'Olonne chaque année depuis 22 ans. 
+                  Egalememt, Fabien propose tous les ans un stage en faveur d'une association (maladies orphelines,Orphelinat Démiséyélé - Sourires d'enfants - au Burkina Faso, Ligue contre le cancer...).
+                </p>
+                <p>
+                  Au travers de son rôle de DTD, Fabien participe aux actions de l'USEP (découverte du karaté en milieu scolaire primaire), observe et analyse les compétitions départememtales et anime un stage par an à l'attention des professeurs du départememt.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-lg-3 text-center my-5 animated fadeInUp parallax">
+              <div>
+                  <img src="assets/img/KarateDoIdeogamme.jpg" class="img-fluid">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- LES COMPETITION-->
+    <section class="page-section projects-section" id="competition">
+      <div class="wow fadeIn">
+        <div class="container">
+
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="heading-secondary heading-secondary--1 mb-5 pb-4">Compétition et Rencontres </h2>
+              </div>
+          </div>
+
+              <!-- Project One Row -->
+      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <div class="col-lg-6">
+            <div class="">
+                <img class="img-fluid w-100" src="assets/img/compRenc-min.jpg" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 align-items-center">
+            <div class="bg-black text-center project h-100 section-primary">
+              <div class="d-flex">
+                <div class="project-text w-100 h-100 text-center text-lg-left">
+                  <h4 class="text-white page-header page-header--1 mt-0">Competition et Interclub</h4>
+                  <p class="mb-0">
+                    Des compétitions et interclubs sont organisés chaque année afin de permettre à nos élèves de s'affronter dans un bon esprit de compétition et de bonne humeur.
+
+                      
+                  </p>
+                  <hr class="d-none d-lg-block mb-0 ml-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+           <!-- Project Two Row -->
+      <div class="row justify-content-center no-gutters">
+          <div class="col-lg-6">
+            <img class="img-fluid" src="assets/img/valerie-min.jpg" alt="">
+          </div>
+          <div class="col-lg-6 order-lg-first">
+            <div class="bg-black text-center h-100 project section-primary">
+              <div class="d-flex h-100">
+                <div class="project-text w-100 my-auto text-center text-lg-right">
+                  <h4 class="text-white page-header page-header--1 mt-0">Stage aux Sable d'Olonne</h4>
+                  <p class="mb-0">
+                    Nous vous proposons également tous les ans un stage aux Sables d'Olonne avec Fabien. Si vous souhaitez vous exercer 
+                    à cet art martial qu'est le karaté dans l'effort, le bien être et la convivialité, venez nous rejoindre.
+                  </p>
+                  <hr class="d-none d-lg-block mb-0 mr-0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        </div> <!-- container -->
+      </div>
+    </section><!-- Competition -->
+
+    <section class="section-primary slogan" id="slogan">
+        <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-9 u-text-center my-5">
+                  <h2 class="text-white heading-secondary">Rencontres</h2>
+                  <p class="my-5 lead">
+                    Les enfants peuvent participer à un inter-club (Olivet, l'ASPTT et MARDIE) organisé par Fabien, Serge, Antonio et Marc, professeurs. 
+                    C'est une compétition tournée vers la rencontre, le respect et l'amitié.
+                  </p>
+
+               
+              </div>
+            </div>
+        </div>
+     </section><!-- Le Karate -->
+
+     <!-- LES Telethon -->
+    <!-- Portfolio -->
+  <section class="page-section bg-light" id="assocari">
+      <div class="container">
+        <div class="content-section-heading text-center pb-5 my-5">
+          <h2 class="heading-secondary heading-secondary--1"><?php getCategoryName(3); ?></h2>
+          <h3 class="text-secondary">Téléthon</h3>
+          
+        </div>
+        <div class="row no-gutters">
+          <?php 
+              $sql = "SELECT * FROM `post` WHERE FIND_IN_SET('3', post_category)  ORDER BY post_id DESC LIMIT 0,4";
+              $result = mysqli_query($conn, $sql);
+
+              while($row=mysqli_fetch_assoc($result)){
+                $post_title = $row['post_title']; 
+                $post_image = $row['post_image']; 
+                
+            ?>
+
+          <div class="col-lg-6">
+            <div class="gallery">
+              <div class="gallery__item" href="#">
+                  <span class="caption">
+                    <span class="caption-content">
+                      <h4><?php echo $post_title ?></h4>
+                      <p class="mb-0"></p>
+                    </span>
+                  </span>
+                  <img class="img-fluid" src="<?php echo $post_image ?>" alt="Téléthon 2008">
+                </div>
+
+            </div>
+
+            
+          </div>
+        
+          <?php }  ?>
+        
+        </div>
+      </div>
   </section>
-  <!-- Pagination -->
- 
-</main>
+
+  <!-- Section Les Stage -->
+  
+  <section class="section-bkg__img section-bkg__img--1 page-section h-100 parallax-window" data-z-index="1" data-parallax="scroll" data-image-src="assets/css/img/remerciment-min.jpg">
+      <div class="container info">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-white heading-secondary heading-secondary--1">Remerciment</h2>
+        </div>
+      </div><!-- row 1 -->
+        
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-3">
+          <div class="header__img animated fadeInUp text-right">
+          <img src="assets/img/shin.jpg" alt="KSM shine">
+        </div>
+        </div>
+
+        <div class="col-md-8 my-5">
+          <div class="stage__box wow fadeIn h-100">
+              <p class="lead wow fadeInRight">
+                Nous tenons à remercier l'ensemble des enfants qui chaque année font preuve de sérieux, de courage, 
+                de respect et d'assiduité dans leur pratique et pendant les différentes manifestations et compétitions.
+              </p>
+          </div>
+        </div>
+
+     
+
+      </div>
+    </div><!-- container -->
+  </section>
+
+
+  <!-- Section Les Charite -->
+  <section class="section-charite page-section" id="charite">
+        
+    <div class="container">
+          
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="heading-secondary heading-secondary--1 mb-5 pb-5 text-center">Les Charite que nous Parrainents</h2>
+        </div>
+      </div>
+          
+      <div class="row wow fadeIn align-items-center section-primary no-gutters">
+
+        <div class="col-lg-4">
+          <div class="article h-100 wow fadeInLeft">
+            <div class="article__left h-100 w-100">
+                <img src="assets/img/terredesenfant1.jpg" alt="Stage" class="img-fluid w-100 article__img">
+                <img src="assets/img/terredesenfant2.jpg" alt="Stage" class="img-fluid w-100 article__img">
+            </div>
+          </div>
+        </div>
+           
+        <div class="col-lg-8">
+          <div class="article h-100 wow fadeInRight px-5">
+            <div class="article__right h-100">
+                <div class="">
+                    <h3 class="heading-tertiary text-white text-center pt-4">Terre Des Enfant</h3>
+                </div>
+                <p class="article__text lead">
+                    Au cours de cette journée qui a vu passer près de 100 personnes dans notre petite salle polyvalente qui nous tient lieu de dojo, et grâce à votre contribution à tous, nous avons pu réunir 1840 € qui sont intégralement transférés à Terre des enfants qui se chargera elle-même d'approvisionner le compte de Démiséyélé. Fabien Poullin, professeur du KSM et ses assistants envoient également un très grand merci aux enfants du KSM 
+                    qui se sont mobilisés et nous ont proposé une démonstration après le stage qui était déjà intensif. Merci à tous
+                </p>
+            </div>
+
+            <a href="charities.html" target="_blank" class="btn-text btn-text--white">Lise l'article &rarr;</a>
+          </div>
+
+        </div>
+
+      </div><!-- row -->
+          
+    </div><!-- container -->
+      
+  </section>
+
+  <!-- div gallery -->
+
+  <section class="section-gallery">
+    <div class="container-fluid py-5 px-0 bg-faded">
+      <h2 class="heading-secondary heading-secondary--1 mb-5 pb-5 text-center">Nos gallery</h2>
+    <div class="card-columns galleryShowcase">
+       
+    <div class="card parent">
+     
+        <div class="child">
+          <img class="card-img-top img-fluid" src="assets/img/telethon2008-min1.jpg" alt="Card image cap">
+          <span>Card Title</span>
+       
+      </div>
+    </div>
+    <div class="card parent">
+      <div class="child">
+        <img class="card-img img-fluid" src="assets/img/StKarateOuverts-min.jpg" alt="Card image">
+      </div>
+    </div>
+    <div class="card parent">
+       <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/Telethon2007-min1.jpg" alt="Card image cap">
+       </div>
+    </div>
+    <div class="card parent">
+      <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/Telethon2007-min2.jpg" alt="Card image cap">
+      </div>
+    </div>
+    <div class="card parent">
+      <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/institut_ocean.jpg" alt="Card image cap">
+      </div>
+    </div>
+    <div class="card parent">
+       <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/LassoSportive-min.jpg" alt="Card image cap">
+       </div>
+    </div>
+    <div class="card parent">
+       <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/compRenc-min.jpg" alt="Card image cap">
+       </div>
+    </div>
+    <div class="card parent">
+      <div class="child">
+        <img class="card-img img-fluid" src="assets/img/compet5-min.jpg" alt="Card image">
+      </div>
+    </div>
+    <div class="card parent">
+        <div class="child">
+          <img class="card-img-top img-fluid" src="assets/img/stageMemorial-min.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="card parent">
+        <div class="child">
+          <img class="card-img-top img-fluid" src="assets/img/valerie-min.jpg" alt="Card image cap">
+        </div>
+    </div>
+    <div class="card parent">
+       <div class="child">
+        <img class="card-img img-fluid" src="assets/img/telethon2008-min2.jpg" alt="Card image">
+       </div>
+    </div>
+    
+    
+    <div class="card parent">
+      <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/Telethon2007-min2.jpg" alt="Card image cap">
+
+      </div>
+    </div>
+          
+          
+         
+  </div>
+</div>
+  
+      
+  
+  </section>
+
+
+  <!-- NOS PRINCIPE -->
+  <section class="section-primary slogan" id="slogan">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 u-text-center my-5">
+          <h2 class="text-white">Nos Principe</h2>
+          <p class="my-5 lead">Chaque Karatéka et chaque club de karaté doit respecter sur le tatamis, comme dans la vie quotidienne un certain code moral. Ce code d'honneur est un ensemble de valeurs et de principes 
+            (politesse, fidélité, sincérité, courage,bonté, droiture, honneur, respect, contrôle de soi, modestie, amitié, volonté…) Vaste apprentissage qui ne peut que nous aider à vivre mieux sur le tatamis et au quotidien</p>
+           
+        </div>
+      </div>
+    </div>
+  </section><!-- Nos Principe -->
 
   
 
+      <!-- apropo de nous -->
+  <section id="apropodenous" class="page-section projects-section bg-light">
+      
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 pb-5">
+          <h2 class="mb-5 heading-secondary heading-secondary--1">A Propos De Nous</h2>
+        </div>
+      </div>
+  
+      <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+        <div class="col-xl-5 col-lg-7">
+          <div class="text-center wow fadeInLeft">
+            <img class="img-fluid mb-3 mb-lg-0" src="assets/img/karateProfile.jpg" alt="Les Professeurs de KSM, Valerie Mabilleau et Fabien Poulin">
+          </div>
+         
+        </div>
+        <div class="col-xl-7 col-lg-5 wow fadeInRight">
+          <div class="featured-text text-center text-lg-left">
+            <h3>Depuis Le Debut</h3>
+            <p class="text-black-50 mb-4">
+              Le club de karaté de Mardié (KSM) à été créé en 1998 et compte aujourd'hui quelques 50 licenciés dont une trentaine d'enfants (pour qui les cours sont départagés selon qu'ils sont gradés ou débutants).
+            </p>
+            <p class="text-black-50 mb-4">
+              C'est un club de proximité qui permet aux adultes et aux parents d'enfants des communes environnantes (Bou, Donnery, Fay aux Loges…) de ne pas être obligés de se déplacer plus loin. Tout au long de l'année scolaire les licenciés peuvent avoir accès à de nombreux stages.
+            </p>
 
-  <?php include "includes/footer.php" ?>
+            <ul class="list-unstyled text-black-50">
+              <li>
+                  Fabien Poullin, DIF, CQP, Directeur Technique Départememtal, 5ème Dan <i class="fa fa-trophy fa-color"></i>
+              </li>
+              <li>
+                Valérie Mabilleau, Présidente, DIF, 4 dan <i class="fa fa-trophy fa-color"></i>
+              </li>
+              <li>
+                Tymothé,  Secrétaire, DIF,  2 dan <i class="fa fa-trophy fa-color"></i>
+              </li>
+              <li>
+                 Laurent,  Trésorier, DIF 2 dan <i class="fa fa-trophy fa-color"></i>
+              </li>
+            </ul>
+             
+          </div>
+        </div>
+      </div>
+      <!-- no lien -->
+      <div class="row">
+
+        <div class="col-md-12">
+          <div class="section-lien py-5">
+            <h3>No Lien</h3>
+          </div>
+          
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="assets/img/lien/DTDSLIDE.jpg">
+          </a>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="assets/img/lien/KarateMartial.jpg">
+          </a>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="assets/img/lien/Logo-Sourires-denfants.jpg">
+          </a>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#">
+            <img class="img-fluid d-block mx-auto" src="assets/img/lien/ffkda_logo.png">
+          </a>
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <img class="img-fluid d-block mx-auto" src="assets/img/lien/terredesenfant.jpg">
+        </div>
+
+        <div class="col-md-2 col-sm-4 col-xs-6">
+          <a href="#">
+              <img class="img-fluid d-block mx-auto" src="assets/img/lien/ligueTBO.png">
+          </a>
+        </div>
+
+</div>
+
+    </div><!-- container -->
+  
+  </section><!-- a propos de nous -->
+
+  <section id="contact" class="page-section page-contact section-contact">
+    <div class="container">
+      <div class="animated fadeIn">
+        <div class="row">
+          <div class="col-md-12 mb-3 text-center text-white">
+            <h2 class="heading-secondary heading-secondary--2">Contact Nous</h2>
+          </div>
+        </div>
+              
+        <div class="row my-5">
+          <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-map-marked-alt mb-2"></i>
+                <h4 class="text-uppercase m-0">Address</h4>
+                <hr class="my-4">
+                <div class="text-black-50">
+                  <address>
+                    <div class="my-0">Rue Maurice Robillard</div>
+                    <div>Mardie 45430</div>
+                  </address>
+                </div>
+              </div>
+            </div>
+          </div><!-- contact-box 1-->
+
+          <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-mobile-alt mb-2"></i>
+                <h4 class="text-uppercase m-0">Téléphone</h4>
+                <hr class="my-4">
+                <div class="text-black-50">
+                  <div class="my-0">
+                    Fabien <abbr title="Phone"></abbr>: (33) 06 75 48 97 70
+                  </div>
+                  <div class="my-0"> 
+                    valerie
+                    <abbr title="Phone"></abbr>: (33) 06 76 75 50 98
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- contact-box 2 -->
+
+          <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-envelope mb-2"></i>
+                <h4 class="text-uppercase m-0">Email</h4>
+                <hr class="my-4">
+                <div class="text-black-50">
+                  <abbr title="Email"></abbr><a href="mailto:valerie.mabilleau@sfr.fr">valerieetfabien@sfr.fr</a>
+                </div>
+              </div>
+            </div>
+          </div><!-- contact-box 3 -->
+
+          <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card py-4 h-100">
+              <div class="card-body text-center">
+                <i class="fas fa-tags mb-2"></i>
+                <h4 class="text-uppercase m-0">Nos Tarif</h4>
+                <hr class="my-4">
+                <div class="text-black-50">
+                  <ul class="list-unstyled list-social-icons">
+                    <li>Adultes: 191 <i class="fas fa-euro-sign"></i></li>
+                    <li>Enfants: 141 <i class="fas fa-euro-sign"></i></li>
+                    <li>Adolescents: 161 <i class="fas fa-euro-sign"></i></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div><!-- conctact-box 4 -->
+
+        </div> <!-- row --> 
+                   
+      </div><!-- fade in -->
+ 
+    </div><!-- container -->
+  </section><!-- Nos Principe -->
+
+  
+
+  <footer class="footer">
+		<div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-2">
+          <p><a href="/"><img class="footer__logo" src="assets/img/ksmLogo95x59.png" alt="Karate Shotokan Mardie Site"></a></p>
+        </div><!-- end col -->
+        <div class="col-md-4">
+          <nav class="text-center secondary-navbar navbar navbar-expand-sm justify-content-center">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a href="" class="nav-link"><p>Home</p></a></li>
+              <li class="nav-item"><a href="" class="nav-link"><p>Les Enfo</p></a></li>
+              <li class="nav-item"><a href="" class="nav-link"><p>Nos Charite</p></a></li>
+            </ul>
+          </nav>
+        </div><!-- end col -->
+        <div class="col-md-6">
+          <p class="text-center">Karate Shotokan Mardie &copy; 2014 - build by: <a href="http://laurencemalonga.com/" target="_blank">Laurence M</a></p>
+        </div><!-- end col -->
+      </div>
+		</div><!-- container -->
+	</footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- jquery parallax plugin -->
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="vendor/js/wow.js"></script>
+  <script src="assets/js/main.js"></script>
+
+    
+    <script>
+      new WOW().init();
+    </script>
+  </body>
+</html>
+
+
+      
+        

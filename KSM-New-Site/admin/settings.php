@@ -1,4 +1,5 @@
 <?php
+define("TITLE", "Admin | Setting Page");
 include_once "../includes/functions.php";
 include_once "../includes/connection.php";
 session_start();
