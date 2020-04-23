@@ -15,12 +15,12 @@
       <div class="row h-100 align-items-center justify-content-center text-center">
         <div class="col-lg-10 align-self-end">
           <h1 class="text-uppercase text-white heading-primary">
-            <span class="heading-primary--main">Toute Les Stage De KSM</span>
+            <span class="heading-primary--main"><?php getSettingValue("home_jumbo_title"); ?></span>
           </h1>
           <hr class="divider my-4">
         </div>
         <div class="col-lg-8 align-self-baseline">
-          <p class="text-white-75 font-weight-light mb-5"></p>
+          <p class="text-white-75 font-weight-light mb-5"><?php getSettingValue("home_jumbo_desc"); ?></p>
           
         </div>
       </div>
@@ -83,9 +83,12 @@
           <form action="search.php" class="input-group">
             <input name="s" type="search" class="form-control" placeholder="Search for...">
             <span class="input-group-btn">
-              <button class="btn btn-secondary p-2" type="button">Go!</button>
+              <button type="submit" class="btn btn-secondary p-2" type="button">Go!</button>
             </span>
           </form>
+          
+      
+
         </div><!-- widget -->
         
         <div class="feature-box card widget mb-4 text-left">
