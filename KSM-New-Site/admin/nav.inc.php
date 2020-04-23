@@ -3,13 +3,13 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" href="index.php">
-              <span data-feather="home"></span>
+              <span data-feather="home"><i class="fas fa-tachometer-alt"></i></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="posts.php">
-              <span data-feather="file"></span>
+              <span data-feather="file"><i class="fas fa-pager"></i></span>
               All Posts
             </a>
           </li>
@@ -21,18 +21,21 @@
                   <!-- ONLY ADMIN LINK HERE -->
                   <li class="nav-item">
                     <a class="nav-link" href="category.php">
-                      <span data-feather="file"></span>
+                      <span data-feather="file"><i class="fas fa-list"></i></span>
                       All Categories
                     </a>
                   </li>
-                <?php 
 
-              }
-            }
-          ?>
+                   <!-- ONLY ADMIN LINK HERE -->
+                   <li class="nav-item">
+                    <a class="nav-link" href="page.php">
+                      <span data-feather="file"><i class="fas fa-book-open"></i></span>
+                      All Pages
+                    </a>
+                  </li>
 
-         
-        </ul>
+            <?php } } ?>
+          </ul>
 
     
       </aside>
