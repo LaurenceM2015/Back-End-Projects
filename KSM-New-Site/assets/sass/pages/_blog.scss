@@ -13,16 +13,27 @@
 
     .card-columns  {
         
+        .feature-box {border-bottom: 0.25rem solid $color-primary !important;}
+    }
+
+}
+
+.blog-page, .category-page{
+    .card-columns{
         @media (min-width: 75em) {
             -webkit-column-count: 3;
             -moz-column-count: 3;
             column-count: 3;
-            
         }
 
-        .feature-box {border-bottom: 0.25rem solid $color-primary !important;}
-    }
+        .card-body{padding: 1rem;}
 
+        .card-text{
+            margin-bottom: 1rem;
+        }
+
+        
+    }
 }
 
 .parallax-slider{height: 50vh;}

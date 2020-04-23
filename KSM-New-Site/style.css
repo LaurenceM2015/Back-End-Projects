@@ -339,14 +339,11 @@ article img {
 /* Botton components 		*/
 /* =========================*/
 .btn, .btn:link, .btn:visited {
-  text-transform: uppercase;
   text-decoration: none;
-  padding: 1rem 4rem;
   display: inline-block;
   border-radius: 10rem;
   transition: all .2s;
   position: relative;
-  font-size: 1.6rem;
   border: none;
   cursor: pointer; }
 
@@ -362,6 +359,14 @@ article img {
   outline: none;
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn-primary {
+  background-color: #e56664 !important; }
+
+.btn--white, .btn--orange, .btn-text {
+  text-transform: uppercase;
+  padding: 1rem 4rem;
+  font-size: 1.6rem; }
 
 .btn--white {
   background-color: #fff !important;
@@ -806,14 +811,20 @@ article img {
   background-size: cover;
   background-position: top; }
 
+.blog-page .card-columns .feature-box {
+  border-bottom: 0.25rem solid #e56664 !important; }
+
 @media (min-width: 75em) {
-  .blog-page .card-columns {
+  .blog-page .card-columns, .category-page .card-columns {
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3; } }
 
-.blog-page .card-columns .feature-box {
-  border-bottom: 0.25rem solid #e56664 !important; }
+.blog-page .card-columns .card-body, .category-page .card-columns .card-body {
+  padding: 1rem; }
+
+.blog-page .card-columns .card-text, .category-page .card-columns .card-text {
+  margin-bottom: 1rem; }
 
 .parallax-slider {
   height: 50vh; }

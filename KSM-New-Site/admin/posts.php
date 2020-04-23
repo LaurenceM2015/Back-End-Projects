@@ -47,13 +47,13 @@
       <table class="table">
         <thead>
           <tr>
-            <th scope="col">Post Id</th>
-            <th scope="col">Post Image</th>
-            <th scope="col">Post Title</th>
-            <th scope="col">Post category</th>
-            <th scope="col">Post author</th>
+            <th>Post Id</th>
+            <th>Post Image</th>
+            <th>Post Title</th>
+            <th>Post category</th>
+            <th>Post author</th>
             <?php if($_SESSION['author_role']=="admin"){ ?>
-            <th scope="col">Action</th>
+            <th>Action</th>
             <?php } ?>
           </tr>
         </thead>

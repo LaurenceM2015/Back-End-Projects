@@ -24,51 +24,63 @@
             }else{
                 
             ?>
+        <body class="category-page">
             <!-- NAVIGATION BAR START HERE -->
             <?php include_once "includes/nav.php"; ?>
             <!-- NAVIGATION BAR END HERE -->
                 <main class="main-container page-content" id="page-content">
+
+                <div class="jumbotron">
+                    <div class="container">
+                    <h1>Showing All Post For Category: <?php getCategoryName($id); ?></h1>
+                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                    </div>
+                </div>
                     
                     <div class="container">
-                        <div class="jumbotron">
-                            <h1>Showing All Post For Category: <?php getCategoryName($id); ?></h1>
-                        </div>
-                    
-                        <div class="card-columns">
-                            <?php 
-                            $sql = "SELECT * FROM `post` WHERE post_category='$id' ORDER BY post_id DESC";
-                            $result = mysqli_query($conn, $sql);
-                            while($row=mysqli_fetch_assoc($result)){
-                                $post_title = $row['post_title']; 
-                                $post_image = $row['post_image']; 
-                                $post_author = $row['post_author']; 
-                                $post_content = $row['post_content'];
-                                $post_id = $row['post_id'];
-                                $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
-                                $resultauth = mysqli_query($conn, $sqlauth);
-                                while($authrow=mysqli_fetch_assoc($resultauth)){
-                                $post_author_name = $authrow['author_name'];
-                            
-                            
-                            
-                            ?>
-                        
-                            <div class="card">
-                            <img src="/<?php echo $post_image ?>" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo $post_title ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $post_author_name ?></h6>
-                                <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
-                                <a href="/post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More</a>
+                       <div class="row">
+                            <div class="card-columns col-md-9">
+                                <?php 
+                                $sql = "SELECT * FROM `post` WHERE post_category='$id' ORDER BY post_id DESC";
+                                $result = mysqli_query($conn, $sql);
+                                while($row=mysqli_fetch_assoc($result)){
+                                    $post_title = $row['post_title']; 
+                                    $post_image = $row['post_image']; 
+                                    $post_author = $row['post_author']; 
+                                    $post_content = $row['post_content'];
+                                    $post_id = $row['post_id'];
+                                    $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
+                                    $resultauth = mysqli_query($conn, $sqlauth);
+                                    while($authrow=mysqli_fetch_assoc($resultauth)){
+                                    $post_author_name = $authrow['author_name'];
                                 
-                            </div>
-                            </div><!-- ./card -->
-                            <?php } } ?>
-                        </div><!-- ./card column -->
+                                
+                                
+                                ?>
+                            
+                                <div class="card">
+                                <img src="/<?php echo $post_image ?>" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $post_title ?></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted"><?php echo $post_author_name ?></h6>
+                                    <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
+                                    <a href="/post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More</a>
+                                    
+                                </div>
+                                </div><!-- ./card -->
+                                <?php } } ?>
+                            </div><!-- ./card column -->
+
+                            <aside class="col-md-3">
+                            <?php include "includes/sidebar.php"; ?>
+                            </aside>
+                        </div> <!-- ./row -->
                     </div><!-- ./container -->
              
                 </main>
-
+                <!-- footer goes here -->
+                <?php include "includes/footer.php"; ?>
             </body>
         </html>
                 

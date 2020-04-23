@@ -16,6 +16,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar__nav navbar-nav ml-auto">
+        <li class="navbar__item nav-item">
+          <a class="navbar__link nav-link" href="/index.php">Page<small>D'accueil</small></a>
+        </li>
           <?php 
               $sql    = "SELECT * FROM category";
               $result = mysqli_query($conn, $sql);
