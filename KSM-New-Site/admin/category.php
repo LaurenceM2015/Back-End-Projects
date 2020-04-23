@@ -89,7 +89,7 @@ if(isset($_SESSION['author_role'])){
       </div>
     </div>
 	
-	<!-- Footer start --?
+	<!-- Footer start -->
     <?php include "../includes/footer.php"; ?>
 	
 	</body>

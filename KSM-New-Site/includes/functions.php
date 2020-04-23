@@ -34,13 +34,18 @@
     }
 
     function getCategoryName($id){
+            $idarray = explode(",",$id);
         global $conn;
-        $sql = "SELECT * FROM category WHERE category_id='$id'";
+        $name = array();
+        $sql = "SELECT * FROM category WHERE category_id IN ($id)";
         $result = mysqli_query($conn, $sql);
+
         while($row=mysqli_fetch_assoc($result)){
-            $name = $row['category_name'];
-            echo $name;
+            array_push($name,$row['category_name']);
+           
+            
         }
+        echo implode(", ",$name);
     }
 
     function getSettingValue($setting) {

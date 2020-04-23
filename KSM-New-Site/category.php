@@ -1,5 +1,6 @@
 <?php 
     ini_set("display_errors", 1);
+    define("TITLE", "Category Page");
     include "includes/header.php";
     include "includes/connection.php";
     include "includes/functions.php";

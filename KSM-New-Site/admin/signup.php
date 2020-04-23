@@ -1,5 +1,6 @@
 <?php 
   // Global Header
+  define("TITLE", "Admin | Sign up Page");
   include_once "../includes/header.php";
 ?>
 <body>

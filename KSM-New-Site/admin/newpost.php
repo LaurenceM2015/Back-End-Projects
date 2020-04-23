@@ -1,5 +1,6 @@
 <?php
 ini_set("display_errors", 1);
+define("TITLE", "Admin | New post Page");
 include_once "../includes/header.php";
 include_once "../includes/functions.php";
 include "../includes/connection.php";
@@ -44,9 +45,7 @@ if(isset($_SESSION['author_role'])){
                    
 				Post Title
 				<input type="text" name="post_title" class="form-control form-control-lg" placeholder="Post Title">
-                      
-                    
-                    
+
                 Post Category
                 
 					<?php
