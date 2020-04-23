@@ -44,20 +44,14 @@
 .card-columns{
   
     .card{
-      border-radius: 0;
-      border-bottom: none !important;
       height: auto !important;
-  
-      
     }
   }
   
   .card {
-    border: 0;
     border-bottom: 0.25rem solid $color-primary !important;
     h4 {
       font-size: 1.1rem;
-
       text-transform: uppercase;
       letter-spacing: 0.1rem;
     }

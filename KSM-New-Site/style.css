@@ -500,12 +500,9 @@ article img {
 
 /* Card Section */
 .card-columns .card {
-  border-radius: 0;
-  border-bottom: none !important;
   height: auto !important; }
 
 .card {
-  border: 0;
   border-bottom: 0.25rem solid #e56664 !important; }
   .card h4 {
     font-size: 1.1rem;
@@ -817,3 +814,6 @@ article img {
 
 .blog-page .card-columns .feature-box {
   border-bottom: 0.25rem solid #e56664 !important; }
+
+.parallax-slider {
+  height: 50vh; }

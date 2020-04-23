@@ -52,13 +52,13 @@
                             
                             ?>
                         
-                            <div class="card" style="width: 18rem;">
+                            <div class="card">
                             <img src="/<?php echo $post_image ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $post_title ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted"><?php echo $post_author_name ?></h6>
                                 <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
-                                <a href="/post.php?id=<?php echo $post_id; ?>" class="btn btn-primary">Read More</a>
+                                <a href="/post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More</a>
                                 
                             </div>
                             </div><!-- ./card -->

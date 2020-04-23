@@ -1,5 +1,7 @@
 <?php 
   // Global Header
+  ini_set("display_errors", 1);
+  define("TITLE", "KSM | Blog Page");
   include_once "includes/header.php";
   include_once "includes/connection.php";
   include_once "includes/functions.php";
@@ -11,27 +13,46 @@
 
   <header class="header-blog parallax-window" data-z-index="0" data-parallax="scroll" data-image-src="assets/css/img/hero-blog-big-min.jpg">
 
-    <div class="container h-100">
-      <div class="row h-100 align-items-center justify-content-center text-center">
-        <div class="col-lg-10 align-self-end">
+    
+      <div class="row text-center">
+        <div class="col-lg-10">
           <h1 class="text-uppercase text-white heading-primary">
             <span class="heading-primary--main"><?php getSettingValue("home_jumbo_title"); ?></span>
           </h1>
           <hr class="divider my-4">
         </div>
-        <div class="col-lg-8 align-self-baseline">
+        <div class="col-lg-8">
           <p class="text-white-75 font-weight-light mb-5"><?php getSettingValue("home_jumbo_desc"); ?></p>
           
         </div>
       </div>
-    <div>
+    
   </header>
 
   
  
 <main class="section-features page-section pb-0 container blog-page">
+
   <section class="row">
     <content class="main-container page-content col-md-9" id="page-content">
+    <?php
+				//pagination
+				$sqlpg = "SELECT * FROM `post`";
+				$resultpg = mysqli_query($conn, $sqlpg);
+				$totalposts = mysqli_num_rows($resultpg);
+        $totalpages = ceil($totalposts/9);
+        echo $totalposts;
+			?>
+    <?php 
+				//pagination get
+				if(isset($_GET['p'])){
+					$pageid = $_GET['p'];
+					$start = ($pageid*9)-9;
+					$sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT $start,9";
+				}else{
+					$sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT 0,9";
+				}
+			?>
      
         <div class="card-columns">
           <?php 
@@ -56,7 +77,7 @@
           
           ?>
         
-          <div class="card">
+          <div class="card feature-box">
             <div class="card-img-top">
               <img src="<?php echo $post_image ?>" class="card-img-top" alt="...">
             </div>
@@ -66,91 +87,30 @@
               <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
               <a href="post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More &rarr;</a>
               
-            </div>
+            </div> <!-- ./card-body -->
           </div><!-- ./card -->
           <?php } } ?>
         </div><!-- ./card column -->
      
-
     </content>
 
     <!-- SIDEBAR
               ================================================== -->
       <aside class="col-md-3">
-        
-        <div class="feature-box card widget mb-4 py-3">
-          <h4 class="card-title feature-box__text py-1">Search Our blog page</h4>
-          <form action="search.php" class="input-group">
-            <input name="s" type="search" class="form-control" placeholder="Search for...">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-secondary p-2" type="button">Go!</button>
-            </span>
-          </form>
-          
-      
-
-        </div><!-- widget -->
-        
-        <div class="feature-box card widget mb-4 text-left">
-          <h4 class="card-title feature-box__text py-2">About KSM</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div><!-- widget -->
-        
-        <div class="feature-box card widget mb-4 text-left">
-          <h4 class="card-title feature-box__text py-2">Recent Posts</h4>
-          <ul class="list-unstyled text-left">
-            <li><a href="">Un stage était organisé pour aider le jeune garçon</a></li>
-            <li><a href="">L’association sportive a plus de vingt ans</a></li>
-            <li><a href="">Un stage mémorable pour les 20 ans du KSM</a></li>
-          </ul>
-        </div><!-- widget -->
-        <div class="feature-box card widget mb-4 text-left">
-          <h4 class="card-title feature-box__text py-2">Archives</h4>
-          <ul class="list-unstyled">
-              <li><a href="">Mars 2020</a></li>
-              <li><a href="">Janvier 2019</a></li>
-              <li><a href="">Mai 2018</a></li>
-              <li><a href="">Decembre 2017</a></li>
-            
-          </ul>
-        </div><!-- widget -->
-        
-        <div class="feature-box card widget mb-4 text-left">
-          <h4 class="card-title feature-box__text py-2">Categories</h4>
-          <ul class="list-unstyled">
-          
-            <?php 
-              
-              $sql    = "SELECT * FROM category";
-              $result = mysqli_query($conn, $sql);
-              while($row=mysqli_fetch_array($result)){
-              $category_id = $row['category_id'];
-              $category_name = $row['category_name'];
-
-            ?>
-              <li>
-              <a href="category.php?id=<?php echo $category_id; ?>"><?php echo $category_name; ?></a>
-              </li>
-              <?php 
-            }
-              ?>
-          
-
-          </ul>
-        </div><!-- widget -->
-        <div class="feature-box card widget mb-4 text-left">
-          <h4 class="card-title feature-box__text py-2">Meta</h4>
-          <ul class="list-unstyled">
-              <li><a href="">Site Admin</a></li>
-              <li><a href="">Log Out</a></li>
-              <li><a href=""></a></li>
-              <li><a href="">Comments RSS</a></li>
-              <li><a href="">WordPress.org</a></li>
-          </ul>
-        </div><!-- widget -->
-                
+        <?php include "includes/sidebar.php"; ?>
       </aside>
+      <?php 
+				echo "<center>";
+				for($i=1;$i<=$totalpages;$i++){
+					?>
+					<a href="?p=<?php echo $i; ?>"><button class="btn btn-info"><?php echo $i; ?></button></a>&nbsp;
+					<?php
+				}
+				echo "</center>";
+			?>
   </section>
+  <!-- Pagination -->
+ 
 </main>
 
   
