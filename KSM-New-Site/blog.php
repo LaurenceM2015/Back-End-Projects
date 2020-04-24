@@ -66,13 +66,6 @@
                 $post_category = $row['post_category'];
                 $post_id = $row['post_id'];
 
-
-                $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
-                $resultauth = mysqli_query($conn, $sqlauth);
-                while($authrow=mysqli_fetch_assoc($resultauth)){
-                $post_author_name = $authrow['author_name'];
-              
-            
             
             ?>
           
@@ -83,12 +76,12 @@
               <div class="card-body">
                 <h5 class="card-title"><?php echo $post_title ?></h5>
                 <h6 class="card-subtitle mb-2 text-muted"><?php getCategoryName($post_category); ?></h6>
-                <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
+                
                 <a href="post.php?id=<?php echo $post_id; ?>" class="btn-text">Read More &rarr;</a>
                 
               </div> <!-- ./card-body -->
             </div><!-- ./card -->
-            <?php } } ?>
+            <?php } ?>
         </div><!-- ./card column -->
      
     </content>

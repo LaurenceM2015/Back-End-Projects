@@ -17,9 +17,20 @@
     <div class="feature-box card widget mb-4 text-left">
       <h4 class="card-title feature-box__text py-2">Recent Posts</h4>
       <ul class="list-unstyled text-left">
-        <li><a href="">Un stage était organisé pour aider le jeune garçon</a></li>
-        <li><a href="">L’association sportive a plus de vingt ans</a></li>
-        <li><a href="">Un stage mémorable pour les 20 ans du KSM</a></li>
+      <?php 
+        $sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT 0,3";
+        $result = mysqli_query($conn, $sql);
+
+            while($row=mysqli_fetch_assoc($result)){
+              $post_title = $row['post_title']; 
+              $post_id = $row['post_id'];
+
+          ?>
+        <li>
+          <a href="<?php echo $post_id; ?>"><?php echo $post_title ?></a>
+         
+        </li>
+        <?php } ?>
       </ul>
     </div><!-- widget -->
     <div class="feature-box card widget mb-4 text-left">

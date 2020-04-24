@@ -1,10 +1,12 @@
 <?php 
     ini_set("display_errors", 1);
-    include_once "includes/header.php";
+    
+    define("TITLE", "KSM | Post Page");
+    
     include_once "includes/connection.php";
     include_once "includes/functions.php";
    
-
+    
     if(!isset($_GET['id'])){
         header("Location: index.php?geterr");
     }else{
@@ -28,41 +30,67 @@
                     $post_keywords = $row['post_keywords'];
                     $post_author = $row['post_author'];
                     $post_category = $row['post_category'];
-            
             ?>
-                    <!-- index page past start here -->
+            <!-- index page past start here -->
+            <?php include "includes/header.php"; ?>
 
+            <body>
+            
             <!-- NAVIGATION BAR START HERE -->
-            <?php include_once "includes/nav.php"; ?>
-            <!-- NAVIGATION BAR END HERE -->
-
-  
+            <?php 
+                include_once "includes/nav.php";
+               
+            ?>
+            <header class="post-header">
+                <div class="jumbotron page-section">
+                    <div class="container">
+                    <h1 class=""> <?php echo $post_title; ?></h1>
+                    
+                    </div>
+                </div>
+            </header>
+           
 
             <main class="main-container page-content" id="page-content">
                 <div class="container">
-                
-                    <img src="<?php echo $post_image; ?>">
-                    <h1><?php echo $post_title; ?></h1>
-                    <hr>
-                    <h6>Posted On: <?php echo $post_date; ?> | By: <?php getAuthorName($post_author); ?></h6><br>
-  
-                    <h4>Category: <a href="category.php?id=<?php echo $post_category; ?>"><?php getCategoryName($post_category); ?></a></h4>
-                    <p><?php echo $post_content; ?></p>
-                            
-                        
-            
-                
-                
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-img-top">
+                                    <img class="w-100" src="<?php echo $post_image; ?>">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">
+                                        <h3></h3>
+                                    </div>
+                                    <div class="card-subtitle">
+                                        <h6>Posted On: <?php echo $post_date; ?> | By: <?php getAuthorName($post_author); ?></h6>
+                                        <h4>Category: <a href="category.php?id=<?php echo $post_category; ?>"><?php getCategoryName($post_category); ?></a></h4>
+                                    </div>
+
+                                    <p class="card-text">
+                                        <?php echo $post_content; ?>
+                                    </p>
+                                </div>
+                            </div><!-- ./card -->
+                        </div><!-- col-md-8 -->
+
+                        <div class="col-md-4">
+                            <?php include "includes/sidebar.php"; ?>
+                        </div>
+                    </div> <!-- ./row -->
+                    
                 </div><!-- ./container -->
 
             </main>
 
 
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+ <!-- <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
     <div class="container text-center">
       <small>Copyright &copy; Your Website</small>
     </div>
-  </footer>
+  </footer> -->
+  <?php include "includes/footer.php"; ?>
 </body>
 </html>
 
