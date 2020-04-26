@@ -1,13 +1,14 @@
 <?php
-ini_set("display_errors", 1);
-define("TITLE", "Admin | All Category Page");
+define("TITLE", "Admin | All Category");
 include_once "../includes/functions.php";
 include_once "../includes/connection.php";
 session_start();
 if(isset($_SESSION['author_role'])){
 	if($_SESSION['author_role']=="admin"){
 	?>
-        <?php include "../includes/header.php"; ?>
+	<!-- header goest here -->
+	<?php include "../includes/header.php"; ?>
+
 	<body>
 	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
@@ -47,8 +48,10 @@ if(isset($_SESSION['author_role'])){
 				<button id="addCatBtn" class="btn btn-info">Add New</button>
 				<hr>
 				<div style="display:none;" id="addCatForm">
-					<form action="addcategory.php" method="post">
+					<form action="addcat.php" method="post">
 						<input type="text" name="category_name" class="form-control" placeholder="Category Name"><br>
+						<textarea name="category_desc" class="form-control form-control-lg" placeholder="Category Description"> id="" rows="3"></textarea><br>
+
 						<button name="submit" class="btn btn-success">Add Category</button>
 					</form><br>
 				</div>
@@ -58,6 +61,7 @@ if(isset($_SESSION['author_role'])){
 					<tr>
 					  <th scope="col">Category Id</th>
 					  <th scope="col">Category Name</th>
+					  <th scope="col">Category Description</th>
 					</tr>
 				  </thead>
 				  <tbody>
@@ -66,13 +70,15 @@ if(isset($_SESSION['author_role'])){
 					$result = mysqli_query($conn, $sql);
 					while($row=mysqli_fetch_assoc($result)){
 						$category_id = $row['category_id']; 
-						$category_name = $row['category_name']; 
+						$category_name = $row['category_name'];
+						$category_desc = $row['category_desc']; 
 					
 			
 		?>
 			<tr>
 					  <th scope="row"><?php echo $category_id;?></th>
 					  <td><?php echo $category_name; ?></td>
+					  <td><?php echo $category_desc; ?></td>
 					  
 					 
 			</tr>
@@ -89,9 +95,8 @@ if(isset($_SESSION['author_role'])){
       </div>
     </div>
 	
-	<!-- Footer start -->
-    <?php include "../includes/footer.php"; ?>
-	
+	<!-- footer goes here -->
+	<?php include "../includes/footer.php"; ?>
 	</body>
 </html>
 <?php

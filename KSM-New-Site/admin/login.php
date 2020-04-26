@@ -5,7 +5,6 @@
     include "../includes/connection.php";
 ?>
 
-
 <body>
  
     <?php
@@ -98,6 +97,7 @@
 				}
 			}
 		?>
-  
+  <!-- footer goes here -->
+  <?php include "../includes/footer.php"; ?>
 </body>
 </html>

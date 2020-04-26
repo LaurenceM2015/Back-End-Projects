@@ -17,7 +17,8 @@
             } else if($_SESSION['author_role']=="admin"){
                 // if the user is admin
                 $category_name = $_POST['category_name'];
-                $sql = "INSERT INTO category (`category_name`) VALUES ('$category_name');";
+                $category_name = $_POST['category_desc'];
+                $sql = "INSERT INTO category (`category_name`, `category_desc`) VALUES ('$category_name', '$category_desc');";
                
 
                 if(mysqli_query($conn, $sql)){

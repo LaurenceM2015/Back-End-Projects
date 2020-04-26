@@ -42,7 +42,7 @@
                
             ?>
             <header class="post-header">
-                <div class="jumbotron page-section">
+                <div class="section-primary page-section">
                     <div class="container">
                     <h1 class=""> <?php echo $post_title; ?></h1>
                     
@@ -51,7 +51,7 @@
             </header>
            
 
-            <main class="main-container page-content" id="page-content">
+            <main class="main-container page-section page-content" id="page-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8">

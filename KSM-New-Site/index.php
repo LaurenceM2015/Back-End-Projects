@@ -6,106 +6,35 @@
   include "includes/functions.php";
 ?>
 <body>
-
-
-     <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container-fluid">
-      <img href="#page-top" srcset="assets/img/ksmLogo95x59.png 1x, assets/img/ksmLogo196x148.png x2" alt="Karate Shotokan Mardie logo" class="navbar__logo-img navbar-brand js-scroll-trigger">
-
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar__nav navbar-nav ml-auto">
-
-          <li class="navbar__item nav-item">
-            <a class="navbar__link nav-link js-scroll-trigger" href="#blogNews">Les Info<small>De KSM</small></a>
-          </li>
-          
-          <li class="navbar__item nav-item">
-            <a class="navbar__link nav-link js-scroll-trigger" href="#stage">Les Stage <small>De KSM</small></a>
-          </li>
-
-          <li class="navbar__item nav-item">
-              <a class="navbar__link nav-link js-scroll-trigger" href="#competition">Competition <small>Et Rencontre</small></a>
-          </li>
-
-          <li class="navbar__item nav-item">
-              <a class="navbar__link nav-link js-scroll-trigger" href="#assocari">Asso Caritatives <small>Telethon</small></a>
-          </li>
-
-          <li class="navbar__item nav-item">
-              <a class="navbar__link nav-link js-scroll-trigger" href="#charite">Charite<small>Nous Parrainent</small></a>
-          </li>
-
-          <li class="navbar__item nav-item">
-            <a class="navbar__link nav-link js-scroll-trigger" href="#apropodenous">A Propo <small>De Nous</small></a>
-          </li>
-         
-          <li class="navbar__item nav-item">
-            <a class="navbar__link nav-link js-scroll-trigger" href="#contact">Contact <small>Pour Savoir Plus</small></a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-  </nav>
-
+  <!-- Main Navbar -->
+  <?php include "includes/main-nav.php"; ?>
     <!-- main Header -->
-    <header class="header text-white fallback-image">
-          <div class="container header__container h-100">
-              <div class="row h-100 align-items-center justify-content-center">
-                <div class="col-md-12">
-                  
-                  <div class="header__text animated text-center">
-                      <h1 class="heading-primary text-lg-left">
-                        <span class="heading-primary--main">Karate Shotokan Mardie</span>
-                      </h1>
-                      <div class="">
-                        <p class="lead my-5 wow fadeInRight">Les valeurs du club se trouvent dans l’effort, le bien être et la convivialité. 
-                          <br>N’hésitez pas à nous rejoindre</p>
-                        <a class="btn btn--orange" href="#slogan">En Savoir Plus</a>
-                      </div>
-                      
-                  </div>
-                  
-                </div>
+  <header class="header text-white fallback-image">
+    <div class="container header__container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-md-12">
+          
+          <div class="header__text animated text-center">
+              <h1 class="heading-primary text-lg-left">
+                <span class="heading-primary--main"><?php getSettingValue("home_hero_title"); ?></span>
+              </h1>
+              <div class="">
+                <p class="lead my-5"><?php getSettingValue("home_hero_desc"); ?>   </p>
+                <a class="btn btn--orange js-scroll-trigger" href="#slogan">En Savoir Plus</a>
               </div>
-            </div>
-     
-
-     
-      
-    </header>
-
-     <!-- Slogan with primary color -->
-    <section class="section-primary slogan slogan--img" id="slogan">
-     <div class="container">
-        <div class="row">
-          <div class="col-md-12 mt-5">
-            <h2 class="text-white heading-secondary">Le Karaté </h2>
+              
           </div>
         </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-9 u-text-center my-5">
-             
-            <p class="lead">
-              Le karaté do (la voie du karaté) peut se pratiquer de manière sportive (compétitions) ou de manière martiale. Quelle que soit la voie choisie, le karaté est avant tout un art martial puisque la compétition n'est pas une fin en soi mais tout au plus une étape que l'on aura choisie ou non de pratiquer. 
-              On peut faire du karaté à tout âge dans le respect de son corps et de ses capacités.
-            </p>
-          </div>
-        </div>
-     </div>
-    </section><!-- Le Karate -->
+      </div><!-- ./row -->
+    </div><!-- ./container -->
+  </header>
 
-       <!-- Blog Section -->
-    <section class="section-features page-section" id="blogNews">
+  <!-- Blog Section -->
+  <section class="section-features page-section" id="stage">
       <div class="container">
         <div class="row">
           <div class="col-md-12 pb-5">
-            <h2 class="mb-5 heading-secondary heading-secondary--1">Les Dernière Informations</h2>
+            <h2 class="mb-5 heading-secondary heading-secondary--1"><?php getCategoryName(1); ?></h2>
           </div>
         </div>
   
@@ -122,11 +51,6 @@
               $post_category = $row['post_category'];
               $post_id = $row['post_id'];
 
-
-              $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
-              $resultauth = mysqli_query($conn, $sqlauth);
-              while($authrow=mysqli_fetch_assoc($resultauth)){
-              $post_author_name = $authrow['author_name'];
           ?>
         
           <div class="col-md-4 my-4">
@@ -137,12 +61,12 @@
               <div class="card-body">
                   <h4 class="card-title feature-box__text"><?php echo $post_title ?></h4>
                   <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
-                      <a href="<?php echo $post_id; ?>" class="btn-text">Lise l'article &rarr;</a>
+                      <a href="post.php?id=<?php echo $post_id; ?>" class="btn-text">Lise l'article &rarr;</a>
                 </div>
             </div> <!-- feature box 1 -->
           </div><!-- ./col-md-4 -->
 
-          <?php } } ?>
+          <?php } ?>
     
         </div><!-- row -->
 
@@ -154,46 +78,32 @@
   
       </div> <!-- container -->   
             
-    </section>
+  </section>
 
 
-    <!-- Section Les Stage bg image -->
-    <section class="section-stage page-section h-100 parallax-BkgImg-jg" id="stage">
-      <div class="stage parallax">
-        <div class="container stage__container">
-          <div class="row">
-            <div class="col-md-12 mb-5">
-              <h2 class="heading-secondary heading-secondary--2">Les Stage de KSM</h2>
+  <!-- Section Les Stage bg image -->
+  <section class="section-stage page-section h-100 parallax-BkgImg-jg">
+    <div class="stage parallax">
+      <div class="container stage__container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-lg-9 u-text-center ">
+            <div class="stage__box lead wow fadeIn">
+              <p class="">
+               <?php getSettingValue("stage_desc"); ?>
+              </p>
+             
+            </div> <!-- stage__box -->
+          </div> <!-- ./col -->
+
+          <div class="col-lg-3 text-center my-5 animated fadeInUp parallax">
+            <div>
+                <img src="assets/img/KarateDoIdeogamme.jpg" class="img-fluid">
             </div>
           </div>
-          <div class="row justify-content-center align-items-center">
-            <div class="col-lg-9 u-text-center ">
-              <div class="stage__box lead wow fadeIn">
-                  
-                <p class="">
-                  Au long de l'année, le club vous proposera plusieurs stages, soit avec Fabien, soit avec des experts. 
-                  Chaque année les adhérents ont accès à plusieurs stages (préparation aux grades en ligue, avec des experts mais aussi avec Fabien. 
-                </p>
-                <p class="">
-                  Le club organise un stage aux Sables d'Olonne chaque année depuis 22 ans. 
-                  Egalememt, Fabien propose tous les ans un stage en faveur d'une association (maladies orphelines,Orphelinat Démiséyélé - Sourires d'enfants - au Burkina Faso, Ligue contre le cancer...).
-                </p>
-                <p>
-                  Au travers de son rôle de DTD, Fabien participe aux actions de l'USEP (découverte du karaté en milieu scolaire primaire), observe et analyse les compétitions départememtales et anime un stage par an à l'attention des professeurs du départememt.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-lg-3 text-center my-5 animated fadeInUp parallax">
-              <div>
-                  <img src="assets/img/KarateDoIdeogamme.jpg" class="img-fluid">
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+        </div><!-- ./row -->
+      </div> <!-- container -->
+    </div> <!-- ./stage parallax -->
+  </section>
 
 
     <!-- LES COMPETITION-->
@@ -202,36 +112,49 @@
         <div class="container">
 
           <div class="row">
-              <div class="col-md-12">
-                  <h2 class="heading-secondary heading-secondary--1 mb-5 pb-4">Compétition et Rencontres </h2>
-              </div>
+            <div class="col-md-12">
+                <h2 class="heading-secondary heading-secondary--1 mb-5 pb-4"><?php getCategoryName(2); ?></h2>
+            </div>
           </div>
 
               <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-          <div class="col-lg-6">
-            <div class="">
-                <img class="img-fluid w-100" src="assets/img/compRenc-min.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-lg-6 align-items-center">
-            <div class="bg-black text-center project h-100 section-primary">
-              <div class="d-flex">
-                <div class="project-text w-100 h-100 text-center text-lg-left">
-                  <h4 class="text-white page-header page-header--1 mt-0">Competition et Interclub</h4>
-                  <p class="mb-0">
-                    Des compétitions et interclubs sont organisés chaque année afin de permettre à nos élèves de s'affronter dans un bon esprit de compétition et de bonne humeur.
+          <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+          <?php 
+              $sql = "SELECT * FROM `post` WHERE FIND_IN_SET('2', post_category)  ORDER BY post_id DESC LIMIT 0,2";
+              $result = mysqli_query($conn, $sql);
 
-                      
-                  </p>
-                  <hr class="d-none d-lg-block mb-0 ml-0">
+              while($row=mysqli_fetch_assoc($result)){
+                $post_id = $row['post_id'];
+                $post_title = $row['post_title']; 
+                $post_image = $row['post_image'];
+                $post_content = $row['post_content']; 
+                
+            ?>
+              
+            <div class="col-lg-6">
+              <div class="">
+                  <img class="img-fluid w-100" src="<?php echo $post_image ?>" alt="">
+              </div>
+            </div>
+            <div class="col-lg-6 align-items-center">
+              <div class="bg-black text-center project h-100 section-primary">
+                <div class="d-flex">
+                  <div class="project-text w-100 h-100 text-center text-lg-left">
+                    <h4 class="text-white page-header page-header--1 mt-0"><?php echo $post_title ?></h4>
+                    <p class="mb-0">
+                    <?php echo substr(strip_tags($post_content),0,90)."..."; ?>
+                     <!-- Des compétitions et interclubs sont organisés chaque année afin de permettre à nos élèves de s'affronter dans un bon esprit de compétition et de bonne humeur. -->
+                    </p>
+                      <hr class="d-none d-lg-block mb-0 ml-0">
+                  </div><!-- ./project-text -->
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+            <?php } ?>
+           
+          </div><!-- ./row one -->
 
-           <!-- Project Two Row -->
+      <!-- Project Two Row 
       <div class="row justify-content-center no-gutters">
           <div class="col-lg-6">
             <img class="img-fluid" src="assets/img/valerie-min.jpg" alt="">
@@ -250,12 +173,33 @@
               </div>
             </div>
           </div>
-        </div>
+      </div> -->
 
         </div> <!-- container -->
       </div>
     </section><!-- Competition -->
 
+
+      <!-- Slogan with primary color -->
+    <section class="section-primary slogan slogan--img" id="slogan">
+     <div class="container">
+        <div class="row">
+          <div class="col-md-12 mt-5">
+            <h2 class="text-white heading-secondary"><?php getSettingValue("slogan_title"); ?></h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-9 u-text-center my-5">
+            <p class="lead">
+            <?php getSettingValue("slogan_desc"); ?>
+            </p>
+          </div>
+        </div>
+     </div>
+    </section><!-- Le Karate -->
+
+  
+  <!--  
     <section class="section-primary slogan" id="slogan">
         <div class="container">
             <div class="row justify-content-center">
@@ -270,23 +214,21 @@
               </div>
             </div>
         </div>
-     </section><!-- Le Karate -->
+     </section> Le Rencontre text -->
 
-     <!-- LES Telethon -->
-    <!-- Portfolio -->
+  <!-- LES Assocation Caritative Telethon -->
   <section class="page-section bg-light" id="assocari">
       <div class="container">
         <div class="content-section-heading text-center pb-5 my-5">
           <h2 class="heading-secondary heading-secondary--1"><?php getCategoryName(3); ?></h2>
-          <h3 class="text-secondary">Téléthon</h3>
-          
-        </div>
+       </div>
         <div class="row no-gutters">
           <?php 
               $sql = "SELECT * FROM `post` WHERE FIND_IN_SET('3', post_category)  ORDER BY post_id DESC LIMIT 0,4";
               $result = mysqli_query($conn, $sql);
 
               while($row=mysqli_fetch_assoc($result)){
+                $post_id = $row['post_id'];
                 $post_title = $row['post_title']; 
                 $post_image = $row['post_image']; 
                 
@@ -294,20 +236,21 @@
 
           <div class="col-lg-6">
             <div class="gallery">
-              <div class="gallery__item" href="#">
-                  <span class="caption">
-                    <span class="caption-content">
-                      <h4><?php echo $post_title ?></h4>
-                      <p class="mb-0"></p>
+            <a href="post.php?id=<?php echo $post_id; ?>"> 
+                <div class="gallery__item">
+                    <span class="caption">
+                      <span class="caption-content">
+                        <h4><?php echo $post_title ?></h4>
+                        <p class="mb-0"></p>
+                      </span>
                     </span>
-                  </span>
-                  <img class="img-fluid" src="<?php echo $post_image ?>" alt="Téléthon 2008">
-                </div>
-
+                    <img class="img-fluid" src="<?php echo $post_image ?>" alt="Téléthon 2008">
+                  </div>
+              </a>
             </div>
 
             
-          </div>
+          </div><!-- ./col -->
         
           <?php }  ?>
         
@@ -321,7 +264,7 @@
       <div class="container info">
       <div class="row">
         <div class="col-md-12">
-          <h2 class="text-white heading-secondary heading-secondary--1">Remerciment</h2>
+          <h2 class="text-white heading-secondary heading-secondary--1"><?php getSettingValue("remerciment_title"); ?></h2>
         </div>
       </div><!-- row 1 -->
         
@@ -335,8 +278,7 @@
         <div class="col-md-8 my-5">
           <div class="stage__box wow fadeIn h-100">
               <p class="lead wow fadeInRight">
-                Nous tenons à remercier l'ensemble des enfants qui chaque année font preuve de sérieux, de courage, 
-                de respect et d'assiduité dans leur pratique et pendant les différentes manifestations et compétitions.
+              <?php getSettingValue("remerciment_desc"); ?>
               </p>
           </div>
         </div>
@@ -355,17 +297,28 @@
           
       <div class="row">
         <div class="col-md-12">
-          <h2 class="heading-secondary heading-secondary--1 mb-5 pb-5 text-center">Les Charite que nous Parrainents</h2>
+          <h2 class="heading-secondary heading-secondary--1 mb-5 pb-5 text-center"><?php getCategoryName(4); ?></h2>
+          <p class="long-copy"> Au cours de cette journée qui a vu passer près de 100 personnes dans notre petite salle polyvalente qui nous tient lieu de dojo, et grâce à votre contribution à tous, nous avons pu réunir 1840 € qui sont intégralement transférés à Terre des enfants qui se chargera elle-même d'approvisionner le compte de Démiséyélé. Fabien Poullin, professeur du KSM et ses assistants envoient également un très grand merci aux enfants du KSM 
+                    qui se sont mobilisés et nous ont proposé une démonstration après le stage qui était déjà intensif. Merci à tous</p>
         </div>
       </div>
           
-      <div class="row wow fadeIn align-items-center section-primary no-gutters">
+      <?php 
+          $sql = "SELECT * FROM `post` WHERE FIND_IN_SET('4', post_category)  ORDER BY post_id DESC LIMIT 0,2";
+          $result = mysqli_query($conn, $sql);
 
+            while($row=mysqli_fetch_assoc($result)){
+              $post_id = $row['post_id'];
+              $post_title = $row['post_title']; 
+              $post_image = $row['post_image']; 
+                
+            ?>
+      <div class="row wow fadeIn align-items-center section-primary no-gutters">
         <div class="col-lg-4">
           <div class="article h-100 wow fadeInLeft">
             <div class="article__left h-100 w-100">
-                <img src="assets/img/terredesenfant1.jpg" alt="Stage" class="img-fluid w-100 article__img">
-                <img src="assets/img/terredesenfant2.jpg" alt="Stage" class="img-fluid w-100 article__img">
+                <img src="<?php echo $post_image; ?>" alt="Stage" class="img-fluid w-100 article__img">
+                
             </div>
           </div>
         </div>
@@ -374,26 +327,26 @@
           <div class="article h-100 wow fadeInRight px-5">
             <div class="article__right h-100">
                 <div class="">
-                    <h3 class="heading-tertiary text-white text-center pt-4">Terre Des Enfant</h3>
+                    <h4 class="heading-tertiary text-white text-center pt-4"><?php echo $post_title; ?></h4>
                 </div>
                 <p class="article__text lead">
-                    Au cours de cette journée qui a vu passer près de 100 personnes dans notre petite salle polyvalente qui nous tient lieu de dojo, et grâce à votre contribution à tous, nous avons pu réunir 1840 € qui sont intégralement transférés à Terre des enfants qui se chargera elle-même d'approvisionner le compte de Démiséyélé. Fabien Poullin, professeur du KSM et ses assistants envoient également un très grand merci aux enfants du KSM 
-                    qui se sont mobilisés et nous ont proposé une démonstration après le stage qui était déjà intensif. Merci à tous
+                  <?php echo substr(strip_tags($post_content),0,90)."..."; ?>
                 </p>
             </div>
 
-            <a href="charities.html" target="_blank" class="btn-text btn-text--white">Lise l'article &rarr;</a>
+            <a href="post.php?id=<?php echo $post_title; ?>" target="_blank" class="btn-text btn-text--white">Lise l'article &rarr;</a>
           </div>
 
-        </div>
-
+        </div> <!-- ./ col-lg-8 -->
+       
       </div><!-- row -->
+      <?php }  ?>
           
     </div><!-- container -->
       
   </section>
 
-  <!-- div gallery -->
+  <!-- div gallery 
 
   <section class="section-gallery">
     <div class="container-fluid py-5 px-0 bg-faded">
@@ -402,10 +355,9 @@
        
     <div class="card parent">
      
-        <div class="child">
-          <img class="card-img-top img-fluid" src="assets/img/telethon2008-min1.jpg" alt="Card image cap">
-          <span>Card Title</span>
-       
+      <div class="child">
+        <img class="card-img-top img-fluid" src="assets/img/telethon2008-min1.jpg" alt="Card image cap">
+        <span>Card Title</span>
       </div>
     </div>
     <div class="card parent">
@@ -459,22 +411,19 @@
        </div>
     </div>
     
-    
     <div class="card parent">
       <div class="child">
         <img class="card-img-top img-fluid" src="assets/img/Telethon2007-min2.jpg" alt="Card image cap">
-
       </div>
     </div>
           
           
          
-  </div>
-</div>
-  
-      
+    </div>
+    </div>
   
   </section>
+  -->
 
 
   <!-- NOS PRINCIPE -->
@@ -482,9 +431,8 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-9 u-text-center my-5">
-          <h2 class="text-white">Nos Principe</h2>
-          <p class="my-5 lead">Chaque Karatéka et chaque club de karaté doit respecter sur le tatamis, comme dans la vie quotidienne un certain code moral. Ce code d'honneur est un ensemble de valeurs et de principes 
-            (politesse, fidélité, sincérité, courage,bonté, droiture, honneur, respect, contrôle de soi, modestie, amitié, volonté…) Vaste apprentissage qui ne peut que nous aider à vivre mieux sur le tatamis et au quotidien</p>
+          <h2 class="text-white"><?php getSettingValue("nos_principe_title")?></h2>
+          <p class="my-5 lead"><?php getSettingValue("nos_principe_desc"); ?></p>
            
         </div>
       </div>

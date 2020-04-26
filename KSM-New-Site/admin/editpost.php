@@ -61,7 +61,7 @@ if(isset($_SESSION['author_role'])){
 					Post Title
 					 <input type="text" name="post_title" class="form-control" placeholder="Post Title" value="<?php echo $postTitle; ?>"><br>
 					 
-					 Post Category
+					 Post Category<br>
                 
 					<?php
 						$sql = "SELECT * FROM `category`";
@@ -70,8 +70,10 @@ if(isset($_SESSION['author_role'])){
 							$category_id = $row['category_id'];
 							$category_name = $row['category_name'];
 							?>
-							<input class="form-check-input" <?php if(in_array($category_id,$post_category)) { ?>checked="checked"<?php } ?> name="post_category[]" type="checkbox" value="<?php echo $category_id; ?>" id="defaultCheck1"> <?php echo $category_name; ?><br>
-							
+							<div class="form-check">
+								<label class="form-check-label">
+								<input class="form-check-input" <?php if(in_array($category_id,$post_category)) { ?>checked="checked"<?php } ?> name="post_category[]" type="checkbox" value="<?php echo $category_id; ?>" id="defaultCheck1"> <?php echo $category_name; ?><br>
+							</div>
 							<?php
 						}
 					?>

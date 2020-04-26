@@ -22,25 +22,49 @@
                 //no category
                 header("Location: index.php?noresult");
             }else{
-                
-            ?>
+        ?>
+    <?php include "includes/header.php"; ?>
+
         <body class="category-page">
             <!-- NAVIGATION BAR START HERE -->
             <?php include_once "includes/nav.php"; ?>
             <!-- NAVIGATION BAR END HERE -->
-                <main class="main-container page-content" id="page-content">
+                
+            <header class="section-primary text-white fallback-image">
+                <div class="container header__container h-100 page-section">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-12">
+                            <div class="header__text animated text-center">
+                                <h1 class="heading-primary">
+                                    <span class="heading-primary--main"><?php getCategoryName($id); ?></span>
+                                </h1>
+                                <div class="">
+                                    <?php 
+                                       
+                                       $sql = "SELECT * FROM category WHERE category_id IN ($id)";
+                                        $result = mysqli_query($conn, $sql);
+                                        while($row=mysqli_fetch_assoc($result)){
+                                        $category_id = $row['category_id']; 
+                                        $category_desc = $row['category_desc'];
+                                        
+                                    ?>
+                                    <p class="long-copy my-5"><?php echo $category_desc; ?> </p>
+                                        <?php } ?>
+                                    
+                                    
+                                </div>
+                            </div><!-- header-text -->
+                        </div> <!-- col-md-12 -->
+                    </div><!-- ./row -->
+                </div><!-- ./container -->
+            </header>
 
-                <div class="jumbotron">
-                    <div class="container">
-                    <h1>Showing All Post For Category: <?php getCategoryName($id); ?></h1>
-                    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-                    </div>
-                </div>
+            <main class="main-container page-section" id="page-content">
                     
-                    <div class="container">
-                       <div class="row">
-                            <div class="card-columns col-md-9">
+                <div class="container">
+                    
+                   <div class="row">
+                        <div class="card-columns col-md-9">
                                 <?php 
                                 $sql = "SELECT * FROM `post` WHERE post_category='$id' ORDER BY post_id DESC";
                                 $result = mysqli_query($conn, $sql);
@@ -70,19 +94,18 @@
                                 </div>
                                 </div><!-- ./card -->
                                 <?php } } ?>
-                            </div><!-- ./card column -->
-
-                            <aside class="col-md-3">
-                            <?php include "includes/sidebar.php"; ?>
-                            </aside>
-                        </div> <!-- ./row -->
-                    </div><!-- ./container -->
+                        </div><!-- ./card column -->
+                        <aside class="col-md-3">
+                        <?php include "includes/sidebar.php"; ?>
+                        </aside>
+                    </div> <!-- ./row -->
+                </div><!-- ./container -->
              
-                </main>
+            </main>
                 <!-- footer goes here -->
-                <?php include "includes/footer.php"; ?>
-            </body>
-        </html>
+            <?php include "includes/footer.php"; ?>
+        </body>
+    </html>
                 
 
 

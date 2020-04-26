@@ -26,6 +26,18 @@
  
 }
 
+#assocari{
+    h2{
+        small{
+            display: block !important;
+            color: $color-secondary !important;
+            font-size: 80% !important;
+            font-weight: 400;
+        }
+
+    }
+}
+
 .parallax-BkgImg-jg{
     background-color: transparent;
 }

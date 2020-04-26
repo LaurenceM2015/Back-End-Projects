@@ -7,17 +7,28 @@
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="posts.php">
-              <span data-feather="file"><i class="fas fa-pager"></i></span>
-              All Posts
-            </a>
-          </li>
+          
           <?php 
             if(isset($_SESSION['author_role'])){
               if($_SESSION['author_role']=="admin"){
                 // Show all the link for admin
                 ?>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="settings.php">
+                      <span data-feather="file"><i class="fas fa-home"></i></span>
+                      Page D'accuel
+                    </a>
+				        </li>
+
+                 <!-- ONLY ADMIN LINK HERE -->
+                 <li class="nav-item">
+                    <a class="nav-link" href="page.php">
+                      <span data-feather="file"><i class="fas fa-book-open"></i></span>
+                      All Pages
+                    </a>
+                  </li>
+
                   <!-- ONLY ADMIN LINK HERE -->
                   <li class="nav-item">
                     <a class="nav-link" href="category.php">
@@ -26,22 +37,13 @@
                     </a>
                   </li>
 
-                   <!-- ONLY ADMIN LINK HERE -->
-                   <li class="nav-item">
-                    <a class="nav-link" href="page.php">
-                      <span data-feather="file"><i class="fas fa-book-open"></i></span>
-                      All Pages
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="settings.php">
-                      <span data-feather="file"></span>
-                      Settings
-                    </a>
-				        </li>
-
             <?php } } ?>
+            <li class="nav-item">
+              <a class="nav-link" href="posts.php">
+                <span data-feather="file"><i class="fas fa-pager"></i></span>
+                All Posts
+              </a>
+            </li>
           </ul>
 
     

@@ -47,22 +47,25 @@ if(isset($_SESSION['author_role'])){
 				<input type="text" name="post_title" class="form-control form-control-lg" placeholder="Post Title">
 
                 Post Category
+				
+				
+				<?php
+					$sql = "SELECT * FROM `category`";
+					$result = mysqli_query($conn, $sql);
+					while($row=mysqli_fetch_assoc($result)){
+						$category_id = $row['category_id'];
+						$category_name = $row['category_name'];
+						?>
+						<div class="form-check">
+							<label class="form-check-label">
+								<input type="checkbox" name="post_category[]" class="form-check-input"  value="<?php echo $category_id; ?>" id="defaultCheck1"> <?php echo $category_name; ?>
+							</label>
+						</div>
+						<?php
+					}
+				?>
+				
                 
-					<?php
-						$sql = "SELECT * FROM `category`";
-						$result = mysqli_query($conn, $sql);
-						while($row=mysqli_fetch_assoc($result)){
-							$category_id = $row['category_id'];
-							$category_name = $row['category_name'];
-							?>
-							<input class="form-check-input" name="post_category[]" type="checkbox" value="<?php echo $category_id; ?>" id="defaultCheck1"> <?php echo $category_name; ?><br>
-							
-							<?php
-						}
-					?>
-                
-                    
-					
 				Post Content
 				<textarea name="post_content" class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"></textarea><br>
 					

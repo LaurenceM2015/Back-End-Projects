@@ -1,4 +1,30 @@
-<?php 
+
+<?php
+    // Landing Page Hero Section 
+    function getSettingValue($setting){
+        global $conn;
+        $sql = "SELECT * FROM settings WHERE setting_name='$setting'";
+        $result = mysqli_query($conn, $sql);
+        while($row=mysqli_fetch_assoc($result)){
+            $value = $row['setting_value'];
+            echo $value;
+        }
+    }
+    
+    function setSettingValue($setting,$value){
+        global $conn;
+        $sql = "UPDATE settings SET setting_value='$value' WHERE setting_name='$setting'";
+        if(mysqli_query($conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+
  include_once "connection.php";
 // Main header function (main_head)
     function add_jumbotron() {
@@ -15,6 +41,39 @@
         ';
 
     }
+
+     // Main navigation arrays
+     $navItems = array (
+        array(
+            "slug"  => "#home",
+            "title" => "Page<small>D'accueil</small>"
+        ),
+
+        array(
+            "slug"  => "#stage",
+            "title" => "Les Stage <small>De KSM</small>"
+        ),
+
+        array(
+            "slug"  => "#competition",
+            "title" => "Competition <small>Et Rencontre</small>"
+        ),
+
+        array(
+            "slug"  => "#assocari",
+            "title" => "Asso Caritatives <small>Telethon</small>"
+        ),
+
+        array(
+            "slug"  => "#chrities",
+            "title" => "Charite<small>Nous Parrainent</small>"
+        ), 
+
+        array(
+            "slug" => "#apropodenous",
+            "title" => "Contact <small>Pour Savoir Plus</small>"
+        )
+    );
 
     // GET THE AUTHOR ID
 
@@ -42,31 +101,11 @@
 
         while($row=mysqli_fetch_assoc($result)){
             array_push($name,$row['category_name']);
+            
            
             
         }
         echo implode(", ",$name);
     }
 
-    function getSettingValue($setting) {
-        global $conn;
-        $sql = "SELECT * FROM settings WHERE setting_name='$setting'";
-        $result = mysqli_query($conn, $sql); 
-        while($row=mysqli_fetch_assoc($result)){
-            $value = $row['setting_value'];
-            echo $value;
-        }
-
-    }
-
-    function setSettingValue($setting,$value){
-        global $conn;
-        $sql = "UPDATE settings SET setting_value='$value' WHERE setting_name='$setting'";
-        if(mysqli_query($conn, $sql)){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-?>
+ 

@@ -50,19 +50,34 @@ if(isset($_SESSION['author_role'])){
 				
 					<form method="post">
 						HomePage Jumbotron Title
-						<input type="text" name="home_jumbo_title" class="form-control" placeholder="Enter Jumbo Title" value="<?php getSettingValue("home_jumbo_title"); ?>"><br>
+						<input type="text" name="home_hero_title" class="form-control" placeholder="Enter hero Title" value="<?php getSettingValue("home_hero_title"); ?>"><br>
 						HomePage Jumbotron Description
-						<input type="text" name="home_jumbo_desc" class="form-control" placeholder="Enter Jumbo Description" value="<?php getSettingValue("home_jumbo_desc"); ?>"><br>
+						<input type="text" name="home_hero_desc" class="form-control" placeholder="Enter hero Description" value="<?php getSettingValue("home_hero_desc"); ?>"><br>
+						
+						Les Stage De KSM
+						<textarea name="stage_desc" class="form-control form-control-lg" value="" id="" rows="3"><?php getSettingValue("stage_desc"); ?></textarea><br>
+
+						HomePage Slogan Title
+						<input type="text" name="slogan_title" class="form-control" placeholder="Enter Slogan Title" value="<?php getSettingValue("slogan_title"); ?>"><br>
+
+						HomePage Slogan Description
+						<textarea name="slogan_desc" class="form-control form-control-lg" value="" id="" rows="3"><?php getSettingValue("slogan_desc"); ?></textarea><br>
 						
 						<button name="submit" class="btn btn-success">Update Settings</button><br><br>
 					</form>
 					<?php 
 						if(isset($_POST['submit'])){
-							$jumboTitle = mysqli_real_escape_string($conn, $_POST['home_jumbo_title']);
-							$jumboDesc = mysqli_real_escape_string($conn, $_POST['home_jumbo_desc']);
+							$heroTitle = mysqli_real_escape_string($conn, $_POST['home_hero_title']);
+							$heroDesc = mysqli_real_escape_string($conn, $_POST['home_hero_desc']);
+							$stageDesc = mysqli_real_escape_string($conn, $_POST['stage_desc']);
+							$sloganTitle = mysqli_real_escape_string($conn, $_POST['slogan_title']);
+							$sloganDesc = mysqli_real_escape_string($conn, $_POST['slogan_desc']);
 							
-							setSettingValue("home_jumbo_title",$jumboTitle);
-							setSettingValue("home_jumbo_desc",$jumboDesc);
+							setSettingValue("home_hero_title",$heroTitle);
+							setSettingValue("home_hero_desc",$heroDesc);
+							setSettingValue("stage_desc",$stageDesc);
+							setSettingValue("slogan_title",$sloganTitle);
+							setSettingValue("slogan_desc",$sloganDesc);
 							header("Location: settings.php?message=Settings Updated");
 						}
 					?>
