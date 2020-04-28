@@ -52,18 +52,17 @@
     </div>
   </header>
          
-        <main>
-            
-          <!-- Portfolio Grid -->
-          <section class="page-section portfolio-section portfolio" id="portfolio">
-              <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center my-5">
-                        <h2 class="heading-secondary page-section-heading text-center text-secondary">My Work Projects</h2>
-                      <p class="text-muted pt-3">Lorem ipsum dolor sit amet consectetur.</p>
-                    </div>
+  <main>
+    <!-- Portfolio Grid -->
+    <section class="page-section portfolio-section portfolio" id="portfolio">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center my-5">
+            <h2 class="heading-secondary page-section-heading text-center text-secondary">My Work Projects</h2>
+              <p class="text-muted pt-3">Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
 
-                    <div class="col-lg-12 text-center my-5">
+          <div class="col-lg-12 text-center my-5">
                       <nav class="navbar">
                         <!-- d-flex justify-content-around -->
                           <ul class="nav caption">
@@ -80,13 +79,31 @@
                               <?php } ?>
                           </ul>
                       </nav>
-                    </div>
-                </div>
+          </div>
+        </div>
+
+        <?php
+          //pagination
+          $sqlpg = "SELECT * FROM `post`";
+          $resultpg = mysqli_query($conn, $sqlpg);
+          $totalposts = mysqli_num_rows($resultpg);
+          $totalpages = ceil($totalposts/9);
+        ?>
+        <?php 
+          //pagination get
+          if(isset($_GET['p'])){
+            $pageid = $_GET['p'];
+            $start = ($pageid*9)-9;
+          $sql = "SELECT * FROM `post` ORDER BY post_id ASC LIMIT $start,9";
+          }else{
+            $sql = "SELECT * FROM `post` ORDER BY post_id ASC LIMIT 0,9";
+          }
+        ?>
                 
-                <div class="row no-gutters">
-                <?php 
-                    $sql = "SELECT * FROM `post` ORDER BY post_id DESC";
-                    $result = mysqli_query($conn, $sql);
+        <div class="row no-gutters">
+          <?php 
+           // $sql = "SELECT * FROM `post` ORDER BY post_id ASC";
+            $result = mysqli_query($conn, $sql);
                     $i=1;
                     while($row=mysqli_fetch_assoc($result)){
                       $post_title = $row['post_title']; 
@@ -105,7 +122,7 @@
                       $post_author_name = $authrow['author_name'];
                       }
                     
-                  ?>
+          ?>
 
                   <!-- Portfolio Item 1 -->
                   <div class="filter <?php echo $post_category; ?> sass col-lg-6">
@@ -123,12 +140,25 @@
                   
                   <?php  } ?>
 
-                </div><!-- portfolio-grid   -->
+        </div><!-- portfolio-grid   -->
                 <!-- ./ end row -->
-            </di> 
-              <!-- ./ end container -->
-          </section> 
-      </main>
+      </div> 
+      <!-- ./ end container -->
+    </section> 
+</main>
+
+<div class="col-md-12">
+  <?php 
+    echo "<center>";
+      for($i=1;$i<=$totalpages;$i++){
+    ?>
+      <a href="?p=<?php echo $i; ?>"><button class="btn btn-primary"><?php echo $i; ?></button></a>&nbsp;
+    <?php
+    }
+      echo "</center>";
+  ?>
+
+</div>
       
       <?php include('includes/footer.php'); ?>
 
