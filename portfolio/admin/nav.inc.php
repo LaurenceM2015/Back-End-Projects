@@ -18,6 +18,13 @@
               if($_SESSION['author_role']=="admin"){
                 // Show all the link for admin
                 ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="home.php">
+                      <span data-feather="file"><i class="fas fa-home"></i></span>
+                      Home page
+                    </a>
+                  </li>
                   <!-- ONLY ADMIN LINK HERE -->
                   <li class="nav-item">
                     <a class="nav-link" href="category.php">
@@ -31,6 +38,14 @@
                     <a class="nav-link" href="page.php">
                       <span data-feather="file"><i class="fas fa-book-open"></i></span>
                       All Pages
+                    </a>
+                  </li>
+
+                   <!-- ONLY ADMIN LINK HERE -->
+                   <li class="nav-item">
+                    <a class="nav-link" href="settings.php">
+                      <span data-feather="file"><i class="fas fa-book-open"></i></span>
+                      All Settings
                     </a>
                   </li>
 

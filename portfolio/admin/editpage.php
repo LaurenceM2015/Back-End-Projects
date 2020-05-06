@@ -164,7 +164,6 @@
                             page_title='$page_title',
                             page_subtitle='$page_subtitle',
                             page_content='$page_content' 
-                            
                             WHERE page_id='$page_id'";
 
                             if(mysqli_query($conn, $sql)){

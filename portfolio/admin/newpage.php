@@ -17,12 +17,13 @@ if(!isset($_POST['submit'])){
             $page_subtitle = $_POST['page_subtitle'];
             $page_content = $_POST['page_content'];
 			
-			echo $sql = "INSERT INTO page (`page_title`, `page_content`, `page_subtitle`) VALUES ('$page_title', '$page_content', '$page_subtitle');";
+			echo $sql = "INSERT INTO page (`page_title`, `page_content`, `page_subtitle`) VALUES ('$page_title', '$page_subtitle', '$page_content', '$page_subtitle');";
 			if(mysqli_query($conn, $sql)){
-				header("Location: page.php?message=Added");
+				header("Location: page.php?message=New+Page+Added");
 				exit();
 			}else{
-			//	header("Location: page.php?message=Error");
+				//header("Location: page.php?message=Page+Error");
+				echo $sql;
 				exit();
 			}
 		}
