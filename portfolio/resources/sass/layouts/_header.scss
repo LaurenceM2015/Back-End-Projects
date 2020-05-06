@@ -18,12 +18,13 @@
  
   .masthead {
     height: 85vh;
-    background-image: linear-gradient(
+   /* background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)),
-        url('https://source.unsplash.com/1920x1080'); // pick up random images on unplash site
+        url('https://source.unsplash.com/1920x1080/'); // pick up random images on unplash site
      // url(img/persPort3-min-big.jpg);
+     */
 
         background-size: cover;
         background-position: center top;

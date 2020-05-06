@@ -207,36 +207,6 @@
       padding: 3vh;
     }
   
-  @media (min-width: 992px){
-    
-    grid-template-areas:
-    'profile top-box-a top-box-a'
-    'top-box-b top-box-b top-box-b';
-
-    
-
-    .profile-img{
-      grid-area: profile;
-      margin: 0;
-      width: 100%;
-    }
-
-    .top-box{
-      background-color: $color-white;
-    }
-
-    .top-box-a{
-      
-      grid-area: top-box-a;
-      /*display: grid;
-      align-items: center;
-      justify-items: center; */
-    }
-
-    .top-box-b{
-      grid-area: top-box-b;
-    }
-  }
 }
 
 
@@ -248,51 +218,31 @@
 /*========================================*/
 
 .story {
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba($color-black, .1);
   background-color: rgba($color-white, .6);
   border-radius: 3px;
   padding: 6rem;
-  padding-left: 9rem;
- // font-size: $default-font-size;
+  padding-left: 9rem; 
+  font-size: $default-font-size;
+  -webkit-transform: skewX(-12deg);
   transform: skewX(-12deg);
-
-  @media(min-width:800px) {
-      width: 100%;
-      padding: 4rem;
-      padding-left: 7rem;
-  }
-
-  @media(min-width:767px) {
-      transform: skewX(0);
-  }
 
   &__shape {
       width: 15rem;
       height: 15rem;
       float: left;
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%);
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
       transform: translateX(-3rem) skewX(12deg);
       position: relative;
-      overflow: hidden;
-      //border-radius: 50%;
-
-      @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
-          -webkit-clip-path: circle(50% at 50% 50%);
-          clip-path: circle(50% at 50% 50%);
-          -webkit-shape-outside: circle(50% at 50% 50%);
-          shape-outside: circle(50% at 50% 50%);
-          border-radius: none;
-      }
-
-      @media(min-width:767px) {
-          transform: translateX(-3rem) skewX(0);
-      }
   }
 
   &__img {
       height: 100%;
-      width: 100%;
       transform: translateX(-4rem) scale(1.4);
       backface-visibility: hidden;
       transition: all .5s;
@@ -300,10 +250,6 @@
 
   &__text {
       transform: skewX(12deg);
-
-      @media(min-width:767px) {
-          transform: skewX(0);
-      }
   }
 
   &__caption {
