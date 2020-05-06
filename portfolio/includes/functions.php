@@ -1,33 +1,49 @@
 <?php 
 
-    // Hero sectoin function
-    function masthead_hero(){
-        echo '
-           
-                <div class="container d-flex align-items-center flex-column">
-            
-                <h1 class="masthead-heading text-uppercase mb-5">
-                    <span class="heading-primary--main">Laurence Malonga</span>
-                    <span class="heading-primary--sub">Personel Portfolio</span>
-                </h1>
-                <a href="#feature" class="Btn Btn--white Btn--animated js-scroll-trigger">Visit The Page &rarr;</a>
-                </div>
-           
-        ';
+    // All Settings Values
+    function getSettingValue($setting){
+        global $conn;
+        $sql = "SELECT * FROM settings WHERE setting_name='$setting'";
+        $result = mysqli_query($conn, $sql);
+        while($row=mysqli_fetch_assoc($result)){
+            $value = $row['setting_value'];
+            echo $value;
+        }
+    }
+    
+    function setSettingValue($setting,$value){
+        global $conn;
+        $sql = "UPDATE settings SET setting_value='$value' WHERE setting_name='$setting'";
+      // echo "<br/>";
+        if(mysqli_query($conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    function what_I_can_do(){
-        echo '
-            <div class="row">
-                <div class="col-lg-12 py-5">
-                <h2 class="heading-secondary page-section-heading text-uppercase">What I can do</h2>
-                <p class="pt-3 long-copy lead">I enjoy building an advance responsive design layout, which multiple browsers platforms. With a usse of CSS Press-processors, I create large css libriary, with reusable across all projects, and easy to maintain.
-                    I love creating my own website themes, from scrath or third party libriary, and Convert theme or into a Custom WordPress theme.</p>
-                </div>
-            </div><!-- ./ row -->
-        ';
+     // All Settings Values
+     function getHeroValue($value){
+        global $conn;
+        $sql = "SELECT * FROM bkg_hero WHERE setting_name='$value'";
+        $result = mysqli_query($conn, $sql);
+        while($row=mysqli_fetch_assoc($result)){
+            $hero = $row['hero_img'];
+            echo $hero;
+        }
     }
 
+    function setHeroValue($id,$value){
+        global $conn;
+        $sql = "UPDATE bkg_hero SET hero_img='$value' WHERE hero_id='$id'";
+        if(mysqli_query($conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    
 
     function getAuthorName($id){
         global $conn;
@@ -44,14 +60,58 @@
 
     }
 
+   // Project post categories
+
     function getCategoryName($id){
+        $idarray = explode(",",$id);
         global $conn;
-        $sql = "SELECT * FROM categories WHERE category_id='$id'";
+        $name = array();
+        $sql = "SELECT * FROM categories WHERE category_id IN ($id)";
         $result = mysqli_query($conn, $sql);
+        $html='';
         while($row=mysqli_fetch_assoc($result)){
-            $name = $row['category_name'];
-            echo $name;
+            $html .='<a href="category.php?id='.$row['category_id'].'">'.$row['category_name'].'</a>&nbsp;' ;
+            //array_push($name,$row['category_name']);
+            
         }
+        echo $html;
+        //echo implode(", ",$name, );
+    }
+
+    // Feature Categories
+    function getFeatureName($id){
+        $idarray = explode(",",$id);
+        global $conn;
+        $name = array();
+        $sql = "SELECT * FROM features WHERE feature_id IN ($id)";
+        $result = mysqli_query($conn, $sql);
+        $html='';
+        while($row=mysqli_fetch_assoc($result)){
+            //$html .='<li>'.$row['feature_desc'].'</li>';
+           // $html .='<a href="category.php?id='.$row['category_id'].'">'.$row['category_name'].'</a>&nbsp;' ;
+            array_push($name,$row['feature_desc']);
+        }
+        echo $html;
+        //echo implode(", ",$name);
+       
+    }
+
+    // Technology used category:
+    function getTechnologyName($id){
+        $idarray = explode(",",$id);
+        global $conn;
+        $name = array();
+       $sql = "SELECT * FROM technologies WHERE technology_id IN ($id)";
+        $result = mysqli_query($conn, $sql);
+        $html='';
+        while($row=mysqli_fetch_assoc($result)){
+            $html .='<li>'.$row['technology_name'].'</li>';
+           // $html .='<a href="category.php?id='.$row['category_id'].'">'.$row['category_name'].'</a>&nbsp;' ;
+            //array_push($name,$row['feature_desc']);
+        }
+        echo $html;
+        //echo implode(", ",$name);
+        
     }
 
 

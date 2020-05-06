@@ -294,7 +294,26 @@
         ),
     );
 
-        
+        function savingPortfolioItem(){
+           ' <div class="row no-gutters">
+            <!-- Portfolio Item 1 -->
+            <?php $index=1;
+            foreach ($portfolioItems as $portfolioItem) { ?>
+            <div class="col-lg-6">
+              <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal<?=$index++?>">
+                <span class="caption d-flex align-items-center justify-content-center w-100">
+                  <span class="caption-content text-center">
+                    <i class="fas fa-plus fa-3x"></i>
+                    <h3><?php echo $portfolioItem["title"]; ?></h3>
+                    <p class="mb-0"><?php echo $portfolioItem["subTitle"]; ?></p>
+                  </span>
+                </span>
+                <img class="img-fluid" src="resources/img/<?php echo $portfolioItem["img"]; ?>.jpg" alt="">
+              </a>
+            </div>
+            <?php } ?>
+        </div><!-- ./ end row --> ';
+        }
 
 
 
