@@ -10,7 +10,7 @@
         <div class="container">
     
           <!-- Contact Section Heading -->
-          <h2 class="page-section-heading text-center heading-secondary text-secondary mb-5">Contact Me</h2>
+          <h2 class="page-section-heading text-center heading-secondary text-secondary mb-5"><?php getSettingValue("contact_heading"); ?></h2>
     
           <!-- Icon Divider -->
           
