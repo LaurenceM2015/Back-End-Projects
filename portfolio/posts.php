@@ -5,15 +5,9 @@ session_start();
 if(isset($_SESSION['author_role'])){
 	?>
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Admin Panel</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../style/bootstrap.min.css">
-		<link rel="stylesheet" href="../style.css">
-	</head>
+	<!-- header goes here -->
+	<?php include "includes/header.php"; ?>
 	<body>
-	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
       
@@ -71,6 +65,7 @@ if(isset($_SESSION['author_role'])){
 						$post_title = $row['post_title']; 
 						$post_image = $row['post_image']; 
 						$post_author = $row['post_author']; 
+						$post_content = $row['post_content'];
 						$post_content = $row['post_content'];
 						$post_id = $row['post_id'];
 						

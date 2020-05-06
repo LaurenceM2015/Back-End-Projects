@@ -14,7 +14,7 @@
             //exit();
             echo "Error";
         }else if(is_numeric($id)){
-            $sql = "SELECT * FROM categories WHERE category_id='$id'";
+           echo $sql = "SELECT * FROM categories WHERE category_id='$id'";
             $result = mysqli_query($conn, $sql);
             //Check if category exits
             if(mysqli_num_rows($result)<=0){
@@ -35,14 +35,16 @@
                     
                         <div class="card-columns">
                             <?php 
-                            $sql = "SELECT * FROM `post` WHERE post_category='$id' ORDER BY post_id DESC";
+                            $sql = "SELECT * FROM `post` WHERE FIND_IN_SET($id,post_category) ORDER BY post_id DESC";
                             $result = mysqli_query($conn, $sql);
                             while($row=mysqli_fetch_assoc($result)){
                                 $post_title = $row['post_title']; 
                                 $post_image = $row['post_image']; 
                                 $post_author = $row['post_author']; 
+                                $post_category = $row['post_category']; 
                                 $post_content = $row['post_content'];
                                 $post_id = $row['post_id'];
+
                                 $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
                                 $resultauth = mysqli_query($conn, $sqlauth);
                                 while($authrow=mysqli_fetch_assoc($resultauth)){
@@ -54,7 +56,7 @@
                             <img src="/<?php echo $post_image ?>" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo $post_title ?></h5>
-                                <h6 class="card-subtitle mb-2 text-muted"><?php echo $post_author_name ?></h6>
+                                <h6 class="card-subtitle mb-2 text-muted"><?php getCategoryName($post_category); ?></h6>
                                 <p class="card-text"><?php echo substr(strip_tags($post_content),0,90)."..."; ?></p>
                                 <a href="/post.php?id=<?php echo $post_id; ?>" class="btn btn-primary">Read More</a>
                                 
