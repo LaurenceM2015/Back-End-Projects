@@ -42,9 +42,7 @@ if(isset($_SESSION['author_role'])){
                     }
                 ?>
 			
-				<h1>ALL Settings:</h1>
-                <a href="newhomesect.php"><button class="btn btn-info">Add New Service</button></a>
-				<hr>
+				
 			
 			</div><!-- admin-index form -->
 
@@ -116,7 +114,7 @@ if(isset($_SESSION['author_role'])){
                             <thead>
                                 <tr>
                                 <th scope="col">Sevice Id</th>
-                                <th scope="col">Service Name</th>
+                                <th scope="col">Service Title</th>
                                 <th scope="col">Service Icon</th>
                                 <th scope="col">Service content</th>
                                 <?php if($_SESSION['author_role']=="admin"){?>
@@ -129,14 +127,14 @@ if(isset($_SESSION['author_role'])){
                                     $sql = "SELECT * FROM `services` ORDER BY service_id DESC";
                                     $result = mysqli_query($conn, $sql);
                                     while($row=mysqli_fetch_assoc($result)){
-                                        $service_name = $row['service_name'];
+                                        $service_title = $row['service_title'];
                                         $service_icon = $row['service_icon']; 
                                         $service_content = $row['service_content'];
                                         $service_id = $row['service_id'];
                                 ?>
                                 <tr>
                                     <th scope="row"><?php echo $service_id;?></th>
-                                    <td><?php echo $service_name; ?></td>
+                                    <td><?php echo $service_title; ?></td>
                                     <td><?php echo $service_icon;?></td>
                                     <td><?php echo substr(strip_tags($service_content),0,20)."..."; ?></td>
                                    
@@ -146,9 +144,7 @@ if(isset($_SESSION['author_role'])){
                                             <a href="edithome.php?id=<?php echo $service_id;?>">
                                                 <button class="btn btn-info">Edit</button>
                                             </a> 
-                                            <a onclick="return confirm('Are You sure');" href="deletepost.php?id=<?php echo $post_id;?>">
-                                                <button class="btn btn-danger">Delete</button>
-                                            </a>
+                                            
                                         </td>
                                     <?php } ?>
                                 </tr>
@@ -200,12 +196,10 @@ if(isset($_SESSION['author_role'])){
                                         
                                         <?php if($_SESSION['author_role']=="admin"){?>
                                             <td>
-                                                <a href="edithome.php?id=<?php echo $post_id;?>">
+                                                <a href="edithome.php?id=<?php echo $process_id;?>">
                                                     <button class="btn btn-info">Edit</button>
                                                 </a> 
-                                                <a onclick="return confirm('Are You sure');" href="deletepost.php?id=<?php echo $post_id;?>">
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </a>
+                                                
                                             </td>
                                         <?php } ?>
                                     </tr>

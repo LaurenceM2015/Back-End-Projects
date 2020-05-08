@@ -15,6 +15,13 @@
     <script src="resources/js/main.js"></script>
     <script src="resources/js/main.min.js"></script>
 
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.min.js"></script>
+
+    <!--<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=quy69270j2zull9yao8jgu4yula8yyu7r8yav8jb3v0un3au"></script>
+
+	<script>tinymce.init({ selector:'textarea' });</script> -->
+
         
   </body>
 </html>
@@ -25,7 +32,7 @@
  $result1 = mysqli_query($conn, $sql1);
  
 while($portfolioItem=mysqli_fetch_assoc($result1)){
-  ///print_r("<pre>");
+ // print_r("<pre>");
 //print_r($portfolioItem);
  //print_r("</pre>");
  ?>
@@ -56,6 +63,7 @@ while($portfolioItem=mysqli_fetch_assoc($result1)){
               <div class="col-md-6">
                 <h4>Features</h4>
                 <ul class="list-unstyled">
+                  <?php// echo $portfolioItem['post_feature']; ?>
                   <?php getFeatureName($portfolioItem['post_feature']); ?>
                   
                 </ul>
@@ -81,7 +89,14 @@ while($portfolioItem=mysqli_fetch_assoc($result1)){
               </div><!-- ./col-md-6 -->
                   
               <div class="modal-footer border-0">
-                <a href="resume.html" class="Btn Btn--green">Visit The Page →</a>
+                <?php if (substr($portfolioItem['post_website_link'], 0, 7) == "http://"){
+									 $post_website_link = $portfolioItem['post_website_link'];
+            } else{
+              $post_website_link ="http://".$portfolioItem['post_website_link'];
+             
+            }
+            ?>
+                <a href="<?php echo $post_website_link; ?>" target="_blank" class="Btn Btn--green">Visit The Page →</a>
               </div> <!-- ./modal footer -->
 
             </div> <!-- ./ row modal -->
@@ -91,6 +106,8 @@ while($portfolioItem=mysqli_fetch_assoc($result1)){
     </div> <!-- ./modal-dialog -->
   </div> <!-- ./modal -->
 <?php } ?>
+
+
 
 
  

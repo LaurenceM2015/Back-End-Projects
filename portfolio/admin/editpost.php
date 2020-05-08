@@ -56,14 +56,63 @@ if(isset($_SESSION['author_role'])){
           $post_image         = $FormRow['post_image'];
           $post_client_name  = $FormRow['post_client_name'];
           $post_website_link  = $FormRow['post_website_link'];
-          $post_keywords      = $FormRow['post_keywords'];
+          $post_year_made      = $FormRow['post_year_made'];
       ?>
         <form method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label for="postTitle">Post Title</label>
                 <input for="postTitle" type="text" name="post_title" class="form-control form-control-lg" placeholder="Post Title" value="<?php echo $post_title; ?>">
-              </div>
+              </div><!-- ./projects Titles -->
+
               <div class="form-group">
+                <label for="postclientname">Project Client Name</label>
+                <input id="postclientname" type="text" name="post_client_name" class="form-control form-control-lg" placeholder="Please Enter Client Name" value="<?php echo $post_client_name; ?>">
+              </div><!-- post Client Name -->
+
+              <div class="form-group">
+                <label for="postImage">Project Client Website Link</label>
+                <input id="postImage" type="text" name="post_website_link" class="form-control form-control-lg" placeholder="Please Enter The Client Website Link" value="<?php echo $post_website_link; ?>">
+              </div><!-- post Client Website Link -->
+
+              <div class="form-group">
+                <label for="postyear">Project Year Created</label>
+                <input id="postyear" type="text" name="post_year_made" class="form-control" placeholder="Please Enter the year made" value="<?php echo $post_year_made; ?>">
+              </div><!-- post Client Website Link -->
+
+              <div class="form-group">
+                <label for="">Post Content</label>
+				        <textarea for="postContent" name="post_content" class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"><?php echo $post_content; ?></textarea>
+              </div><!-- Post content -->
+
+              <div class="form-group">
+                <figure>
+                      <img src="../<?php echo $post_image; ?>" class="img-thumbnail" width="150px" height="150px">
+                </figure>
+                <label for="postImage">Post Image</label>
+                <input for="postImage" type="file" name="file" class="form-control-file" id="exampleFormControlFile1"><br>
+              </div><!-- post image -->
+
+              <div class="row">
+                <div class="form-group col-md-4">
+                    Project Features
+                  <div class="form-check">
+                    <label class="form-check-label" for="check1">
+                        <?php
+                          $sql = "SELECT * FROM `features`";
+                          $result = mysqli_query($conn, $sql);
+                          while($row=mysqli_fetch_assoc($result)){
+                            $feature_id = $row['feature_id'];
+                            $feature_desc = $row['feature_desc'];
+                        ?>
+                          <input class="form-check-input" <?php if(in_array($feature_id,$post_feature)) { ?>checked="checked"<?php } ?> name="post_feature[]" type="checkbox" value="<?php echo $feature_id; ?>" id="defaultCheck1"> <?php echo $feature_desc; ?><br>
+                          <?php
+                          }
+                        ?>
+                    </label>
+                  </div>
+                </div><!-- post feature -->
+
+                <div class="form-group col-md-4">
 						      <label for="exampleFormControlInput1">Post Category</label>
                   <div class="form-check">
                     <label class="form-check-label" for="check1">
@@ -81,76 +130,32 @@ if(isset($_SESSION['author_role'])){
                       ?>
                     </label>
                   </div><!-- form-check -->
-              </div><!-- post Category -->
+                </div><!-- post Category -->
 
-              <div class="form-group">
-                <label for="">Post Content</label>
-				        <textarea for="postContent" name="post_content" class="form-control form-control-lg" id="exampleFormControlTextarea1" rows="3"><?php echo $post_content; ?></textarea>
-              </div><!-- Post content -->
-
-              <div class="form-group">
-                  Project Features
-                <div class="form-check">
-                  <label class="form-check-label" for="check1">
+                <div class="form-group col-md-4">
+                  Project Technologies
+                  <div class="form-check">
+                    <label class="form-check-label" for="check1">
                       <?php
-                        $sql = "SELECT * FROM `features`";
+                        $sql = "SELECT * FROM `technologies`";
                         $result = mysqli_query($conn, $sql);
                         while($row=mysqli_fetch_assoc($result)){
-                          $feature_id = $row['feature_id'];
-                          $feature_desc = $row['feature_desc'];
+                          $technology_id = $row['technology_id'];
+                          $technology_name = $row['technology_name'];
                       ?>
-                        <input class="form-check-input" <?php if(in_array($feature_id,$post_feature)) { ?>checked="checked"<?php } ?> name="post_feature[]" type="checkbox" value="<?php echo $feature_id; ?>" id="defaultCheck1"> <?php echo $feature_desc; ?><br>
+                        <input class="form-check-input" <?php if(in_array($technology_id,$post_technologies)) { ?>checked="checked"<?php } ?> name="post_technologies[]" type="checkbox" value="<?php echo $technology_id; ?>" id="defaultCheck1"> <?php echo $technology_name; ?><br>
                         <?php
-                        }
-                      ?>
-                  </label>
-                </div>
-              </div><!-- post category -->
+                          }
+                        ?>
+                      </label>
+                  </div>
+                </div><!-- post Technologies -->
+
                 
-              <div class="form-group">
-                <figure>
-                      <img src="../<?php echo $post_image; ?>" class="img-thumbnail" width="150px" height="150px">
-                </figure>
-                <label for="postImage">Post Image</label>
-                <input for="postImage" type="file" name="file" class="form-control-file" id="exampleFormControlFile1"><br>
-              </div><!-- post image -->
+              </div><!-- ./all post Categories -->
 
-              <div class="form-group">
-                Project Technologies
-                <div class="form-check">
-                  <label class="form-check-label" for="check1">
-                    <?php
-                      $sql = "SELECT * FROM `technologies`";
-                      $result = mysqli_query($conn, $sql);
-                      while($row=mysqli_fetch_assoc($result)){
-                        $technology_id = $row['technology_id'];
-                        $technology_name = $row['technology_name'];
-                    ?>
-                      <input class="form-check-input" <?php if(in_array($technology_id,$post_technologies)) { ?>checked="checked"<?php } ?> name="post_technologies[]" type="checkbox" value="<?php echo $technology_id; ?>" id="defaultCheck1"> <?php echo $technology_name; ?><br>
-                      <?php
-                        }
-                      ?>
-                    </label>
-                </div>
-              </div><!-- post Technologies -->
-
-              <div class="form-group">
-                <label for="postImage">Project Client Name</label>
-                <input type="text" name="post_client_name" class="form-control form-control-lg" placeholder="Please Enter Client Name" value="<?php echo $post_client_name; ?>">
-              </div><!-- post Client Name -->
-
-              <div class="form-group">
-                <label for="postImage">Project Client Website Link</label>
-                <input type="text" name="post_website_link" class="form-control form-control-lg" placeholder="Please Enter The Client Website Link" value="<?php echo $post_website_link; ?>">
-              </div><!-- post Client Website Link -->
-
-              <div class="form-group">
-                <label for="postImage">Post Keywords</label>
-                <input type="text" name="post_keywords" class="form-control form-control-lg" placeholder="Enter Keywords" value="<?php echo $post_keywords; ?>">
-              </div><!-- post keywords -->
-              
               <button name="submit" type="submit" class="btn btn-primary mt-3">Update</button>
-        </form>
+          </form>
                 <?php } ?>
 				<?php
 					if(isset($_POST['submit'])){
@@ -161,16 +166,16 @@ if(isset($_SESSION['author_role'])){
             $post_content = mysqli_real_escape_string($conn, $_POST['post_content']);
             $post_client_name = mysqli_real_escape_string($conn, $_POST['post_client_name']);
             $post_website_link = mysqli_real_escape_string($conn, $_POST['post_website_link']);
-						$post_keywords = mysqli_real_escape_string($conn, $_POST['post_keywords']);
+            $post_year_made = mysqli_real_escape_string($conn, $_POST['post_year_made']);
 						
 						//checking if above fields are empty
 						if(empty($post_title) OR empty($post_content)){
-                echo '<script>window.location = "posts.php?message=Post+Updated";</script>';
+                echo '<script>window.location = "posts.php?message=Empty+Field";</script>';
 							exit();
             }
                         
             if(is_uploaded_file($_FILES['file']['tmp_name'])){
-                            // user want to update the file too
+              // user want to update the file too
               $file = $_FILES['file'];
               $fileName = $file['name'];
               $fileType = $file['type'];
@@ -188,16 +193,16 @@ if(isset($_SESSION['author_role'])){
                     $destination = "../uploads/$newFileName";
                     $dbdestination = "uploads/$newFileName";
                     move_uploaded_file($fileTmp, $destination);
-                    //$sql = "INSERT INTO post (`post_title`,`post_content`,`post_category`, `post_author`, `post_date`, `post_keywords`, `post_image`) VALUES ('$post_title', '$post_content', '$post_category', '$post_author', '$post_date', '$post_keywords', '$dbdestination');";
+
                     $sql = "UPDATE post SET 
                     post_title='$post_title', 
                     post_content='$post_content',
 										post_category='$post_category',
                     post_feature='$post_feature', 
                     post_technologies='$post_technologies', 
-                    post_keywords='$post_keywords',
                     post_client_name='$post_client_name',
-                    post_website_link='$post_client_link',
+                    post_website_link='$post_website_link',
+                    post_year_made='$post_year_made',
                     post_image='$dbdestination'  
                     WHERE post_id='$post_id'";
 
@@ -228,8 +233,8 @@ if(isset($_SESSION['author_role'])){
 							 post_category      ='$post_category',
                post_feature       ='$post_feature',
                post_technologies  ='$post_technologies',
-               post_keywords      ='$post_keywords',
                post_client_name   ='$post_client_name',
+               post_year_made     ='$post_year_made',
                post_website_link  ='$post_website_link'
                WHERE post_id      ='$post_id'";
 
@@ -264,6 +269,4 @@ if(isset($_SESSION['author_role'])){
 }
 ?>
 
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ey5ln3e6qq2sq6u5ka28g3yxtbiyj11zs8l6qyfegao3c0su"></script>
 
-	<script>tinymce.init({ selector:'textarea' });</script>

@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-lg-12 text-center mb-5">
         <h2 class="heading-secondary page-section-heading text-center"><?php getSettingValue("portfolio_heading"); ?></h2>
-        <p class="text-muted pt-3"><?php getSettingValue("portfolio_desc"); ?></p>
+        <p class="text-muted pt-3 long-copy lead"><?php getSettingValue("portfolio_desc"); ?></p>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
             <span class="caption-content text-center">
               <i class="fas fa-plus fa-3x"></i>
               <h3><?php echo $post_title ?></h3>
-              <p class="mb-0"><?php getCategoryName('post_category'); ?></p>
+              <p class="mb-0"></p>
             </span>
           </span>
           <img class="img-fluid" src="<?php echo $post_image ?>" alt="">

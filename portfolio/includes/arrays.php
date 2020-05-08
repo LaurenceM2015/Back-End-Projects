@@ -27,6 +27,30 @@
         )
     );
 
+    // Sectondary Navigation
+        
+        $navItemSecond = array (
+            array(
+                "slug"  => "index.php",
+                "title" => "Home"
+            ),
+    
+            array(
+                "slug"  => "portfolio.php",
+                "title" => "portfolio"
+            ),
+    
+          /*  array(
+                "slug"  => "resource.php",
+                "title" => "Resources"
+            ), */
+    
+            array(
+                "slug"  => "resume.php",
+                "title" => "Resume"
+            )
+        );
+
     // What Can I Do (services )
 
     $services = array (

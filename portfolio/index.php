@@ -1,11 +1,12 @@
 <?php 
-  //ini_set("display_errors", 1);
+  ini_set("display_errors", 1);
   include ("includes/header.php");
   include ("includes/arrays.php");
   include ('includes/functions.php');
   include ('includes/connection.php');
 ?>
 
+<body id="page-top" class="d-flex flex-column">
     <?php include "includes/main-nav.php"; ?>
          
      <!-- Masthead Hero section -->

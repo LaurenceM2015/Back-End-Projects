@@ -10,7 +10,7 @@
         $sql = "SELECT * FROM `services` ORDER BY service_id DESC";
         $result = mysqli_query($conn, $sql);
         while($row=mysqli_fetch_assoc($result)){
-          $service_name = $row['service_name'];
+          $service_title = $row['service_title'];
           $service_icon = $row['service_icon']; 
           $service_content = $row['service_content'];
           $service_id = $row['service_id'];
@@ -19,7 +19,7 @@
             <div class="feature-box feature-box--card feature-box--border js-move-in-on-scroll animate">
               
               <i class="feature-box__icon <?php echo $service_icon; ?>"></i>
-              <h3 class="heading-tertiary text-center"><?php echo $service_name; ?></h3>
+              <h3 class="heading-tertiary text-center"><?php echo $service_title; ?></h3>
               <p class="feature-box__text"><?php echo $service_content; ?></p>
             </div>
          </div>
@@ -30,3 +30,6 @@
     </div><!-- ./row -->
   </div><!-- ./container -->
 </section>
+
+
+

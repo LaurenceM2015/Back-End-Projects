@@ -10,33 +10,16 @@
 
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.php">Home</a>
-        </li>
-
-        <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="portfolio.php">Portfolio</a>
-        </li>
-
           <?php
-          $sqlpage = "SELECT * FROM page";
-            $resultpage = mysqli_query($conn, $sqlpage);
-            while($rowpage=mysqli_fetch_array($resultpage)){
-              $page_id = $rowpage['page_id'];
-              $page_title = $rowpage['page_title'];
-              
-              ?>
-              <li class="nav-item mx-0 mx-lg-1">
-                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="page.php?id=<?php echo $page_id; ?>"><?php echo $page_title; ?></a>
-              </li>
-              <?php
+            foreach ($navItemSecond as $ItemSecond) {
+              echo 
+                "
+                <li class=\"nav-item mx-0 mx-lg-1\">
+                <a class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\" href=\"$ItemSecond[slug]\">$ItemSecond[title]</a></li>
+                ";
             }
-            ?>
-          
-        
-            
+          ?>
 
-         
         </ul>
       </div>
     </div>

@@ -87,9 +87,9 @@
         $result = mysqli_query($conn, $sql);
         $html='';
         while($row=mysqli_fetch_assoc($result)){
-            //$html .='<li>'.$row['feature_desc'].'</li>';
+            $html .='<li>'.$row['feature_desc'].'</li>';
            // $html .='<a href="category.php?id='.$row['category_id'].'">'.$row['category_name'].'</a>&nbsp;' ;
-            array_push($name,$row['feature_desc']);
+            //array_push($name,$row['feature_desc']);
         }
         echo $html;
         //echo implode(", ",$name);

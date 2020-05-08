@@ -52,12 +52,13 @@ if(isset($_SESSION['author_role'])){
 
 					<div class="form-group">
 						<label for="websiteLink">Project Website Link</label>
+						
 					 	<input id="websiteLink" type="text" name="post_website_link" class="form-control" placeholder="Please Enter The Website Link">
 					</div>
 
 					<div class="form-group">
-						Post Keywords
-					 	<input type="text" name="post_keywords" class="form-control" placeholder="Enter Keywords">
+						<label for="postyear">Project Year Created</label>
+					 	<input id="postyear" type="text" name="post_year_made" class="form-control" placeholder="Enter the Date the project was created">
 					</div>
 
 					<div class="form-group">
@@ -132,24 +133,24 @@ if(isset($_SESSION['author_role'])){
 				<?php
 					if(isset($_POST['submit'])){
 						//print_r($_POST['post_category']);
-						$post_title 		= mysqli_real_escape_string($conn, $_POST['post_title']);
+						echo $post_title 		= mysqli_real_escape_string($conn, $_POST['post_title']);
 						$post_category 		= implode(",",$_POST['post_category']);
 						$post_feature 		= implode(",",$_POST['post_feature']);
 						$post_technologies 	= implode(",",$_POST['post_technologies']);
 						$post_content 		= mysqli_real_escape_string($conn, $_POST['post_content']);
 						$post_client_name 	= mysqli_real_escape_string($conn, $_POST['post_client_name']);
 						$post_website_link	= mysqli_real_escape_string($conn, $_POST['post_website_link']);
-						$post_keywords 		= mysqli_real_escape_string($conn, $_POST['post_keywords']);
+						$post_year_made	= mysqli_real_escape_string($conn, $_POST['post_year_made']);
 						$post_author 		= $_SESSION['author_id'];
-						$post_date 			= date("d/m/y");
+						//$post_date 			= date("d/m/y");
 						
 						//checking if above fields are empty
 						if(empty($post_title) OR empty($post_category) OR empty($post_feature) OR empty($post_technologies)){
-						header("Location: newpost.php?message=Empty+Fields");
-						'<script>window.location = "newpost.php?message=Empty+Fields";</script>';
+						//header("Location: newpost.php?message=Empty+Fields");
+						echo '<script>window.location = "newpost.php?message=Empty+Fields";</script>';
 
-						//	exit();
-						//}
+							exit();
+						}
 						
 						$file = $_FILES['file'];
 						$fileName = $file['name'];
@@ -162,14 +163,17 @@ if(isset($_SESSION['author_role'])){
 						$allowedExt = array("jpg", "jpeg", "png", "gif");
 						
 						if(in_array($fileExtension, $allowedExt)){
+							
 							if($fileErr === 0){
+								
 								if($fileSize < 3000000){
+									
 									$newFileName = uniqid('',true).'.'.$fileExtension;
 									$destination = "../uploads/$newFileName";
 									$dbdestination = "uploads/$newFileName";
 									move_uploaded_file($fileTmp, $destination);
 
-									echo $sql = "INSERT INTO post (
+									$sql = "INSERT INTO post (
 										`post_title`,
 										`post_content`,
 										`post_category`, 
@@ -177,9 +181,8 @@ if(isset($_SESSION['author_role'])){
 										`post_technologies`, 
 										`post_author`,
 										`post_client_name`,
-										`post_website_link`,  
-										`post_date`, 
-										`post_keywords`, 
+										`post_website_link`,
+										`post_year_made`,  
 										`post_image`) 
 										VALUES (
 											'$post_title',
@@ -188,22 +191,19 @@ if(isset($_SESSION['author_role'])){
 											'$post_feature',
 											'$post_technologies', 
 											'$post_author', 
-											'$post_date',
 											'$post_client_name',
-											'$post_website_link', 
-											'$post_keywords', 
+											'$post_website_link',
+											'$post_year_made', 
 											'$dbdestination');";
 									if(mysqli_query($conn, $sql)){
 										//header("Location: posts.php?message=Post+Published");
 										echo '<script>window.location = "posts.php?message=Post+Published";</script>';
-
 										//exit();
-										
 									}else{
 										//header("Location: newpost.php?message=Error");
 										 echo '<script>window.location = "newpost.php?message=Error";</script>';
 										//echo $sql;
-										//exit();
+										exit();
 									}
 								} else {
 									header("Location: newpost.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
@@ -230,8 +230,8 @@ if(isset($_SESSION['author_role'])){
     </div>
 	
 	<?php include "../includes/footer.php"; ?>
-<?php }
-}else{
+<?php 
+} else{
 	header("Location: login.php?message=Please+Login");
 }
 ?>

@@ -60,8 +60,8 @@
               <div class="container">
                 <div class="row">
                     <div class="col-lg-12 text-center my-5">
-                        <h2 class="heading-secondary page-section-heading text-center text-secondary">My Work Projects</h2>
-                      <p class="text-muted pt-3">Lorem ipsum dolor sit amet consectetur.</p>
+                      <h2 class="heading-secondary page-section-heading text-center"><?php getSettingValue("portfolio_heading"); ?></h2>
+                      <p class="text-muted pt-3 long-copy lead"><?php getSettingValue("portfolio_desc"); ?></p>
                     </div>
 
                     <div class="col-lg-12 text-center my-5">
@@ -85,8 +85,29 @@
                 </div>
                 
                 <div class="row no-gutters">
+                <?php
+                  //pagination
+                  $sqlpg = "SELECT * FROM `post`";
+                  $resultpg = mysqli_query($conn, $sqlpg);
+                  $totalposts = mysqli_num_rows($resultpg);
+                  $totalpages = ceil($totalposts/8);
+                  //echo ceil($totalposts/7);
+                  
+                ?>
+                <?php 
+                  //pagination get
+                  if(isset($_GET['p'])){
+                    $pageid = $_GET['p'];
+                    $start = ($pageid*8)-8;
+                    $sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT $start,8";
+                  }else{
+                    $sql = "SELECT * FROM `post` ORDER BY post_id DESC LIMIT 0,8";
+                  }
+                ?>
+
+
                   <?php 
-                    $sql = "SELECT * FROM `post` ORDER BY post_id DESC";
+                    //$sql = "SELECT * FROM `post` ORDER BY post_id DESC";
                     $result = mysqli_query($conn, $sql);
                     $i=1;
                     while($row=mysqli_fetch_assoc($result)){
@@ -95,8 +116,9 @@
                       $post_image = $row['post_image']; 
                       $post_author = $row['post_author']; 
                       $post_content = $row['post_content'];
-                      $post_category = $row['post_category'];
+                      $post_category = explode(",",$row['post_category']);
                       $post_id = $row['post_id'];
+                      $post_id = $row['post_website_link'];
 
                       $sqlauth = "SELECT * FROM author WHERE author_id='$post_author'";
                       $resultauth = mysqli_query($conn, $sqlauth);
@@ -108,8 +130,8 @@
                   ?>
 
                   <!-- Portfolio Item 1 -->
-                  <div class="filter <?php echo $post_category; ?> sass col-lg-6">
-                    <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal<?=$i++?>">
+                  <div class="filter <?php for($j=0;$j< count($post_category);$j++) { echo $post_category[$j]." " ; } ?>  col-lg-6">
+                    <a class="portfolio-item" data-toggle="modal" data-target="#portfolioModal<?=$i++;?>">
                       <span class="caption d-flex align-items-center justify-content-center h-100 w-100">
                         <span class="caption-content text-center">
                           <i class="fas fa-plus fa-3x"></i>
@@ -120,24 +142,32 @@
                       <img class="img-fluid" src="<?php echo $post_image; ?>" alt="">
                     </a>
                   </div>
-                  
-                  <?php  } ?>
+                  <?php   } ?>
 
                 </div><!-- portfolio-grid   -->
                 <!-- ./ end row -->
             </div> 
               <!-- ./ end container -->
           </section> 
+          <div class="row">
+            <div class="col-md-12">
+              <?php 
+				        echo "<center>";
+                for($i=1;$i<=$totalpages;$i++){
+                  ?>
+                  <a href="?p=<?php echo $i; ?>"><button class="btn btn-info"><?php echo $i; ?></button></a>&nbsp;
+                  <?php
+                }
+                echo "</center>";
+              ?>
+
+            </div>
+          </div>
       </main>
       
       <?php include('includes/footer.php'); ?>
 
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-to-top d-lg-none position-fixed ">
-      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
-        <i class="fa fa-chevron-up"></i>
-      </a>
-    </div>
+   
 
  
 

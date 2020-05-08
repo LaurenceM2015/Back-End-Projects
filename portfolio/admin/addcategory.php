@@ -55,25 +55,102 @@
                             <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Add new Project Category
+                                    Add new Project Features
                                 </button>
                             </h2>
                             </div>
 
                             <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <div style="" id="addCatForm">
-                                        <form action="addcategory.php" method="post">
-                                            <div class="form-group">
-                                                <input type="text" name="category_name" class="form-control form-control-lg" placeholder="Category Name">
-                                            </div>
-                                            
-                                            <button name="submit" type="submit" class="btn btn-success">Add Category</button>
-                                        </form>
-                                    </div> <!-- add category form -->
+                                    <form action="addcategory" method="post">
+                                        <div class="form-group">
+                                            <input type="text" name="feature_desc" class="form-control form-control-lg" placeholder="Feature Description">
+                                        </div>
+                                                
+                                        <button name="submit" type="submit" class="btn btn-success">Add Project Feature</button>
+                                    </form>
                                     <?php   
                                     // if the user is admin
                                         if(isset($_POST['submit'])){
+                                            $feature_desc = $_POST['feature_desc'];
+                                            echo $sql = "INSERT INTO features (`feature_desc`) VALUES ('$feature_desc');";
+                                            
+                                            if(mysqli_query($conn, $sql)){
+                                                //header("Location: category.php?message=Added+New+Feature");
+                                               echo '<script>window.location = "category.php?message=Added+New+Feature";</script>';
+                                                exit();
+                                            } else {
+                                               // header("Location: category.php?message=Error");
+                                               echo '<script>window.location = "category.php?message=Error";</script>';
+                                                exit();
+                                            }
+                                        } // ../submit
+                                    ?>
+
+                                </div><!-- ./card-body -->
+                            </div><!-- ./callapse one -->
+                        </div><!-- card one: Features -->
+
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  Add New Project technologies
+                                </button>
+                            </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <form action="addcategory.php" method="post">
+                                        <div class="form-group">
+                                            <input type="text" name="technology_name" class="form-control form-control-lg" placeholder="Technology Name">
+                                        </div>
+                                                
+                                        <button name="addTech" type="submit" class="btn btn-success">Add Project Technology</button>
+                                    </form>
+                                    <?php   
+                                    // if the user is admin
+                                        if(isset($_POST['addTech'])){
+                                            $technology_name = $_POST['technology_name'];
+                                            echo $sql = "INSERT INTO technologies (`technology_name`) VALUES ('$technology_name');";
+                                            
+                                            if(mysqli_query($conn, $sql)){
+                                                //header("Location: category.php?message=Added+New+Feature");
+                                               echo '<script>window.location = "category.php?message=Added+New+Technology";</script>';
+                                                exit();
+                                            } else {
+                                               // header("Location: category.php?message=Error");
+                                               echo '<script>window.location = "category.php?message=Error";</script>';
+                                                exit();
+                                            }
+                                        } // ../submit
+                                    ?>
+                                    
+                                </div><!-- ./card-body -->
+                            </div><!-- collapse two -->
+                        </div> <!-- ./card two: Technology -->
+
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Add New Project Categories
+                                </button>
+                            </h2>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <form action="addcategory.php" method="post">
+                                        <div class="form-group">
+                                            <input type="text" name="category_name" class="form-control form-control-lg" placeholder="Category Name">
+                                        </div>
+                                        
+                                        <button name="addCat" type="submit" class="btn btn-success">Add Category</button>
+                                    </form>
+                                    
+                                    <?php   
+                                    // if the user is admin
+                                        if(isset($_POST['addCat'])){
                                             $category_name = $_POST['category_name'];
                                             echo $sql = "INSERT INTO categories (`category_name`) VALUES ('$category_name');";
                                             
@@ -88,39 +165,9 @@
                                             }
                                         } // ../submit
                                     ?>
-                                </div><!-- ./card-body -->
-                            </div><!-- ./callapse one -->
-                        </div><!-- card one: categories -->
-
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Collapsible Group Item #2
-                                </button>
-                            </h2>
+                                </div>
                             </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                            </div>
-                        </div> <!-- ./card two: feature -->
-
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Collapsible Group Item #3
-                                </button>
-                            </h2>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                            </div>
-                            </div>
-                        </div><!-- card three: technologies -->
+                        </div><!-- card three: Categories -->
                     </div><!-- ./accordion -->
                 </main> <!-- main -->
             </div> <!-- row -->

@@ -15,7 +15,13 @@
         </figure>
         <div class="story__text">
             <h3 class="heading-tertiary u-margin-bottom-small"><?php getSettingValue("about_job_title"); ?></h3>
-            <p><?php getSettingValue("about_desc"); ?></p>
+            <p>
+              <?php getSettingValue("about_desc"); ?>
+              <a href="#contact" class="btn btn-text js-scroll-trigger">Let's Create Something Special.</a>
+          </p>
+            
+
+            
         </div>
       </div>
     
@@ -37,22 +43,57 @@
               <?php } ?>
             </ul>
         </div>
+
+        <div class="row text-center">
+          <div class="col-md-12">
+          <ul class="list-inline dev-icons text-center">
+            
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-wordpress"></use>
+              </svg>
+            </li>
+
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-javascript"></use>
+              </svg>
+            </li>
+
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-java"></use>
+              </svg>
+            </li>
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-php"></use>
+              </svg>
+            </li>
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-rails"></use>
+              </svg>
+            </li>
+            <li class="list-inline-item">
+              <svg class="svg-box__icon">
+                <use xlink:href="vendors/img/symbol-defs.svg#icon-mysql"></use>
+              </svg>
+            </li>
+          </ul>
+          </div>
+            
+                
+        </div><!-- .row -->
       </div>
      
-      
+        
               
-      <div class="col-lg-12">
-        <h3 class="heading-tertiary text-left"></h3>
-        <div class="text-center">
-                    
-        </div> <!-- skill sets -->
+  </div><!-- ./ container -->
+
+    <div class="row my-5 py-5 text-center">
+      <div class="col-lg-12 text-center mt-4">
+        <a href="resume.php" class="Btn Btn--green">Visit The Page &rarr;</a>
       </div>
     </div>
-          
-    <div class="row my-5 py-5">
-        <div class="col-lg-12 text-center mt-4">
-          <a href="#" class="Btn Btn--green">Visit The Page &rarr;</a>
-        </div>
-    </div>
-  </div><!-- ./ container -->
 </section>

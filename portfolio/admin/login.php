@@ -44,7 +44,7 @@
                             </div>
 
                             <hr class="my-2">
-							<a class="d-block text-center mt-2 small pb-4" href="signup.php">Sign Up</a>
+							
 
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" name="signup" type="submit">Sign in</button>
                         </form>
