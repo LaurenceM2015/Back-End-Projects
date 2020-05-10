@@ -57,23 +57,6 @@
 
 
 
- include_once "connection.php";
-// Main header function (main_head)
-    function add_jumbotron() {
-        echo '
-            <header class="header blg-bkg">
-                <div class="jumbotron jumbotron-fluid">
-                    <div class="container">
-                    <h1 class="display-4">Fluid jumbotron</h1>
-                    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-                    </div>
-                </div>
-        
-            </header>
-        ';
-
-    }
-
      // Main navigation arrays
      $navItems = array (
         array(

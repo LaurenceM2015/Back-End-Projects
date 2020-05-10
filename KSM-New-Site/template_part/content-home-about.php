@@ -2,43 +2,57 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 pb-5">
-          <h2 class="mb-5 heading-secondary heading-secondary--1">A Propos De Nous</h2>
+          <h2 class="mb-5 heading-secondary heading-secondary--1"><?php getSettingValue("about_title"); ?></h2>
         </div>
       </div>
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
         <div class="col-xl-5 col-lg-7">
           <div class="text-center wow fadeInLeft">
-            <img class="img-fluid mb-3 mb-lg-0" src="assets/img/karateProfile.jpg" alt="Les Professeurs de KSM, Valerie Mabilleau et Fabien Poulin">
+            <img class="img-fluid mb-3 mb-lg-0" src="<?php getSettingValue("about_image"); ?>" alt="Les Professeurs de KSM, Valerie Mabilleau et Fabien Poulin">
           </div>
         </div>
         <div class="col-xl-7 col-lg-5 wow fadeInRight">
           <div class="featured-text text-center text-lg-left">
-            <h3>Depuis Le Debut</h3>
+            <h3><?php getSettingValue("about_subtitle"); ?></h3>
             <p class="text-black-50 mb-4">
-              Le club de karaté de Mardié (KSM) à été créé en 1998 et compte aujourd'hui quelques 50 licenciés dont une trentaine d'enfants (pour qui les cours sont départagés selon qu'ils sont gradés ou débutants).
+              <?php getSettingValue("about_desc"); ?>
             </p>
-            <p class="text-black-50 mb-4">
-              C'est un club de proximité qui permet aux adultes et aux parents d'enfants des communes environnantes (Bou, Donnery, Fay aux Loges…) de ne pas être obligés de se déplacer plus loin. Tout au long de l'année scolaire les licenciés peuvent avoir accès à de nombreux stages.
-            </p>
-
-            <ul class="list-unstyled text-black-50">
-              <li>
-                  Fabien Poullin, DIF, CQP, Directeur Technique Départememtal, 5ème Dan <i class="fa fa-trophy fa-color"></i>
-              </li>
-              <li>
-                Valérie Mabilleau, Présidente, DIF, 4 dan <i class="fa fa-trophy fa-color"></i>
-              </li>
-              <li>
-                Tymothé,  Secrétaire, DIF,  2 dan <i class="fa fa-trophy fa-color"></i>
-              </li>
-              <li>
-                 Laurent,  Trésorier, DIF 2 dan <i class="fa fa-trophy fa-color"></i>
-              </li>
-            </ul>
-             
           </div>
+
         </div>
-      </div>
+      </div><!-- ./row -->
+
+      <div class="row text-center pt-5">
+        <div class="col-md-3">
+          <h4>Fabien Poullin</h4>
+          <span><i class="fa fa-trophy fa-color"></i> 5ème Dan</span>
+          <p class="text-muted">DIF, CQP, Directeur Technique Départememtal</p>
+        </div><!-- team member: fabien poulin -->
+
+        <div class="col-md-3">
+          <h4>Valérie Mabilleau</h4>
+          <span><i class="fa fa-trophy fa-color"></i> 4 dan</span>
+          <p class="text-muted">DIF, Présidente</p>
+          
+        </div><!-- team member: Valerie poulin -->
+
+        <div class="col-md-3">
+          <h4>Tymothé</h4>
+          <sapn><i class="fa fa-trophy fa-color"></i> 2 dan</sapn>
+          <p class="text-muted">DIF, Secrétaire</p>
+         
+        </div><!-- team member: Tymothe -->
+
+        <div class="col-md-3">
+          <h4>Laurent</h4>
+          <span><i class="fa fa-trophy fa-color"></i> 2 dan</span>
+          <p class="text-muted">DIF, Trésorier</p>
+          
+        </div><!-- team member: Valerie poulin -->
+
+      </div><!-- ./team row -->
+
+
       <!-- no lien -->
       <div class="row">
 
@@ -82,7 +96,7 @@
           </a>
         </div>
 
-      </div> <!-- row -->
+      </!--> <!-- row -->
 
     </div><!-- container -->
   
