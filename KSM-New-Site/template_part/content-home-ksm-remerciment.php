@@ -1,4 +1,4 @@
-<section class="section-bkg__img section-bkg__img--1 page-section h-100 parallax-window" data-z-index="1" data-parallax="scroll" data-image-src="assets/css/img/remerciment-min.jpg">
+<section class="section-bkg__img--1 page-section h-100 parallax-window" data-z-index="1" data-parallax="scroll" data-image-src="assets/css/img/remerciment-min.jpg">
     <div class="container info">
         <div class="row">
             <div class="col-md-12">
