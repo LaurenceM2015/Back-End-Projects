@@ -124,7 +124,7 @@ if(isset($_SESSION['author_role'])){
 									   
 								   } else {
 									   //header("Location: settings.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
-									  // echo '<script>window.location = "edithome.php?id='.$home_id.'&message=YOUR FILE IS TOO BIG TO UPLOAD!";</script>';
+									  echo '<script>window.location = "edithome.php?id='.$home_id.'&message=YOUR FILE IS TOO BIG TO UPLOAD!";</script>';
 									   exit();
 								   }
 							   }else{

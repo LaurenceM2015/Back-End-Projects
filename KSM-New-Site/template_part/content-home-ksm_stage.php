@@ -31,7 +31,7 @@
 
           <div class="col-lg-3 text-center my-5 animated fadeInUp parallax">
             <div>
-                <img src="assets/img/KarateDoIdeogamme.jpg" class="img-fluid">
+                <img src="<?php getSettingValue("stage_logo"); ?>" class="img-fluid">
             </div>
           </div>
             

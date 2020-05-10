@@ -1,6 +1,6 @@
 
 <?php
-    // Landing Page Hero Section 
+    // Landing Home Page Setting 
     function getSettingValue($setting){
         global $conn;
         $sql = "SELECT * FROM settings WHERE setting_name='$setting'";
@@ -14,6 +14,27 @@
     function setSettingValue($setting,$value){
         global $conn;
         $sql = "UPDATE settings SET setting_value='$value' WHERE setting_name='$setting'";
+        if(mysqli_query($conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+     // All Settings Values
+     function getHeroValue($value){
+        global $conn;
+        $sql = "SELECT * FROM heros WHERE setting_name='$value'";
+        $result = mysqli_query($conn, $sql);
+        while($row=mysqli_fetch_assoc($result)){
+            $hero = $row['hero_img'];
+            echo $hero;
+        }
+    }
+
+    function setHeroValue($id,$value){
+        global $conn;
+        $sql = "UPDATE heros SET hero_img='$value' WHERE hero_id='$id'";
         if(mysqli_query($conn, $sql)){
             return true;
         }else{

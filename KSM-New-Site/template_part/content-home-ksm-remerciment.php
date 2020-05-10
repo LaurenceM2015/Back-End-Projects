@@ -1,4 +1,4 @@
-<section class="section-bkg__img--1 page-section h-100 parallax-window" data-z-index="1" data-parallax="scroll" data-image-src="assets/css/img/remerciment-min.jpg">
+<section class="section-bkg__img--1 page-section h-100 parallax-window" data-z-index="1" data-parallax="scroll" data-image-src="<?php getHeroValue("remerci_hero_image"); ?>">
     <div class="container info">
         <div class="row">
             <div class="col-md-12">
@@ -9,7 +9,7 @@
       <div class="row justify-content-center align-items-center">
         <div class="col-md-3">
           <div class="header__img animated fadeInUp text-right">
-          <img src="assets/img/shin.jpg" alt="KSM shine">
+          <img src="<?php getSettingValue("remerci_logo"); ?>" alt="KSM shine">
         </div>
         </div>
 

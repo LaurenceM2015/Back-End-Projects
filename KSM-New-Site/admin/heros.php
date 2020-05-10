@@ -1,4 +1,5 @@
 <?php
+ini_set("display_errors",1);
   session_start(); 
  define("TITLE", "Admin | Home Page");
  include_once "../includes/functions.php";
@@ -24,7 +25,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Landing Page</h1>
+        <h1 class="h2">Home Hero Images</h1>
             <h6>Howdy <?php echo $_SESSION['author_name']; ?> | Your role is <?php echo $_SESSION['author_role']; ?></h6>
       </div>
 
@@ -49,12 +50,10 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Home Section Id</th>
-            <th>Home Feature Img</th>
-            <th>Home Section Title</th>
-            <th>Home Section logo</th>
-            <th>Home Section content</th>
-            
+            <th>Home Hero Id</th>
+            <th>Home Hero Image</th>
+            <th>Home Setting Name</th>
+           
             <?php if($_SESSION['author_role']=="admin"){ ?>
             <th>Action</th>
             <?php } ?>
@@ -62,32 +61,27 @@
         </thead>
         <tbody>
         <?php 
-          $sql = "SELECT * FROM `home` ORDER BY home_id DESC";
+          
+          $sql = "SELECT * FROM `heros` ORDER BY hero_id DESC";
           $result = mysqli_query($conn, $sql);
-
           while($row=mysqli_fetch_assoc($result)){
-            $home_id = $row['home_id'];
-           echo  $home_feature_img = $row['home_feature_img'];
-            $home_title = $row['home_title']; 
-            $home_logo = $row['home_logo']; 
-            $home_content = $row['home_content']; 
-             
-           
+            $hero_id        = $row['hero_id'];
+            $hero_img       = $row['hero_img'];
+            //$hero_logo      = $row['hero_logo']; 
+            $setting_name   = $row['setting_name']; 
         ?>
       
           <tr>
-            <th scope="row"><?php echo $home_id; ?></th>
+            <th scope="row"><?php echo $hero_id; ?></th>
 
             <td>
-            <img class="img-thumbnail" src="../<?php echo $home_feature_img; ?>" width="50px" height="50px"></td>
-            <td><?php echo $home_title; ?></td>
-            <td><img class="img-thumbnail" src="../<?php echo $home_logo; ?>" width="50px" height="50px"></td>
-            <td><?php echo $home_content; ?></td>
+            <img class="img-thumbnail" src="../<?php echo $hero_img; ?>" width="150px" height="50px"></td>
+    
+            <td><?php echo $setting_name; ?></td>
 
             <?php if($_SESSION['author_role']=="admin"){ ?>
               <td>
-                <a href="edithome.php?id=<?php echo $home_id; ?>"><button class="btn btn-info">Edit</button></a>
-                <a onclick="return confirm('Are You sure')" href="deletepost.php?id=<?php echo $home_id; ?>"><button class="btn btn-danger">Delete</button></a>
+                <a href="editheros.php?id=<?php echo $hero_id; ?>"><button class="btn btn-info">Edit</button></a>
               </td>
             <?php } ?>
 

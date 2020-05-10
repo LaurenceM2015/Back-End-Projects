@@ -37,6 +37,14 @@
                     </a>
                   </li>
 
+                   <!-- ONLY ADMIN LINK HERE -->
+                   <li class="nav-item">
+                    <a class="nav-link" href="heros.php">
+                      <span data-feather="file"><i class="fas fa-list"></i></span>
+                       Home Settings
+                    </a>
+                  </li>
+
                   
 
             <?php } } ?>
