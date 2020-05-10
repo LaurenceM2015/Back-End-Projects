@@ -1,5 +1,5 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "root", "dynamic");
+    $conn = mysqli_connect("localhost", "root", "root", "ksm_db");
 
     // Check connection
     if (!$conn) {
