@@ -24,16 +24,7 @@ if(!isset($_GET['id'])){
 			}else{
 				?>
 			
-			
-			
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Admin Panel</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="../style/bootstrap.min.css">
-		<link rel="stylesheet" href="../style.css">
-	</head>
+		<?php include "../includes/header.php"; ?>
 	<body>
 	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
@@ -125,12 +116,7 @@ if(!isset($_GET['id'])){
       </div>
     </div>
 	
-	<script src="../js/jquery.js"></script>
-	<script src="../js/bootstrap.min.js"></script>
-	<script src="../js/scroll.js"></script>
-	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ey5ln3e6qq2sq6u5ka28g3yxtbiyj11zs8l6qyfegao3c0su"></script>
-
-	<script>tinymce.init({ selector:'textarea' });</script>
+	<?php include "../includes/footer.php"; ?>
 	</body>
 </html>
 			

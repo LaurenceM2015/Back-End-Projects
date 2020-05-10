@@ -15,7 +15,7 @@
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="settings.php">
+                    <a class="nav-link" href="home.php">
                       <span data-feather="file"><i class="fas fa-home"></i></span>
                       Page D'accuel
                     </a>
@@ -36,6 +36,8 @@
                       All Categories
                     </a>
                   </li>
+
+                  
 
             <?php } } ?>
             <li class="nav-item">

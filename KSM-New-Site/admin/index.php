@@ -65,10 +65,10 @@
         </form> <!-- ./ form -->
         <?php 
             if(isset($_POST['update'])){
-                $author_name        = mysqli_real_escape_string($conn, $_POST['author_name']);
-				$author_email       = mysqli_real_escape_string($conn, $_POST['author_email']);
-			    $author_password    = mysqli_real_escape_string($conn, $_POST['author_password']);
-                $author_bio         = mysqli_real_escape_string($conn, $_POST['author_bio']);
+              $author_name        = mysqli_real_escape_string($conn, $_POST['author_name']);
+				      $author_email       = mysqli_real_escape_string($conn, $_POST['author_email']);
+			        $author_password    = mysqli_real_escape_string($conn, $_POST['author_password']);
+              $author_bio         = mysqli_real_escape_string($conn, $_POST['author_bio']);
                 
                 // Checking if field are empty
                 if(empty($author_name) OR empty($author_email) OR empty($author_bio)){

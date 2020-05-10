@@ -1,16 +1,16 @@
 <?php
 ini_set("display_errors", 1);
 define("TITLE", "Admin | New post Page");
-include_once "../includes/header.php";
 include_once "../includes/functions.php";
 include "../includes/connection.php";
 session_start();
 if(isset($_SESSION['author_role'])){
 	?>
+	<!-- header Start here  -->
+	<?php include "../includes/header.php"; ?>
 
-	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/index.php">Karate Shotokan Mardie</a>
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -75,11 +75,10 @@ if(isset($_SESSION['author_role'])){
 				Post Keywords
 				<input type="text" name="post_keywords" class="form-control" placeholder="Enter Keywords"><br>
 					 
-					 
 				<button name="submit" type="submit" class="btn btn-primary">Submit</button>
 			</form>
 			
-				
+				<!-- Image storage -->
 				<?php
 					if(isset($_POST['submit'])){
 						$post_title = mysqli_real_escape_string($conn, $_POST['post_title']);
@@ -135,7 +134,7 @@ if(isset($_SESSION['author_role'])){
 							header("Location: newpost.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
 							exit();
 						}
-					}
+					} // Submit 
 							
 				?>
 				

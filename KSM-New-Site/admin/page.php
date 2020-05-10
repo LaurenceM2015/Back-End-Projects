@@ -50,6 +50,8 @@ if(isset($_SESSION['author_role'])){
 					<form action="newpage.php" method="post">
 						<input type="text" name="page_title" class="form-control" placeholder="Enter Page Title"><br>
 						<textarea name="page_content" class="form-control" rows="3" placeholder="Enter Content"></textarea><br>
+						Page Feature Image
+						<input type="file" name="file" class="form-control-file" id="exampleFormControlFile1"><br>
 						<button name="submit" class="btn btn-success">Add Page</button><br><br>
 					</form>
 				</div>
@@ -58,6 +60,7 @@ if(isset($_SESSION['author_role'])){
 					<tr>
 					  <th scope="col">Page Id</th>
 					  <th scope="col">Page Title</th>
+					  <th scope="">Page Feature image</th>
 					  <th scope="col">Actions</th>
 					  
 					</tr>
@@ -67,18 +70,18 @@ if(isset($_SESSION['author_role'])){
 					$sql = "SELECT * FROM `page` ORDER BY page_id DESC";
 					$result = mysqli_query($conn, $sql);
 					while($row=mysqli_fetch_assoc($result)){
-						$page_title = $row['page_title']; 
+						$page_title = $row['page_title'];
+						$page_feature_img = $row['page_feature_img']; 
 						$page_id = $row['page_id'];
 						
 					
 					
 			
 		?>
-			<tr>
+					<tr>
 					  <th scope="row"><?php echo $page_id;?></th>
+					  <td><?php echo $page_feature_img;?></td>
 					  <td><?php echo $page_title;?></td>
-				
-					 
 					  <td><a href="editpage.php?id=<?php echo $page_id;?>"><button class="btn btn-info">Edit</button></a> <a onclick="return confirm('Are You sure');" href="deletepage.php?id=<?php echo $page_id;?>"><button class="btn btn-danger">Delete</button></a></td>
 					   
 			</tr>

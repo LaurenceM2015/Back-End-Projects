@@ -1,14 +1,13 @@
 <?php
-define("TITLE", "Admin | All Category");
+ini_set("display_errors", 1);
+define("TITLE", "Admin | All Category Page");
 include_once "../includes/functions.php";
 include_once "../includes/connection.php";
 session_start();
 if(isset($_SESSION['author_role'])){
 	if($_SESSION['author_role']=="admin"){
 	?>
-	<!-- header goest here -->
-	<?php include "../includes/header.php"; ?>
-
+        <?php include "../includes/header.php"; ?>
 	<body>
 	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
@@ -45,21 +44,21 @@ if(isset($_SESSION['author_role'])){
 			?>
 			
 				<h1>ALL CATEGORIES:</h1>
-				<button id="addCatBtn" class="btn btn-info">Add New</button>
+				<!--<button id="addCatBtn" class="btn btn-info">Add New</button> -->
+				<a href="addcategory.php"><button class="btn btn-info">Add New</button></a>
 				<hr>
-				<div style="display:none;" id="addCatForm">
-					<form action="addcat.php" method="post">
+				<!--<div style="display:none;" id="addCatForm">
+					<form action="addcategory.php" method="post">
 						<input type="text" name="category_name" class="form-control" placeholder="Category Name"><br>
-						<textarea name="category_desc" class="form-control form-control-lg" placeholder="Category Description"> id="" rows="3"></textarea><br>
-
 						<button name="submit" class="btn btn-success">Add Category</button>
 					</form><br>
-				</div>
+				</div> -->
 				
 				<table class="table">
 				  <thead>
 					<tr>
 					  <th scope="col">Category Id</th>
+					  <th scope="col">Category Image</th>
 					  <th scope="col">Category Name</th>
 					  <th scope="col">Category Description</th>
 					</tr>
@@ -70,13 +69,15 @@ if(isset($_SESSION['author_role'])){
 					$result = mysqli_query($conn, $sql);
 					while($row=mysqli_fetch_assoc($result)){
 						$category_id = $row['category_id']; 
-						$category_name = $row['category_name'];
+						$category_name = $row['category_name']; 
 						$category_desc = $row['category_desc']; 
+						$category_feature_img = $row['category_feature_img']; 
 					
 			
 		?>
 			<tr>
 					  <th scope="row"><?php echo $category_id;?></th>
+					  <td><img class="img-thumbnail" src="../<?php echo $category_feature_img; ?>" width="50px" height="50px"></td>
 					  <td><?php echo $category_name; ?></td>
 					  <td><?php echo $category_desc; ?></td>
 					  
@@ -95,8 +96,9 @@ if(isset($_SESSION['author_role'])){
       </div>
     </div>
 	
-	<!-- footer goes here -->
-	<?php include "../includes/footer.php"; ?>
+	<!-- Footer start -->
+    <?php include "../includes/footer.php"; ?>
+	
 	</body>
 </html>
 <?php
