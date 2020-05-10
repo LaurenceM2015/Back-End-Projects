@@ -1,5 +1,5 @@
 <?php 
-// Create new category.
+session_start();
  include_once "../includes/header.php";
  include_once "../includes/connection.php";
  session_start();

@@ -5,6 +5,4 @@
 
     header("Location: login.php?message=Successfully+Logout");
 
-
-
 ?>

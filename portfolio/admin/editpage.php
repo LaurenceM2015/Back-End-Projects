@@ -1,9 +1,10 @@
 <?php
+    session_start();
     ini_set("display_errors", 1);
     include_once "../includes/header.php";
     include_once "../includes/connection.php";
     include_once "../includes/functions.php";
-    session_start();
+    
     if(!isset($_GET['id'])){
         header("Location: page.php?message=Please+click+the+edit+button");
         exit();

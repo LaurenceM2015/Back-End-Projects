@@ -1,9 +1,9 @@
 <?php 
+    session_start();
     ini_set("display_errors", 1);
     include "../includes/functions.php";
     include "../includes/connection.php";
     
-    session_start();
         if($_SESSION['author_role']!="admin"){
             echo "You can't access this page";
             exit();

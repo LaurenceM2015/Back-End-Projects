@@ -1,9 +1,10 @@
 <?php 
-  // Global Header
+ session_start();
+ ini_set("display_errors", 1);
  include_once "../includes/header.php";
  include_once "../includes/functions.php";
  include_once "../includes/connection.php";
- session_start();
+ 
  if(isset($_SESSION['author_role'])){
  ?>
 

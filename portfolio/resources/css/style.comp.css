@@ -63,6 +63,9 @@ a:focus, a:hover, a:active {
   width: 70%;
   margin-left: 15%; }
 
+.bg-primary {
+  background-color: #18BC9C; }
+
 /*========================================*/
 /*               TYPOGRAPHY               */
 /*========================================*/
@@ -137,8 +140,10 @@ h4 {
   font-weight: 700;
   text-transform: uppercase; }
 
-.paragraph:not(:last-child) {
-  margin-bottom: 3rem; }
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
 
 hr.star-light,
 hr.star-dark {
@@ -383,38 +388,38 @@ hr.star-dark:after {
 .feature-box {
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 1.3rem;
-  padding: 2.5rem;
+  padding: 2rem;
   text-align: center;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
-  transition: transform .3s; }
+  transition: transform .3s;
+  margin-bottom: 2rem; }
+  .feature-box--header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem; }
+  @media (min-width: 992px) {
+    .feature-box {
+      margin-bottom: 0; } }
   .feature-box--border {
     border-bottom: 0.25rem solid rgba(21, 165, 137, 0.8) !important; }
   .feature-box--hover:hover {
     transform: translateY(-1.5rem) scale(1.03); }
-  .feature-box--card {
-    display: grid;
-    grid-template-columns: min-content 1fr;
-    grid-gap: 1.5rem;
-    font-size: 1rem;
-    padding: 1%; }
-    .feature-box--card i {
-      grid-row: 1 / span 2; }
-    .feature-box--card h3 {
-      text-align: left; }
-    .feature-box--card:nth-child(odd).animate {
-      animation-name: moveInLeft;
-      animation-duration: 1s;
-      animation-timing-function: ease-out; }
-    .feature-box--card:nth-child(even).animate {
-      animation-name: moveInRight;
-      animation-duration: 1s;
-      animation-timing-function: ease-out; }
   @media (min-width: 992px) {
-    .feature-box {
-      padding: 2rem; } }
+    .feature-box--card {
+      padding: 1rem; } }
+  .feature-box--card h3 {
+    text-align: left; }
+  .feature-box--card:nth-child(odd).animate {
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
+  .feature-box--card:nth-child(even).animate {
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-timing-function: ease-out; }
   .feature-box__icon {
-    font-size: 5rem;
+    font-size: 4rem;
     margin-bottom: .5rem;
     display: inline-block;
     background-image: linear-gradient(to right, #7ed56f, #15a589);
@@ -451,71 +456,38 @@ hr.star-dark:after {
     align-items: center;
     justify-items: center;
     padding: 3vh; }
-  @media (min-width: 992px) {
-    .about-cards {
-      grid-template-areas: 'profile top-box-a top-box-a' 'top-box-b top-box-b top-box-b'; }
-      .about-cards .profile-img {
-        grid-area: profile;
-        margin: 0;
-        width: 100%; }
-      .about-cards .top-box {
-        background-color: #fff; }
-      .about-cards .top-box-a {
-        grid-area: top-box-a;
-        /*display: grid;
-      align-items: center;
-      justify-items: center; */ }
-      .about-cards .top-box-b {
-        grid-area: top-box-b; } }
 
 /*========================================*/
 /*              STORIES BOXS              */
 /*========================================*/
 .story {
-  width: 75%;
+  width: 90%;
   margin: 0 auto;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 3px;
   padding: 6rem;
   padding-left: 9rem;
+  font-size: 1.6rem;
+  -webkit-transform: skewX(-12deg);
   transform: skewX(-12deg); }
-  @media (min-width: 800px) {
-    .story {
-      width: 100%;
-      padding: 4rem;
-      padding-left: 7rem; } }
-  @media (min-width: 767px) {
-    .story {
-      transform: skewX(0); } }
   .story__shape {
     width: 15rem;
     height: 15rem;
     float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
-    position: relative;
-    overflow: hidden; }
-    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
-      .story__shape {
-        -webkit-clip-path: circle(50% at 50% 50%);
-        clip-path: circle(50% at 50% 50%);
-        -webkit-shape-outside: circle(50% at 50% 50%);
-        shape-outside: circle(50% at 50% 50%);
-        border-radius: none; } }
-    @media (min-width: 767px) {
-      .story__shape {
-        transform: translateX(-3rem) skewX(0); } }
+    position: relative; }
   .story__img {
     height: 100%;
-    width: 100%;
     transform: translateX(-4rem) scale(1.4);
     backface-visibility: hidden;
     transition: all .5s; }
   .story__text {
     transform: skewX(12deg); }
-    @media (min-width: 767px) {
-      .story__text {
-        transform: skewX(0); } }
   .story__caption {
     position: absolute;
     top: 50%;
@@ -679,9 +651,8 @@ form .row:first-child .floating-label-form-group {
 
 .social-icons a {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  padding: 1.2rem;
+  height: 3.5rem;
+  width: 3.5rem;
   background-color: #2C3E50;
   color: #fff !important;
   border-radius: 100%;
@@ -779,9 +750,6 @@ form .row:first-child .floating-label-form-group {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     transform: rotate(5deg) scale(1.3); }
 
-.copyright {
-  background-color: #1a252f; }
-
 /*=========================================*/
 /*              MAIN HEADER                */
 /*========================================*/
@@ -795,7 +763,13 @@ form .row:first-child .floating-label-form-group {
 
 .masthead {
   height: 85vh;
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(21, 165, 137, 0.8)), url("https://source.unsplash.com/1920x1080");
+  /* background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+        url('https://source.unsplash.com/1920x1080/'); // pick up random images on unplash site
+     // url(img/persPort3-min-big.jpg);
+     */
   background-size: cover;
   background-position: center top;
   position: relative;
@@ -919,11 +893,10 @@ form .row:first-child .floating-label-form-group {
 /*========================================*/
 .feature-section {
   padding-bottom: 15rem; }
-  .feature-section .feature-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
-    grid-gap: 2.5rem;
-    align-items: center; }
+  .feature-section .col-md-6 {
+    margin-bottom: 2rem; }
+    .feature-section .col-md-6 .feature-box {
+      height: 100%; }
 
 /*========================================*/
 /*              PORTFOLIO SECTION          */
@@ -935,7 +908,11 @@ form .row:first-child .floating-label-form-group {
     transform: skewY(7deg); }
 
 .about-section {
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(21, 165, 137, 0.8)), url(img/bkg-img.jpg);
+  /*background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+    url(img/bkg-img.jpg);*/
   background-size: cover;
   transform: skewY(-7deg); }
   .about-section > * {
@@ -962,14 +939,16 @@ form .row:first-child .floating-label-form-group {
   width: 100%;
   justify-content: space-around; }
   .portfolio-section .nav li {
+    /* Temporary Remove the border. And removed size and trext transform. */
     color: #2C3E50;
-    border: 1px solid #2C3E50;
-    padding: 1rem 2rem;
+    /* border: 1px solid $color-secondary; */
+    padding: 1rem .5rem;
     margin-bottom: 1rem;
-    text-transform: uppercase;
+    /*text-transform: uppercase; 
+            flex-basis: 0.16%;
+           */
     text-align: center;
-    cursor: pointer;
-    flex-basis: 0.16%; }
+    cursor: pointer; }
   .portfolio-section .nav .active {
     background-color: #18BC9C;
     color: #fff;
@@ -1010,11 +989,7 @@ form .row:first-child .floating-label-form-group {
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   margin: 1.5rem auto !important;
   border-radius: 0;
-  margin-bottom: 3.5rem !important;
-  width: 90%; }
-  @media (min-width: 992px) {
-    .resume-main .card {
-      width: 70%; } }
+  margin-bottom: 3.5rem !important; }
 
 .resume-main footer {
   padding-top: 2.5rem;

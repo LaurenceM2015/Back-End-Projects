@@ -1,6 +1,8 @@
 <?php
-include_once "../includes/connection.php";
 session_start();
+ini_set("display_errors", 1);
+include_once "../includes/connection.php";
+
 if(!isset($_POST['submit'])){
 	header("Location: page.php?message=Please+Submit+form");
 	exit();
