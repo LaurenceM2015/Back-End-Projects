@@ -239,6 +239,9 @@ h2 small {
     margin-left: 1rem;
     font-size: 1.5rem; }
 
+.long-copy {
+  animation: moveInRight 1s ease-out; }
+
 .paragraph {
   font-size: 1.25rem; }
   .paragraph:not(:last-child) {
@@ -672,7 +675,7 @@ article img {
   height: 95vh; }
   @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
     .header {
-      background: linear-gradient(to right bottom, rgba(92, 77, 66, 0.7) 0, rgba(92, 77, 66, 0.7) 100%), url(img/bg-min.jpg); } }
+      background: linear-gradient(to right bottom, rgba(92, 77, 66, 0.7) 0, rgba(92, 77, 66, 0.7) 100%), url(/assets/css/img/bg-min-Small.jpg); } }
   .header__jumbotron h1 {
     font-size: 5.5rem; }
   @media (max-width: 768px) {
@@ -821,6 +824,8 @@ article img {
   background-color: #2C3E50; }
 
 .blog-page .header-blog {
+  padding-top: 10rem;
+  padding-bottom: calc(10rem - 72px);
   height: 85vh;
   background: linear-gradient(to right bottom, rgba(252, 111, 70, 0.8), rgba(130, 58, 57, 0.8));
   background-size: cover;

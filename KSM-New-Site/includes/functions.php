@@ -20,6 +20,17 @@
             return false;
         }
     }
+    
+    /*function setSettingValue($setting,$value, $img, $feature){
+        global $conn;
+        $sql = "UPDATE settings SET setting_value='$value' settting_img='$img' setting_feature='$feature' 
+        WHERE setting_name='$setting'";
+        if(mysqli_query($conn, $sql)){
+            return true;
+        }else{
+            return false;
+        }
+    } */
 
 
 

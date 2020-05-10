@@ -29,8 +29,17 @@
             <!-- NAVIGATION BAR START HERE -->
             <?php include_once "includes/nav.php"; ?>
             <!-- NAVIGATION BAR END HERE -->
+            <?php 
+                                       
+                $sql = "SELECT * FROM category WHERE category_id IN ($id)";
+                $result = mysqli_query($conn, $sql);
+                while($row=mysqli_fetch_assoc($result)){
+                $category_id = $row['category_id']; 
+                $category_desc = $row['category_desc'];
+                $category_feature_img = $row['category_feature_img'];
+            ?>
                 
-            <header class="section-primary text-white fallback-image">
+            <header class="section-primary text-white fallback-image" id="feature-image" style="background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.7) 0, rgba(0, 0, 0, 0.7) 100%), url('<?php echo $category_feature_img; ?>')">
                 <div class="container header__container h-100 page-section">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-md-12">
@@ -39,25 +48,16 @@
                                     <span class="heading-primary--main"><?php getCategoryName($id); ?></span>
                                 </h1>
                                 <div class="">
-                                    <?php 
-                                       
-                                       $sql = "SELECT * FROM category WHERE category_id IN ($id)";
-                                        $result = mysqli_query($conn, $sql);
-                                        while($row=mysqli_fetch_assoc($result)){
-                                        $category_id = $row['category_id']; 
-                                        $category_desc = $row['category_desc'];
-                                        
-                                    ?>
-                                    <p class="long-copy my-5"><?php echo $category_desc; ?> </p>
-                                        <?php } ?>
                                     
-                                    
+                                    <p class="long-copy my-5 wow fadeInRight"><?php echo $category_desc; ?> </p>
+                                   
                                 </div>
                             </div><!-- header-text -->
                         </div> <!-- col-md-12 -->
                     </div><!-- ./row -->
                 </div><!-- ./container -->
             </header>
+        <?php } ?>
 
             <main class="main-container page-section" id="page-content">
                     

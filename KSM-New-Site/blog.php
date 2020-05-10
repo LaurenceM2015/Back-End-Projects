@@ -10,24 +10,30 @@
   <!-- NAVIGATION BAR START HERE -->
   <?php include_once "includes/nav.php"; ?>
   <!-- NAVIGATION BAR END HERE -->
-
+<body class="blog-page">
   <header class="header-blog parallax-window" data-z-index="0" data-parallax="scroll" data-image-src="assets/css/img/hero-blog-big-min.jpg">
-
-    
-      <div class="row text-center">
-        <div class="col-lg-10">
-          <h1 class="text-uppercase text-white heading-primary">
-            <span class="heading-primary--main"><?php getSettingValue("home_jumbo_title"); ?></span>
-          </h1>
-          <hr class="divider my-4">
-        </div>
-        <div class="col-lg-8">
-          <p class="text-white-75 font-weight-light mb-5"><?php getSettingValue("home_jumbo_desc"); ?></p>
+  <div class="container header__container h-100">
+      <div class="row h-100 align-items-center justify-content-center">
+        <div class="col-md-12">
           
+          <div class="header__text animated text-center">
+              <h1 class="heading-primary text-lg-left">
+                <span class="heading-primary--main text-center"><?php getSettingValue("slogan_title"); ?></span>
+              </h1>
+              <div class="">
+                <p class="lead my-5"><?php getSettingValue("slogan_desc"); ?></p>
+               
+              </div>
+              
+          </div>
         </div>
-      </div>
+      </div><!-- ./row -->
+    </div><!-- ./container -->
     
   </header>
+
+
+  
 
   
  
