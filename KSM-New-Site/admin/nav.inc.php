@@ -49,11 +49,19 @@
 
             <?php } } ?>
             <li class="nav-item">
+              <a class="nav-link" href="teams.php">
+                <span data-feather="file"><i class="fas fa-users"></i></span>
+                L'equipe
+              </a>
+            </li>
+
+            <li class="nav-item">
               <a class="nav-link" href="posts.php">
                 <span data-feather="file"><i class="fas fa-pager"></i></span>
                 All Posts
               </a>
             </li>
+
           </ul>
 
     

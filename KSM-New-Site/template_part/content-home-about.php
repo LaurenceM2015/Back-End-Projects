@@ -23,33 +23,25 @@
       </div><!-- ./row -->
 
       <div class="row text-center pt-5">
+      <?php 
+          $sql = "SELECT * FROM `teams` ORDER BY team_id";
+          $result = mysqli_query($conn, $sql);
+          while($row=mysqli_fetch_assoc($result)){
+          $team_id    = $row['team_id']; 
+          $team_name  = $row['team_name'];
+          $team_title = $row['team_title'];
+          $team_belt  = $row['team_belt'];
+        ?>
+
         <div class="col-md-3">
-          <h4>Fabien Poullin</h4>
-          <span><i class="fa fa-trophy fa-color"></i> 5ème Dan</span>
-          <p class="text-muted">DIF, CQP, Directeur Technique Départememtal</p>
+          <h4><?php echo $team_name; ?></h4>
+          <span><i class="fas fa-medal fa-color"></i> <?php echo $team_belt; ?></span>
+          <p class="text-muted"><?php echo $team_title; ?></p>
         </div><!-- team member: fabien poulin -->
 
-        <div class="col-md-3">
-          <h4>Valérie Mabilleau</h4>
-          <span><i class="fa fa-trophy fa-color"></i> 4 dan</span>
-          <p class="text-muted">DIF, Présidente</p>
-          
-        </div><!-- team member: Valerie poulin -->
+          <?php } ?>
 
-        <div class="col-md-3">
-          <h4>Tymothé</h4>
-          <sapn><i class="fa fa-trophy fa-color"></i> 2 dan</sapn>
-          <p class="text-muted">DIF, Secrétaire</p>
-         
-        </div><!-- team member: Tymothe -->
-
-        <div class="col-md-3">
-          <h4>Laurent</h4>
-          <span><i class="fa fa-trophy fa-color"></i> 2 dan</span>
-          <p class="text-muted">DIF, Trésorier</p>
-          
-        </div><!-- team member: Valerie poulin -->
-
+        
       </div><!-- ./team row -->
 
 
