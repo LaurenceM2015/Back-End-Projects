@@ -63,7 +63,6 @@ if(isset($_SESSION['author_role'])){
                                 $FormResult = mysqli_query($conn, $FormSql);
                                 
                                 while($FormRow = mysqli_fetch_assoc($FormResult)){
-                                    $hero_logo = $FormRow['hero_logo'];
                                     $hero_img = $FormRow['hero_img'];
                                     $setting_name = $FormRow['setting_name'];
                             ?>

@@ -168,7 +168,9 @@ if(isset($_SESSION['author_role'])){
 							
 				?>
 				
-			</div>
+            </div><!-- admin form -->
+            
+            
         
           </div>
         </main>
