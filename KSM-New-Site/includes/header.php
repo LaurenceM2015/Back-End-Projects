@@ -8,6 +8,8 @@
 		<!-- google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 		
 		<!-- font awesome -->
     	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"> 
