@@ -18,7 +18,7 @@
               <?php getSettingValue("about_desc"); ?>
             </p>
           </div>
-
+          
         </div>
       </div><!-- ./row -->
 
@@ -31,7 +31,7 @@
           $team_name  = $row['team_name'];
           $team_title = $row['team_title'];
           $team_belt  = $row['team_belt'];
-        ?>
+      ?>
 
         <div class="col-md-3">
           <h4><?php echo $team_name; ?></h4>
@@ -44,51 +44,38 @@
         
       </div><!-- ./team row -->
 
-
-      <!-- no lien -->
       <div class="row">
-
         <div class="col-md-12">
           <div class="section-lien py-5">
             <h3>No Lien</h3>
           </div>
         </div>
+      </div>
+
+      <!-- no lien -->
+      <div class="row text-center justify-content-between align-items-center">
+
+        <?php 
+          $sql = "SELECT * FROM `clients` ORDER BY client_id";
+          $result = mysqli_query($conn, $sql);
+          while($row=mysqli_fetch_assoc($result)){
+          $client_id    = $row['client_id']; 
+          $client_name  = $row['client_name'];
+          $client_link  = $row['client_link'];
+          $client_img  = $row['client_img'];
+          
+      ?>
 
         <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="assets/img/lien/DTDSLIDE.jpg">
+          <a class="text-center" href="<?php echo $client_link; ?>" alt="<?php echo $client_name; ?>" target="_blank">
+            <img class="img-fluid d-block mx-auto" src="<?php echo $client_img; ?>">
           </a>
         </div>
+          <?php } ?>
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="assets/img/lien/KarateMartial.jpg">
-          </a>
-        </div>
+      </div>
 
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="assets/img/lien/Logo-Sourires-denfants.jpg">
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#">
-            <img class="img-fluid d-block mx-auto" src="assets/img/lien/ffkda_logo.png">
-          </a>
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <img class="img-fluid d-block mx-auto" src="assets/img/lien/terredesenfant.jpg">
-        </div>
-
-        <div class="col-md-2 col-sm-4 col-xs-6">
-          <a href="#">
-              <img class="img-fluid d-block mx-auto" src="assets/img/lien/ligueTBO.png">
-          </a>
-        </div>
-
-      </!--> <!-- row -->
+      </div> <!-- row -->
 
     </div><!-- container -->
   
