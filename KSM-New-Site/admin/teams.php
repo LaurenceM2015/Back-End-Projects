@@ -85,7 +85,7 @@
                                     <th scope="row"><?php echo $hero_id; ?></th>
 
                                     <td>
-                                    <img class="img-thumbnail" src="../<?php echo $hero_img; ?>" width="150px" height="50px"></td>
+                                    <img class="img-thumbnail" src="../<?php echo $hero_img; ?>" width="70px" height="50px"></td>
                             
                                     <td><?php echo $setting_name; ?></td>
 
@@ -170,16 +170,55 @@
                 <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Collapsible Group Item #3
+                        Les Lien De Karate Shotokan Mardie
                     </button>
                 </h2>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
-                </div>
-            </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Le Nom</th>
+                                    <th>Logo Du Lien</th>
+                                    <th>Le Site</th>
+                                    
+                                    <?php if($_SESSION['author_role']=="admin"){ ?>
+                                    <th>Action</th>
+                                    <?php } ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    $sql = "SELECT * FROM `clients` ORDER BY client_id";
+                                    $result = mysqli_query($conn, $sql);
+
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        $client_id      = $row['client_id'];
+                                        $client_img     = $row['client_img']; 
+                                        $client_name    = $row['client_name']; 
+                                        $client_link    = $row['client_link'];
+                                ?>
+                
+                                <tr>
+                                    <th scope="row"><?php echo $client_id; ?></th>
+                                    <td><img class="img-thumbnail" src="../<?php echo $client_img; ?>" width="50px" height="50px"></td>
+                                    <td><?php echo $client_name; ?></td>
+                                    <td><?php echo $client_link; ?></td>
+                                    
+                                    <?php if($_SESSION['author_role']=="admin"){ ?>
+                                    <td>
+                                        <a href="editclients.php?id=<?php echo $client_id; ?>"><button class="btn btn-info">Edit</button></a>
+                                    </td>
+                                    <?php } ?>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div><!-- ./card-body -->
+                </div><!-- collapseThree -->
+            </div><!-- ./card-three: Nos Lien -->
         </div><!-- ./accordion -->
                 
 
@@ -196,6 +235,6 @@
 	header("Location: login.php?message=Please+Login");
 }
 
-include "../includes/footer.php";
+
 ?>
 

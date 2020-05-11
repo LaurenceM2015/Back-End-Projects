@@ -27,7 +27,7 @@ if(isset($_SESSION['author_role'])){
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Edit Home Sections</h1>
+            <h1 class="h2">Modifie Les Image Du Page D'accuel</h1>
             <h6>Howdy <?php echo $_SESSION['author_name']; ?> | Your role is <?php echo $_SESSION['author_role']; ?></h6>
           </div>
 		
@@ -50,7 +50,7 @@ if(isset($_SESSION['author_role'])){
                     <div class="card-header" id="headingOne">
                         <h5 class="mb-0">
                             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Hero Background Image Section
+                                Les Grande Image et Les Logo Du Page D'accuel.
                             </button>
                         </h5>
                     </div>
@@ -215,7 +215,7 @@ if(isset($_SESSION['author_role'])){
     
     ?>
 
-	 <?php include "../includes/footer.php"; ?>
+	
 
     
 
