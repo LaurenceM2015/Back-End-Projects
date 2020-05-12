@@ -121,7 +121,7 @@ if(isset($_SESSION['author_role'])){
                                                     WHERE hero_id='$hero_id'";
             
                                                     if(mysqli_query($conn, $sql)){
-                                                      echo '<script>window.location = "heros.php?message=Hero+Image+Updated";</script>';
+                                                      echo '<script>window.location = "teams.php?message=Hero+Image+Updated";</script>';
                                                     }else{
                                                         echo '<script>window.location = "editheros.php?message=Error+Message";</script>';
                                                      //   exit();

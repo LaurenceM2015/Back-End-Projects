@@ -106,3 +106,7 @@ ORDER: Base + typography > general layout + grid > page layout > components
     transform: translate(-50%, -50%);
 }
 
+@mixin heading-font {
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+

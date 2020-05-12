@@ -113,14 +113,16 @@
         $name = array();
         $sql = "SELECT * FROM category WHERE category_id IN ($id)";
         $result = mysqli_query($conn, $sql);
-
+        $html='';
         while($row=mysqli_fetch_assoc($result)){
-            array_push($name,$row['category_name']);
+            $html .='<a href="category.php?id='.$row['category_id'].'">'.$row['category_name'].'</a>&nbsp;' ;
+           // array_push($name,$row['category_name']);
             
            
             
         }
-        echo implode(", ",$name);
+        echo $html;
+        //echo implode(", ",$name);
     }
 
  

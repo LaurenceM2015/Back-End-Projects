@@ -2,7 +2,7 @@
 		<div class="container-fluid">
       <div class="row align-items-center">
         <div class="col-md-2">
-          <p><a href="/"><img class="footer__logo" src="assets/img/ksmLogo95x59.png" alt="Karate Shotokan Mardie Site"></a></p>
+          <p><a href="/index.php"><img class="footer__logo" srcset="<?php getHeroValue("ksm_logo_1x"); ?> 1x, <?php getHeroValue("ksm_logo_x2"); ?> x2" alt="Karate Shotokan Mardie Site"></a></p>
         </div><!-- end col -->
         <div class="col-md-4">
           <nav class="text-center secondary-navbar navbar navbar-expand-sm justify-content-center">
@@ -32,9 +32,7 @@
 	<script src="assets/js/main.js"></script>
 	
     
-	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=ey5ln3e6qq2sq6u5ka28g3yxtbiyj11zs8l6qyfegao3c0su"></script>
-
-	<script>tinymce.init({ selector:'textarea' });</script>
+	
 
   	<script>
 		$(document).ready(function(){
