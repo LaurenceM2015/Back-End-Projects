@@ -1,8 +1,6 @@
 <?php
   define("TITLE", "KSM | Page Terre Des Enfant"); 
   include "includes/header.php";
-  include "includes/connection.php";
-  include "includes/functions.php";
  
 ?>
 
@@ -40,11 +38,22 @@
 
    
     <!-- Page Header -->
-  <header>
-    <!-- Section Les Remerciment -->
-    <?php include "template_part/content-home-ksm-remerciment.php"; ?>
+  <header class="header-blog" style="background-image: url('assets/css/img/chariteHero.jpg')">
     
-    
+    <div class="container h-100">
+        <div class="row h-100 align-items-center justify-content-center text-center">
+          <div class="col-lg-10 align-self-end">
+            <h1 class="text-uppercase text-white heading-primary">
+                <span class="heading-primary--main">Les Charite que nous Parrainents</span>
+            </h1>
+        
+          </div>
+          <div class="col-lg-8 align-self-baseline">
+            <p class="text-white-75 font-weight-light mb-5"></p>
+           
+          </div>
+        </div>
+    <div>
   </header>
 
 
