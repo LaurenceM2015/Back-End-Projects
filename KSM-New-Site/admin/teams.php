@@ -1,8 +1,9 @@
-<?php 
+<?php
+session_start(); 
  define("TITLE", "Admin | Les Membre De L'equipe");
  include_once "../includes/functions.php";
  include_once "../includes/connection.php";
- session_start();
+ 
  if(isset($_SESSION['author_role'])){
  ?>
   

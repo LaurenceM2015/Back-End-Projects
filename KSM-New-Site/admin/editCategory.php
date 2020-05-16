@@ -1,8 +1,9 @@
 <?php 
+     session_start();
     ini_set("display_errors", 1);
     include "../includes/connection.php";
     //include "../includes/functions.php";
-    session_start();
+   
     if(!isset($_POST['submit'])){
         header("Location: category.php?message=Please+Add+a+Category");
         exit();

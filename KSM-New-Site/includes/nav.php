@@ -5,10 +5,10 @@
 
  <!-- MAIN NAVIGATION -->
   
-  <!-- Remove Dynamic navgiation and add it to a new file call includes/main-nav.php -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container-fluid">
-      <img href="#page-top" srcset="assets/img/ksmLogo95x59.png 1x, assets/img/ksmLogo196x148.png x2" alt="Karate Shotokan Mardie logo" class="navbar__logo-img navbar-brand js-scroll-trigger">
+      <img href="/ind" srcset="<?php getHeroValue("ksm_logo_1x"); ?> 1x, <?php getHeroValue("ksm_logo_x2"); ?> x2" alt="Karate Shotokan Mardie logo" class="navbar__logo-img navbar-brand js-scroll-trigger">
 
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -16,24 +16,23 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar__nav navbar-nav ml-auto">
-        <li class="navbar__item nav-item">
-          <a class="navbar__link nav-link" href="/index.php">Page<small>D'accueil</small></a>
-        </li>
-          <?php 
-              $sql    = "SELECT * FROM category";
-              $result = mysqli_query($conn, $sql);
-              while($row=mysqli_fetch_array($result)){
-              $category_id = $row['category_id'];
-              $category_name = $row['category_name'];
-          ?>
 
-          <li class="navbar__item nav-item">
-            <a class="navbar__link nav-link js-scroll-trigger" href="category.php?id=<?php echo $category_id; ?>"><?php echo $category_name; ?></a>
-          </li>
-          <?php } ?>
-          
+            <?php
+                $sql = "SELECT * FROM `navbar_two` ORDER BY navbar_id ASC";
+                $result = mysqli_query($conn, $sql);
+      
+                while($row=mysqli_fetch_assoc($result)){
+                  $navbar_slug = $row['navbar_slug']; 
+                  $navbar_title = $row['navbar_title'];
+                   
+                    echo    '<li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="'.$navbar_slug.'">'.$navbar_title.'</a>
+                        </li>
+                        ';
+                }
+            ?>
         </ul>
 
       </div>
     </div>
-  </nav>
+</nav>

@@ -10,8 +10,8 @@
     </div><!-- widget -->
           
     <div class="feature-box card widget mb-4 text-left">
-      <h4 class="card-title feature-box__text py-2">About KSM</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h4 class="card-title feature-box__text py-2"><?php getSettingValue("slogan_title"); ?></h4>
+      <p><?php getSettingValue("slogan_desc"); ?></p>
     </div><!-- widget -->
           
     <div class="feature-box card widget mb-4 text-left">
@@ -33,16 +33,7 @@
         <?php } ?>
       </ul>
     </div><!-- widget -->
-    <div class="feature-box card widget mb-4 text-left">
-      <h4 class="card-title feature-box__text py-2">Archives</h4>
-      <ul class="list-unstyled">
-          <li><a href="">Mars 2020</a></li>
-          <li><a href="">Janvier 2019</a></li>
-          <li><a href="">Mai 2018</a></li>
-          <li><a href="">Decembre 2017</a></li>
-      </ul>
-    </div><!-- widget -->
-          
+    
     <div class="feature-box card widget mb-4 text-left">
       <h4 class="card-title feature-box__text py-2">Categories</h4>
       <ul class="list-unstyled">
@@ -63,6 +54,22 @@
           ?>
       </ul>
     </div><!-- widget -->
+
+    <div class="feature-box card widget mb-4 text-left">
+      <h4 class="card-title feature-box__text py-2">Archives</h4>
+      <ul class="list-unstyled">
+          <?php 
+           $sql = "SELECT DISTINCT( YEAR(post_date)) as post_date from post";
+           $result = mysqli_query($conn, $sql);
+           while($row=mysqli_fetch_assoc($result)){
+            $post_date = $row['post_date']; ?>
+
+          <li><a href="archiveYear.php?year=<?php echo $post_date; ?>"><?php echo $post_date; ?></a></li>
+          <?php } ?>
+      </ul>
+    </div><!-- widget -->
+          
+    
     <div class="feature-box card widget mb-4 text-left">
       <h4 class="card-title feature-box__text py-2">Meta</h4>
       <ul class="list-unstyled">

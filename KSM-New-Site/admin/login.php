@@ -1,6 +1,7 @@
 <?php 
+	session_start();
 	define("TITLE", "Admin | Login Page");
-    session_start();
+    
     include "../includes/header.php";
     include "../includes/connection.php";
 ?>
@@ -62,26 +63,34 @@
 				
 				//checking for empty fields
 				if(empty($author_email) OR empty($author_password)){
-					header("Location: login.php?message=Empty+Fields");
+					//header("Location: login.php?message=Empty+Fields");
+					echo '<script>window.location = "login.php?message=Empty+Fields";</script>';
+
 					exit();
 				}
 				
 				//checking for validity of email
 				if(!filter_var($author_email,FILTER_VALIDATE_EMAIL)){
-					header("Location: login.php?message=Please+Enter+A+Valid+email");
+					//header("Location: login.php?message=Please+Enter+A+Valid+email");
+					echo '<script>window.location = "login.php?message=Please+Enter+A+Valid+email";</script>';
+
 					exit();
 				}else{
 					//If email exists
 					$sql = "SELECT * FROM `author` WHERE `author_email`='$author_email'";
 					$result = mysqli_query($conn, $sql);
 					if(mysqli_num_rows($result)<=0){
-						header("Location: login.php?message=Login+error");
+						//header("Location: login.php?message=Login+error");
+						echo '<script>window.location = "login.php?message=Login+error";</script>';
+
 						exit();
 					} else {
 						while($row = mysqli_fetch_assoc($result)){
 							//checking if password matches
 							if(!password_verify($author_password, $row['author_password'])){
-								header("Location: login.php?message=Login+error");
+								//header("Location: login.php?message=Login+error");
+								echo '<script>window.location = "login.php?message=Login+error";</script>';
+
 								exit();
 							} else if(password_verify($author_password, $row['author_password'])) {
 								$_SESSION['author_id'] = $row['author_id'];
@@ -89,7 +98,9 @@
 								$_SESSION['author_email'] = $row['author_email'];
 								$_SESSION['author_bio'] = $row['author_bio'];
 								$_SESSION['author_role'] = $row['author_role'];
-								header("Location: index.php");
+								//header("Location: index.php");
+								echo '<script>window.location = "index.php";</script>';
+
 								exit();
 							}
 						}

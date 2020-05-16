@@ -7,19 +7,19 @@
               Dashboard <span class="sr-only">(current)</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="settings.php">
+              <span data-feather="file"><i class="fas fa-home"></i></span>
+                Page D'accuel
+            </a>
+				  </li>
           
           <?php 
             if(isset($_SESSION['author_role'])){
               if($_SESSION['author_role']=="admin"){
                 // Show all the link for admin
                 ?>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="home.php">
-                      <span data-feather="file"><i class="fas fa-home"></i></span>
-                      Page D'accuel
-                    </a>
-				        </li>
 
                  <!-- ONLY ADMIN LINK HERE -->
                  <li class="nav-item">
@@ -37,15 +37,6 @@
                     </a>
                   </li>
 
-                   <!-- ONLY ADMIN LINK HERE -->
-                   <li class="nav-item">
-                    <a class="nav-link" href="heros.php">
-                      <span data-feather="file"><i class="fas fa-list"></i></span>
-                       Home Settings
-                    </a>
-                  </li>
-
-                  
 
             <?php } } ?>
             <li class="nav-item">
@@ -58,7 +49,7 @@
             <li class="nav-item">
               <a class="nav-link" href="posts.php">
                 <span data-feather="file"><i class="fas fa-pager"></i></span>
-                All Posts
+                Les Photos des Stages
               </a>
             </li>
 

@@ -11,12 +11,17 @@
         <ul class="navbar__nav navbar-nav ml-auto">
 
             <?php
-                foreach ($navItems as $item) {
-                    echo 
-                        "
-                        <li class=\"nav-item mx-0 mx-lg-1\">
-                        <a class=\"nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger\" href=\"$item[slug]\">$item[title]</a></li>
-                        ";
+                $sql = "SELECT * FROM `navbar` ORDER BY navbar_id ASC";
+                $result = mysqli_query($conn, $sql);
+      
+                while($row=mysqli_fetch_assoc($result)){
+                  $navbar_slug = $row['navbar_slug']; 
+                  $navbar_title = $row['navbar_title'];
+                   
+                    echo    '<li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="'.$navbar_slug.'">'.$navbar_title.'</a>
+                        </li>
+                        ';
                 }
             ?>
         </ul>

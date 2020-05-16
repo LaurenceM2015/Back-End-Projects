@@ -1,9 +1,10 @@
 <?php
+session_start();
 ini_set("display_errors", 1);
 define("TITLE", "Admin | New post Page");
 include_once "../includes/functions.php";
 include "../includes/connection.php";
-session_start();
+
 if(isset($_SESSION['author_role'])){
 	?>
 	<!-- header Start here  -->
@@ -86,11 +87,13 @@ if(isset($_SESSION['author_role'])){
 						$post_content = mysqli_real_escape_string($conn, $_POST['post_content']);
 						$post_keywords = mysqli_real_escape_string($conn, $_POST['post_keywords']);
 						$post_author = $_SESSION['author_id'];
-						$post_date = date("d/m/y");
+						$post_date = date("Y-m-d");
 						
 						//checking if above fields are empty
 						if(empty($post_title) OR empty($post_category) OR empty($post_content)){
-							header("Location: newpost.php?message=Empty+Fields");
+							//header("Location: newpost.php?message=Empty+Fields");
+							echo '<script>window.location = "newpost.php?message=Empty+Fields+Da+La+Form";</script>';
+
 							exit();
 						}
 						
@@ -114,13 +117,30 @@ if(isset($_SESSION['author_role'])){
 									$destination = "../uploads/$newFileName";
 									$dbdestination = "uploads/$newFileName";
 									move_uploaded_file($fileTmp, $destination);
-									$sql = "INSERT INTO post (`post_title`,`post_content`,`post_category`, `post_author`, `post_date`, `post_keywords`, `post_image`) VALUES ('$post_title', '$post_content', '$post_category', '$post_author', '$post_date', '$post_keywords', '$dbdestination');";
+									$sql = "INSERT INTO post 
+									(`post_title`,
+									`post_content`,
+									`post_category`, 
+									`post_author`, 
+									`post_date`, 
+									`post_keywords`, 
+									`post_image`) 
+									VALUES ('$post_title', 
+									'$post_content', 
+									'$post_category', 
+									'$post_author', 
+									'$post_date', 
+									'$post_keywords', 
+									'$dbdestination');";
+									//exit();
 									if(mysqli_query($conn, $sql)){
 										//header("Location: posts.php?message=Post+Published");
 										echo "<meta http-equiv='refresh' content='0;url=http://localhost:8888/admin/posts.php?message=Post+Published'>";
 
 									}else{
-										header("Location: newpost.php?message=Error");
+										//header("Location: newpost.php?message=Error");
+										echo '<script>window.location = "newpost.php?message=Une-Error-Dans+La+Form";</script>';
+										exit();
 									}
 								} else {
 									header("Location: newpost.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");

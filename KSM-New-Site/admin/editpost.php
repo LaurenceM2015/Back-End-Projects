@@ -1,8 +1,11 @@
 <?php
+session_start();
+ini_set("display_errors", 1);
+
 define("TITLE", "Admin | Edit Post");
 include_once "../includes/functions.php";
 include "../includes/connection.php";
-session_start();
+
 if(isset($_SESSION['author_role'])){
 	if($_SESSION['author_role']=="admin"){
 		if(isset($_GET['id'])){
@@ -13,7 +16,9 @@ if(isset($_SESSION['author_role'])){
 	<body>
 	
 	 <nav class="navbar navbar-dark sticky-top bg-dark   shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/index.php">
+		  Karate Shotokan Mardie
+	  </a>
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
@@ -77,9 +82,14 @@ if(isset($_SESSION['author_role'])){
 					?>
 					
 					Post Content
-					<textarea name="post_content" class="form-control" id="exampleFormControlTextarea1" rows="9"><?php echo $postContent ?></textarea><br>
-					<img src="../<?php echo $postImage; ?>" width="150px" height="150px"><br>
-					Post Image
+					<div class="form-group">
+						<textarea name="post_content" class="form-control" id="exampleFormControlTextarea1" clols="30" rows="10"><?php echo $postContent ?></textarea><br>
+						Post image
+						<img src="../<?php echo $postImage; ?>" width="150px" height="150px"><br>
+						
+						<input name="image" type="file" id="upload" class="hidden" onchange="">
+			
+					</div>
 					<input type="file" name="file" class="form-control-file" id="exampleFormControlFile1"><br>
 					
 					Post Keywords
@@ -165,6 +175,9 @@ if(isset($_SESSION['author_role'])){
       </div>
     </div>
 	
+	<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=quy69270j2zull9yao8jgu4yula8yyu7r8yav8jb3v0un3au"></script>
+
+	<script>tinymce.init({ selector:'textarea' });</script>
 	<!-- Footer start here -->
 	<?php include "../includes/footer.php"; ?>
 	</body>
@@ -172,6 +185,8 @@ if(isset($_SESSION['author_role'])){
 	<?php
 		}}
 }else{
-	header("Location: login.php?message=Please+Login");
+	//header("Location: login.php?message=Please+Login");
+	echo '<script>window.location = "login.php?message=Please+Login";</script>';
+
 }
 ?>

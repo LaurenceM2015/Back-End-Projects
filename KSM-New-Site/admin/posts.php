@@ -1,8 +1,9 @@
 <?php 
+ session_start();
  define("TITLE", "Admin | All Post Page");
  include_once "../includes/functions.php";
  include_once "../includes/connection.php";
- session_start();
+
  if(isset($_SESSION['author_role'])){
  ?>
   
@@ -88,8 +89,10 @@
 
             <?php if($_SESSION['author_role']=="admin"){ ?>
               <td>
-                <a href="editpost.php?id=<?php echo $post_id; ?>"><button class="btn btn-info">Edit</button></a>
-                <a onclick="return confirm('Are You sure')" href="deletepost.php?id=<?php echo $post_id; ?>"><button class="btn btn-danger">Delete</button></a>
+                <a href="editpost.php?id=<?php echo $post_id; ?>"><button class="btn btn-info">Modifier</button></a>
+                <a onclick="return confirm('Are You sure')" href="deletepost.php?id=<?php echo $post_id; ?>">
+                <button class="btn btn-danger">Effacer</button>
+              </a>
               </td>
             <?php } ?>
 

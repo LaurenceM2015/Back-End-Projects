@@ -1,9 +1,10 @@
 <?php
+session_start();
 ini_set("display_errors", 1);
 define("TITLE", "Admin | New post Page");
 include_once "../includes/functions.php";
 include "../includes/connection.php";
-session_start();
+
 if(isset($_SESSION['author_role'])){
 	?>
 	<!-- header Start here  -->
@@ -96,26 +97,35 @@ if(isset($_SESSION['author_role'])){
 									$destination = "../uploads/$newFileName";
 									$dbdestination = "uploads/$newFileName";
 									move_uploaded_file($fileTmp, $destination);
-									 $sql = "INSERT INTO category (`category_name`,`category_desc`,`category_feature_img`) 
+									$sql = "INSERT INTO category 
+									 (`category_name`,
+									 `category_desc`,
+									 `category_feature_img`) 
+
                                     VALUES ('$category_name', '$category_desc', '$dbdestination');";
-                                    exit();
+                                   // exit();
 									if(mysqli_query($conn, $sql)){
 										//header("Location: posts.php?message=Post+Published");
 										echo "<meta http-equiv='refresh' content='0;url=http://localhost:8888/admin/category.php?message=Category+added'>";
 
 									}else{
-										header("Location: addcategory.php?message=Error");
+										//header("Location: addcategory.php?message=Error");
+										echo '<script>window.location = "addcategory.php?message=Il-Ya-Une+Error+Fields";</script>';
+
 									}
 								} else {
-									header("Location: addcategory.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
+									//header("Location: addcategory.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
+									echo '<script>window.location = "addcategory.php?message=YOUR+FILE+IS+TO+BIG+TO+UPLOAD";</script>';
 									exit();
 								}
 							}else{
-								header("Location: addcategory.php?message=Oops Error Uploading your file");
+								//header("Location: addcategory.php?message=Oops Error Uploading your file");
+								echo '<script>window.location = "addcategory.php?message=OOPS+ERROR+IS+UPLOADING+YOUR+FILE";</script>';
 								exit();
 							}
 						}else{
-							header("Location: addcategory.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
+							//header("Location: addcategory.php?message=YOUR FILE IS TOO BIG TO UPLOAD!");
+							echo '<script>window.location = "addcategory.php?message=YOUR+FILE+IS+BIG+TO+UPLOADING";</script>';
 							exit();
 						}
 					} // Submit 

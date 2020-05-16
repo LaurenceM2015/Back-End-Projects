@@ -1,9 +1,11 @@
 <?php
+session_start();
 define("TITLE", "Admin | New Page");
 include_once "../includes/connection.php";
-session_start();
+
 if(!isset($_POST['submit'])){
 	header("Location: page.php?message=Please+Submit+form");
+	
 	exit();
 }else{
 	if(!isset($_SESSION['author_role'])){
