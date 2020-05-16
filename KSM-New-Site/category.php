@@ -57,7 +57,7 @@
                     </div><!-- ./row -->
                 </div><!-- ./container -->
             </header>
-        <?php } ?>
+            <?php } ?>
 
             <main class="main-container page-section" id="page-content">
                     
@@ -104,8 +104,7 @@
             </main>
                 <!-- footer goes here -->
             <?php include "includes/footer.php"; ?>
-        </body>
-    </html>
+       
                 
 
 
